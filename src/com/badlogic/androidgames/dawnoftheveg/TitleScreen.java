@@ -107,5 +107,19 @@ public class TitleScreen extends GLScreen {
 		gl.glDisable(GL10.GL_BLEND);		
 	}
 	
+	@Override
+	public void pause() {
+		Settings.save(game.getFileIO());
+	}
+	
+	@Override
+	public void resume() {
+	}
+	
+	@Override 
+	public void dispose() {
+	}
+	
+	
 
 }
