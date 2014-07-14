@@ -22,6 +22,7 @@ public class Assets {
 	public static TextureRegion soundOn;
 	public static TextureRegion tip;
 	public static TextureRegion title;
+	public static TextureRegion shop;
 	
 	public static Texture fontImage;
 	public static Font font;
@@ -45,6 +46,7 @@ public class Assets {
 		soundOn = new TextureRegion(icons, 108, 143, 40, 40);
 		tip = new TextureRegion(icons, 179, 0, 42, 39);
 		title = new TextureRegion(icons, 0, 0, 179, 42);
+		shop = new TextureRegion(icons, 130, 73, 47, 30);
 		
 		fontImage = new Texture(game, "font.png");
 		font = new Font(icons, 0, 0, 0, 32, 32);
