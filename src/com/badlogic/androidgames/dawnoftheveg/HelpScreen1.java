@@ -15,7 +15,7 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 
-public class HelpScreen2 extends GLScreen {	
+public class HelpScreen1 extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;
 	Rectangle nextBounds;
@@ -25,17 +25,16 @@ public class HelpScreen2 extends GLScreen {
 	Texture helpImage;
 	TextureRegion helpRegion;
 	
-
-	public HelpScreen2(Game game) {
+	public HelpScreen1(Game game) {
 		super(game);
-
+		
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		nextBounds = new Rectangle(220, 720, 40, 40);
 		previousBounds = new Rectangle(220, 40, 40, 40);
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 100);
 	}
-
+	
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -45,18 +44,18 @@ public class HelpScreen2 extends GLScreen {
 			TouchEvent event = touchEvents.get(i);
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
-
+			
 			if(event.type == TouchEvent.TOUCH_UP) {
-				// edit this to include more help screens
 				if(OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new HelpScreen1(game));
+					game.setScreen(new HelpScreen2(game));
 					return;
 				}
-
+				
+				// edit this to include more help screens
 				if(OverlapTester.pointInRectangle(previousBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new HelpScreen1(game));
+					game.setScreen(new HelpScreen2(game));
 					return;
 				}
 				
@@ -75,23 +74,23 @@ public class HelpScreen2 extends GLScreen {
 		GL10 gl = glGraphics.getGL();
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		guiCam.setViewportAndMatrices();
-
+		
 		gl.glEnable(GL10.GL_TEXTURE_2D);
-
+		
 		batcher.beginBatch(helpImage);
 		batcher.drawSprite(400, 180, 560, 320, helpRegion);
 		batcher.endBatch();
-
+		
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-
+		
 		batcher.beginBatch(Assets.icons);
 		batcher.drawSprite(740, 240, 40, 40, Assets.rightArrow);
 		batcher.drawSprite(60, 240, -40, 40, Assets.rightArrow);	//use -ve width for left arrow
 		batcher.drawSprite(400, 420, 42, 39, Assets.tip);
 		batcher.drawSprite(780, 460, 40, 40, Assets.back);
 		batcher.endBatch();
-
+		
 		gl.glDisable(GL10.GL_BLEND);
 	}
 
@@ -102,7 +101,7 @@ public class HelpScreen2 extends GLScreen {
 
 	@Override
 	public void resume() {
-		helpImage = new Texture(glGame, "help2.png");
+		helpImage = new Texture(glGame, "help1.png");
 		helpRegion = new TextureRegion(helpImage, 0, 0, 560, 320);
 	}
 
