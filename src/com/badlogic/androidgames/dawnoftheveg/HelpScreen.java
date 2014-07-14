@@ -19,7 +19,8 @@ public class HelpScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;
 	Rectangle nextBounds;
-	Rectangle previousBounds;
+	Rectangle previousBounds; //for previous help screen
+	Rectangle backBounds; //for returning to title screen
 	Vector2 touchPoint;
 	Texture helpImage;
 	TextureRegion helpRegion;
@@ -57,6 +58,12 @@ public class HelpScreen extends GLScreen {
 					game.setScreen(new HelpScreen2(game));
 					return;
 				}
+				
+				if(OverlapTester.pointInRectangle(backBounds, touchPoint)) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new TitleScreen(game));
+					return;
+				}
 			}
 		}
 
@@ -71,16 +78,17 @@ public class HelpScreen extends GLScreen {
 		gl.glEnable(GL10.GL_TEXTURE_2D);
 		
 		batcher.beginBatch(helpImage);
-		batcher.drawSprite(????);
+		batcher.drawSprite(400, 180, 560, 320, helpRegion);
 		batcher.endBatch();
 		
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		
 		batcher.beginBatch(Assets.icons);
-		batcher.drawSprite(x, y, width, height, Assets.rightArrow);
-		batcher.drawSprite(x, y, width, height, Assets.rightArrow);//use -ve width for left arrow
-		// any other icons - title etc
+		batcher.drawSprite(740, 240, 40, 40, Assets.rightArrow);
+		batcher.drawSprite(60, 240, -40, 40, Assets.rightArrow);	//use -ve width for left arrow
+		batcher.drawSprite(400, 420, 42, 39, Assets.tip);
+		batcher.drawSprite(780, 460, 40, 40, Assets.back);
 		batcher.endBatch();
 		
 		gl.glDisable(GL10.GL_BLEND);
@@ -94,7 +102,7 @@ public class HelpScreen extends GLScreen {
 	@Override
 	public void resume() {
 		helpImage = new Texture(glGame, "help1.png");
-		helpRegion = new TextureRegion(helpImage, 0, 0, ???, ???);
+		helpRegion = new TextureRegion(helpImage, 0, 0, 560, 320);
 	}
 
 	@Override
