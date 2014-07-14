@@ -59,6 +59,7 @@ public class ShopScreen extends GLScreen {
         
         batcher.beginBatch(Assets.icons);          
         batcher.drawSprite(400, 420, 47, 30, Assets.shop);
+        batcher.drawSprite(780, 460, 40, 40, Assets.back);
         batcher.endBatch();
         
         gl.glDisable(GL10.GL_BLEND);

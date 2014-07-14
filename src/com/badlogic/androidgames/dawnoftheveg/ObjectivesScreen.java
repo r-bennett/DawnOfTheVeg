@@ -58,6 +58,7 @@ public class ObjectivesScreen extends GLScreen {
         
         batcher.beginBatch(Assets.icons);          
         batcher.drawSprite(400, 420, 68, 37, Assets.objectives);
+        batcher.drawSprite(780, 460, 40, 40, Assets.back);
         batcher.endBatch();
         
         gl.glDisable(GL10.GL_BLEND);
