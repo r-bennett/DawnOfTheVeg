@@ -58,12 +58,12 @@ public class TitleScreen extends GLScreen {
 				}
 				if(OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new HelpScreen(game));
+					game.setScreen(new HelpScreen1(game));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(playBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game));
+					game.setScreen(new MapScreen(game));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(shopBounds, touchPoint)) {
@@ -119,7 +119,4 @@ public class TitleScreen extends GLScreen {
 	@Override 
 	public void dispose() {
 	}
-	
-	
-
 }
