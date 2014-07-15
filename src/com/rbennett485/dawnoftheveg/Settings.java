@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.dawnoftheveg;
+package com.rbennett485.dawnoftheveg;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

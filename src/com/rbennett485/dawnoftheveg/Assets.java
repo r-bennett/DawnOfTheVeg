@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.dawnoftheveg;
+package com.rbennett485.dawnoftheveg;
 
 import com.badlogic.androidgames.framework.Music;
 import com.badlogic.androidgames.framework.Sound;

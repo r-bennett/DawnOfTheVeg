@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.dawnoftheveg;
+package com.rbennett485.dawnoftheveg;
 
 import java.util.List;
 
@@ -13,14 +13,13 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 
-public class ShopScreen extends GLScreen {
-
+public class ObjectivesScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;
 	Rectangle backBounds;
 	Vector2 touchPoint;
 
-	public ShopScreen(Game game) {
+	public ObjectivesScreen(Game game) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
@@ -58,7 +57,7 @@ public class ShopScreen extends GLScreen {
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         
         batcher.beginBatch(Assets.icons);          
-        batcher.drawSprite(400, 420, 47, 30, Assets.shop);
+        batcher.drawSprite(400, 420, 68, 37, Assets.objectives);
         batcher.drawSprite(780, 460, 40, 40, Assets.back);
         batcher.endBatch();
         
@@ -67,7 +66,6 @@ public class ShopScreen extends GLScreen {
     
 	@Override
 	public void pause() {
-		Settings.save(game.getFileIO());
 	}
 	
 	@Override

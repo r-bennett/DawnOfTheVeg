@@ -1,4 +1,4 @@
-package com.badlogic.androidgames.dawnoftheveg;
+package com.rbennett485.dawnoftheveg;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
