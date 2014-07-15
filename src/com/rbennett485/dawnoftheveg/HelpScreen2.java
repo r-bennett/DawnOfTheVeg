@@ -30,8 +30,8 @@ public class HelpScreen2 extends GLScreen {
 		super(game);
 
 		guiCam = new Camera2D(glGraphics, 800, 480);
-		nextBounds = new Rectangle(220, 720, 40, 40);
-		previousBounds = new Rectangle(220, 40, 40, 40);
+		nextBounds = new Rectangle(720, 220, 40, 40);
+		previousBounds = new Rectangle(40, 220, 40, 40);
 		backBounds = new Rectangle(760, 440, 40, 40);
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 100);
