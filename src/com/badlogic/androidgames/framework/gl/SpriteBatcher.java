@@ -2,7 +2,7 @@ package com.badlogic.androidgames.framework.gl;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.FloatMath;
+import java.lang.Math;
 
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 import com.badlogic.androidgames.framework.math.Vector2;
@@ -107,8 +107,8 @@ public class SpriteBatcher {
         float halfHeight = height / 2;
         
         float rad = angle * Vector2.TO_RADIANS;
-        float cos = FloatMath.cos(rad);
-        float sin = FloatMath.sin(rad);
+        float cos = (float)Math.cos(rad);
+        float sin = (float)Math.sin(rad);
                 
         float x1 = -halfWidth * cos - (-halfHeight) * sin;
         float y1 = -halfWidth * sin + (-halfHeight) * cos;
