@@ -104,6 +104,10 @@ public class TitleScreen extends GLScreen {
 		
 		batcher.endBatch();
 		
+		batcher.beginBatch(Assets.fontImage);
+		Assets.font.drawText(batcher, "Just some testing 12345 $ ", 300, 100);
+		batcher.endBatch();
+		
 		gl.glDisable(GL10.GL_BLEND);		
 	}
 	
