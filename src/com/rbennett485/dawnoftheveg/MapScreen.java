@@ -17,6 +17,7 @@ public class MapScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;
 	Rectangle backBounds;
+	Rectangle level1Bounds;
 	Vector2 touchPoint;
 
 	public MapScreen(Game game) {
@@ -24,6 +25,8 @@ public class MapScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		backBounds = new Rectangle(760, 440, 40, 40);
+		level1Bounds = new Rectangle(100-Assets.font.glyphWidth/2, 
+				300-Assets.font.glyphHeight/2, 7*Assets.font.glyphWidth, Assets.font.glyphHeight);
 		touchPoint = new Vector2();
 	}
 
@@ -43,6 +46,11 @@ public class MapScreen extends GLScreen {
 					game.setScreen(new TitleScreen(game));
 					return;
 				}
+				if(OverlapTester.pointInRectangle(level1Bounds, touchPoint)) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new Level1GameScreen(game));
+					return;
+				}
 			}
 		}
 	}
@@ -58,6 +66,11 @@ public class MapScreen extends GLScreen {
         
         batcher.beginBatch(Assets.icons);
         batcher.drawSprite(780, 460, 40, 40, Assets.back);
+        batcher.endBatch();
+        
+        batcher.beginBatch(Assets.fontImage);
+        Assets.font.drawText(batcher, "Level 1", 100, 300);
+        Assets.font.drawText(batcher, "Level 2", 200, 200);
         batcher.endBatch();
         
         gl.glDisable(GL10.GL_BLEND);
