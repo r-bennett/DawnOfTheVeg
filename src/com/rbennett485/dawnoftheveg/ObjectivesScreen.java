@@ -61,6 +61,10 @@ public class ObjectivesScreen extends GLScreen {
         batcher.drawSprite(780, 460, 40, 40, Assets.back);
         batcher.endBatch();
         
+        batcher.beginBatch(Assets.fontImage);
+        Assets.font.drawText(batcher, "1. Objective 1 here", 300, 300);
+        batcher.endBatch();
+        
         gl.glDisable(GL10.GL_BLEND);
     }
     
