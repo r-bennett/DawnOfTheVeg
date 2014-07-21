@@ -48,7 +48,7 @@ public class Assets {
 		title = new TextureRegion(icons, 0, 0, 179, 42);
 		shop = new TextureRegion(icons, 130, 73, 47, 30);
 		
-		fontImage = new Texture(game, "font.bmp");
+		fontImage = new Texture(game, "font.png");
 		font = new Font(icons, 0, 0, 0, 32, 32);
 		
 		music = game.getAudio().newMusic("music.mp3");
