@@ -62,6 +62,7 @@ public class Assets {
 	public static void reload() {
 		background.reload();
 		icons.reload();
+		fontImage.reload();
 		if(Settings.soundEnabled)
 			music.play();
 	}
