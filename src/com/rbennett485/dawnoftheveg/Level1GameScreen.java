@@ -84,6 +84,10 @@ public class Level1GameScreen extends GLScreen {
 		}
 
 		batcher.endBatch();
+		
+		batcher.beginBatch(Assets.characters);
+		batcher.drawSprite(400, 240, 40, 40, Assets.orange);
+		batcher.endBatch();
 
 		gl.glDisable(GL10.GL_BLEND);
 	}
