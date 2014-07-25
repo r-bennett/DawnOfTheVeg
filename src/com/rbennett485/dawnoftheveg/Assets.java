@@ -39,7 +39,7 @@ public class Assets {
 		backgroundRegion = new TextureRegion(background, 0, 0, 800, 480);
 		
 		characters = new Texture(game, "orange.png");
-		orange = new TextureRegion(characters, 0, 0, 40, 40)
+		orange = new TextureRegion(characters, 0, 0, 40, 40);
 		
 		icons = new Texture(game, "icons.png");
 		back = new TextureRegion(icons, 0, 180, 40, 40);
