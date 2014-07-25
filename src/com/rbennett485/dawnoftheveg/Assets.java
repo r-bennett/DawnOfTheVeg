@@ -11,6 +11,9 @@ public class Assets {
 	public static Texture background;
 	public static TextureRegion backgroundRegion;
 	
+	public static Texture characters;
+	public static TextureRegion orange;
+	
 	public static Texture icons;
 	public static TextureRegion back;
 	public static TextureRegion help;
@@ -34,6 +37,9 @@ public class Assets {
 	public static void load(GLGame game) {
 		background = new Texture(game,"background.png");
 		backgroundRegion = new TextureRegion(background, 0, 0, 800, 480);
+		
+		characters = new Texture(game, "orange.png");
+		orange = new TextureRegion(characters, 0, 0, 40, 40)
 		
 		icons = new Texture(game, "icons.png");
 		back = new TextureRegion(icons, 0, 180, 40, 40);
