@@ -1,6 +1,6 @@
 package com.badlogic.androidgames.framework.math;
 
-import android.util.FloatMath;
+import java.lang.Math;
 
 public class Vector2 {
     public static float TO_RADIANS = (1 / 180.0f) * (float)Math.PI;
@@ -67,7 +67,7 @@ public class Vector2 {
     }
     
     public float len() {               
-        return FloatMath.sqrt(x*x + y*y);
+        return (float)Math.sqrt(x*x + y*y);
     }
     
     public Vector2 nor() {
@@ -88,8 +88,8 @@ public class Vector2 {
     
     public Vector2 rotate(float angle) {
         float rad = angle * TO_RADIANS;
-        float cos = FloatMath.cos(rad);
-        float sin = FloatMath.sin(rad);
+        float cos = (float)Math.cos(rad);
+        float sin = (float)Math.sin(rad);
         
         float newX = this.x * cos - this.y * sin;
         float newY = this.x * sin + this.y * cos;
@@ -103,13 +103,13 @@ public class Vector2 {
     public float dist(Vector2 other) {
         float distX = this.x - other.x;
         float distY = this.y - other.y;        
-        return FloatMath.sqrt(distX*distX + distY*distY);
+        return (float)Math.sqrt(distX*distX + distY*distY);
     }   
     
     public float dist(float x, float y) {
         float distX = this.x - x;
         float distY = this.y - y;        
-        return FloatMath.sqrt(distX*distX + distY*distY);
+        return (float)Math.sqrt(distX*distX + distY*distY);
     }   
     
     public float distSquared(Vector2 other) {
