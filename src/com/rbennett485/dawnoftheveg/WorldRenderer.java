@@ -43,16 +43,16 @@ public class WorldRenderer {
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         
         batcher.beginBatch(Assets.characters);
-        renderOranges();
+        renderEnemies();
         batcher.endBatch();
         gl.glDisable(GL10.GL_BLEND);
     }
 
-    private void renderOranges() {
-        int len = world.oranges.size();
+    private void renderEnemies() {
+        int len = world.enemies.size();
         for(int i = 0; i < len; i++) {
-            Orange orange = world.oranges.get(i);
-            batcher.drawSprite(orange.position.x, orange.position.y, 1, 1, Assets.orange);
+            Orange orange = (Orange)world.enemies.get(i); // Will need to change this once more types of enemy are added
+            batcher.drawSprite(orange.position.x, orange.position.y, 1, 1, Assets.orange); // and this
         }
     }
 }
