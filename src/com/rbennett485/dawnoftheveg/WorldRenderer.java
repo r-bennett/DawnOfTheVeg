@@ -2,10 +2,8 @@ package com.rbennett485.dawnoftheveg;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import com.badlogic.androidgames.framework.gl.Animation;
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
-import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 
 public class WorldRenderer {
