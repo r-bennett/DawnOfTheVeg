@@ -12,11 +12,15 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
+import com.rbennett485.dawnoftheveg.World.WorldListener;
 
 public class Level1GameScreen extends GLScreen {
 
 	Camera2D guiCam;
 	SpriteBatcher batcher;
+	World world;
+	WorldListener worldListener;
+	WorldRenderer renderer;
 	Rectangle pauseBounds;
 	Rectangle continueBounds;
 	Rectangle quitBounds;
@@ -32,6 +36,21 @@ public class Level1GameScreen extends GLScreen {
 		continueBounds = new Rectangle(400-35, 240-21, 60, 20);
 		quitBounds = new Rectangle(400-37, 240-43, 60, 20);
 		touchPoint = new Vector2();
+		worldListener = new WorldListener() {
+
+			@Override
+			public void shot() {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void splat() {
+				// TODO Auto-generated method stub
+			}
+			
+		};
+		world = new World(worldListener);
+		renderer = new WorldRenderer(glGraphics, batcher, world);
 	}
 
 	@Override
@@ -64,15 +83,18 @@ public class Level1GameScreen extends GLScreen {
 				}
 			}
 		}
+		world.update(deltaTime);
 	}
 
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();        
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		guiCam.setViewportAndMatrices();
-
 		gl.glEnable(GL10.GL_TEXTURE_2D);
+		
+		renderer.render();
+		
+		guiCam.setViewportAndMatrices();
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
@@ -83,10 +105,6 @@ public class Level1GameScreen extends GLScreen {
 			batcher.drawSprite(400, 240, 132, 101, Assets.pauseMenu);
 		}
 
-		batcher.endBatch();
-		
-		batcher.beginBatch(Assets.characters);
-		batcher.drawSprite(400, 240, 40, 40, Assets.orange);
 		batcher.endBatch();
 
 		gl.glDisable(GL10.GL_BLEND);
