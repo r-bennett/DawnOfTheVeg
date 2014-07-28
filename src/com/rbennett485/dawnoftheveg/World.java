@@ -30,6 +30,7 @@ public class World {
 
 	public World(WorldListener listener) {
 		this.enemies = new ArrayList<GameObject>();
+		enemies.add(new Orange(0,240));   //  just for testing purposes...........................
 		this.towers = new ArrayList<GameObject>();
 		this.listener = listener;
 		rand = new Random();
