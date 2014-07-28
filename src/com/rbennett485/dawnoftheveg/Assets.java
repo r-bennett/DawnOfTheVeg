@@ -54,6 +54,9 @@ public class Assets {
 		title = new TextureRegion(icons, 0, 0, 179, 42);
 		shop = new TextureRegion(icons, 130, 73, 47, 30);
 		
+		characters = new Texture(game, "characters.png");
+		orange = new TextureRegion(characters, 0, 0, 40, 40);
+		
 		fontImage = new Texture(game, "font2.png");
 		font = new Font(fontImage, 0, 0, 16, 16, 32);
 		
@@ -69,6 +72,8 @@ public class Assets {
 		background.reload();
 		icons.reload();
 		fontImage.reload();
+		characters.reload();
+		
 		if(Settings.soundEnabled)
 			music.play();
 	}
