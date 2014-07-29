@@ -42,8 +42,7 @@ public class World {
 	public int lives;
 	public float timeElapsed;
 
-	public World(WorldListener listener, int INITIAL_MONEY, List<Vector2> wayPoints,
-			List<Wave> waves) {
+	public World(WorldListener listener, Level level) {
 		this.enemies = new ArrayList<GameObject>();
 		this.towers = new ArrayList<GameObject>();
 		this.state = WORLD_STATE_RUNNING; // Will need to change this *************************************************
@@ -67,9 +66,9 @@ public class World {
 		};
 
 		this.listener = listener;
-		this.INITIAL_MONEY = INITIAL_MONEY;
-		this.wayPoints = wayPoints;
-		this.waves = waves;
+		this.INITIAL_MONEY = level.INITIAL_MONEY;
+		this.wayPoints = level.wayPoints;
+		this.waves = level.waves;
 	}
 
 	public void update(float deltaTime) {
