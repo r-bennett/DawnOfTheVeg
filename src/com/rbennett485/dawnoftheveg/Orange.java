@@ -16,9 +16,4 @@ public class Orange extends DynamicGameObject {
         bounds.lowerLeft.set(position).sub(ORANGE_WIDTH / 2, ORANGE_HEIGHT / 2);
 	}
 	
-	@Override
-	public Orange clone() {
-		return new Orange(this.position.x, this.position.y);
-	}
-
 }
