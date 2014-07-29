@@ -9,10 +9,13 @@ public abstract class Level {
 	public final List<Vector2> wayPoints;
 	public final List<Wave> waves;
 	
-	public Level(int INITIAL_MONEY, List<Vector2> wayPoints, List<Wave> waves) {
+	public Level(int INITIAL_MONEY) {
 		this.INITIAL_MONEY = INITIAL_MONEY;
-		this.wayPoints = wayPoints;
-		this.waves = waves;
+		this.wayPoints = wayPointGenerator();
+		this.waves = waveGenerator();
 	}
+
+	public abstract List<Vector2> wayPointGenerator();
+	public abstract List<Wave> waveGenerator();
 
 }
