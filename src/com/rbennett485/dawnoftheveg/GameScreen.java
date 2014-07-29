@@ -32,7 +32,7 @@ public class GameScreen extends GLScreen {
 	Vector2 touchPoint;
 	FPSCounter fpsCounter;
 
-	public GameScreen(Game game) {
+	public GameScreen(Game game, Level level) {
 		super(game);
 		state = GAME_RUNNING;
 		guiCam = new Camera2D(glGraphics, 800, 480);
@@ -55,7 +55,7 @@ public class GameScreen extends GLScreen {
 			}
 
 		};
-		world = new World(worldListener);
+		world = new World(worldListener, level);
 		renderer = new WorldRenderer(glGraphics, batcher, world);
 	}
 
