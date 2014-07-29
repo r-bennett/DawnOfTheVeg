@@ -38,7 +38,7 @@ public class Assets {
 		background = new Texture(game,"background.png");
 		backgroundRegion = new TextureRegion(background, 0, 0, 800, 480);
 		
-		characters = new Texture(game, "orange.png");
+		characters = new Texture(game, "characters.png");
 		orange = new TextureRegion(characters, 0, 0, 40, 40);
 		
 		icons = new Texture(game, "icons.png");
