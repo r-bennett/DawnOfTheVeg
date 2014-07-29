@@ -7,7 +7,7 @@ import java.util.Random;
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
 
-public abstract class World {
+public class World {
 
 	public interface WorldListener {
 		public void shot();
