@@ -17,30 +17,38 @@ public abstract class World {
 
 	public static final float WORLD_WIDTH = 20;
 	public static final float WORLD_HEIGHT = 12;
-	public static final int WORLD_STATE_RUNNING = 0;
-	public static final int WORLD_STATE_COMPLETE = 1;
-	public static final int WORLD_STATE_GAME_OVER = 2;
-	
+	public static final int INITIAL_LIVES = 20;
+	public static final int WORLD_STATE_RUNNING = 0;	// waves are coming, the game is in play
+	public static final int WORLD_STATE_COMPLETE = 1;	// no more enemies and no more waves
+	public static final int WORLD_STATE_GAME_OVER = 2;	// no more lives
+	public static final int WORLD_STATE_INITIAL_BUILD = 3;	// the initial state - the timer is not running, no 
+	// waves appear. Allows player to build initial towers
+	// note - no pause state needed since GameScreen handles this, and does not update World when paused
+
 	public final int INITIAL_MONEY; // to be initialised in the child class
 	public final List<Point> wayPoints;
 	public final List<Wave> waves;
 
 	public final List<GameObject> enemies;
 	public final List<GameObject> towers;
-	
+
 	public final WorldListener listener;
 	public final Random rand;
 
 	public int money;
 	public int state;
+	public int nextWave;
+	public int lives;
 	public float timeElapsed;
 
 	public World(WorldListener listener, int INITIAL_MONEY, List<Point> wayPoints,
 			List<Wave> waves) {
 		this.enemies = new ArrayList<GameObject>();
 		this.towers = new ArrayList<GameObject>();
-		this.state = WORLD_STATE_RUNNING;
+		this.state = WORLD_STATE_INITIAL_BUILD;
 		timeElapsed = 0;
+		nextWave = 0;
+		lives = INITIAL_LIVES;
 		rand = new Random();
 
 		this.listener = listener;
@@ -50,17 +58,45 @@ public abstract class World {
 	}
 
 	public void update(float deltaTime) {
-		updateTowers(deltaTime);
-		updateEnemies(deltaTime);
-		checkGameOver();
+		if(state!=WORLD_STATE_INITIAL_BUILD)
+			timeElapsed+=deltaTime;
+		
+		switch(state) {
+		case(WORLD_STATE_RUNNING):
+			if(nextWave<waves.size())
+				checkNewWave();
+			else if(enemies.isEmpty())
+				state = WORLD_STATE_COMPLETE;
+				
+			updateTowers(deltaTime);
+			updateEnemies(deltaTime);
+			
+			if(lives==0)
+				state = WORLD_STATE_GAME_OVER;
+			break;
+			
+		case(WORLD_STATE_COMPLETE):
+			// display complete message and wait for user input..... should probably delegate this task to GameScreen
+		case(WORLD_STATE_GAME_OVER):
+			// display gameover message and wait for user input..... should probably delegate this task to GameScreen
+		}
+		
 	}
 
-	private void checkGameOver() {
+	private void checkNewWave() {
+		if(timeElapsed>waves.get(nextWave).time) {
+			createWave();
+			nextWave++;
+		}
+
+	}
+
+	private void createWave() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-	private void updateEnemies(float deltaTime) {
+	private void updateEnemies(float deltaTime) { // add code to check if enemy has crossed the finish line, and deduct 1 life
 		int len = enemies.size();
 		for (int i = 0; i < len; i++) {
 			Orange orange = (Orange)enemies.get(i);  // Will need to change this once more types of enemy are added
