@@ -48,7 +48,7 @@ public class MapScreen extends GLScreen {
 				}
 				if(OverlapTester.pointInRectangle(level1Bounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new Level1GameScreen(game));
+					game.setScreen(new GameScreen(game));
 					return;
 				}
 			}
