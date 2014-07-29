@@ -11,6 +11,10 @@ public class Orange extends DynamicGameObject {
 	public static final float ORANGE_VELOCITY = 2f;
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
+	
+	public Orange(List<Vector2> wayPoints) {
+		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
+	}
 
 	public Orange(float x, float y, List<Vector2> wayPoints) {
 		super(x, y, ORANGE_WIDTH, ORANGE_HEIGHT);
