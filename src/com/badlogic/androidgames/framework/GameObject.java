@@ -11,4 +11,10 @@ public class GameObject {
         this.position = new Vector2(x,y);
         this.bounds = new Rectangle(x-width/2, y-height/2, width, height);
     }
+    
+    @Override 
+    public GameObject clone() {
+    	return new GameObject(this.position.x, this.position.y, 
+    			this.bounds.width, this.bounds.height); 
+    }
 }
