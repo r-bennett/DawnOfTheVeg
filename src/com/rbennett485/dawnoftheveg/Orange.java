@@ -9,12 +9,16 @@ public class Orange extends DynamicGameObject {
 	
 	public Orange(float x, float y) {
 		super(x, y, ORANGE_WIDTH, ORANGE_HEIGHT);
-		velocity.set(ORANGE_VELOCITY,0); //probably going to need to change this....
 	}
 	
 	public void update(float deltaTime) {
         position.add(velocity.x * deltaTime, velocity.y * deltaTime);
         bounds.lowerLeft.set(position).sub(ORANGE_WIDTH / 2, ORANGE_HEIGHT / 2);
+	}
+	
+	@Override
+	public Orange clone() {
+		return new Orange(this.position.x, this.position.y);
 	}
 
 }
