@@ -24,6 +24,8 @@ public abstract class World {
 	public static final int WORLD_STATE_INITIAL_BUILD = 3;	// the initial state - the timer is not running, no 
 	// waves appear. Allows player to build initial towers
 	// note - no pause state needed since GameScreen handles this, and does not update World when paused
+	
+	public final Runnable waveCreator;
 
 	public final int INITIAL_MONEY; // to be initialised in the child class
 	public final List<Point> wayPoints;
@@ -50,6 +52,20 @@ public abstract class World {
 		nextWave = 0;
 		lives = INITIAL_LIVES;
 		rand = new Random();
+		
+		waveCreator = new Runnable() {
+			public void run() {
+				Wave wave = World.this.waves.get(nextWave);
+				for(int i=0 ; i<wave.number ; i++) {
+					enemies.add(wave.seed.clone());
+					try {
+						Thread.sleep((long) (World.this.rand.nextFloat()*2000));
+					} catch (InterruptedException e) {
+						// nothing to do here - just generates the next enemy a little early
+					}
+				}
+			}
+		};
 
 		this.listener = listener;
 		this.INITIAL_MONEY = INITIAL_MONEY;
@@ -85,15 +101,10 @@ public abstract class World {
 
 	private void checkNewWave() {
 		if(timeElapsed>waves.get(nextWave).time) {
-			createWave();
-			nextWave++;
+			waveCreator.run();
+			nextWave++; // possible concurrency issues?? ****************************************************************
 		}
 
-	}
-
-	private void createWave() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	private void updateEnemies(float deltaTime) { // add code to check if enemy has crossed the finish line, and deduct 1 life
