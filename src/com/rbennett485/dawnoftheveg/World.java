@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import android.graphics.Point;
-
 import com.badlogic.androidgames.framework.GameObject;
+import com.badlogic.androidgames.framework.math.Vector2;
 
 public abstract class World {
 
@@ -28,7 +27,7 @@ public abstract class World {
 	public final Runnable waveCreator;
 
 	public final int INITIAL_MONEY; // to be initialised in the child class
-	public final List<Point> wayPoints;
+	public final List<Vector2> wayPoints;
 	public final List<Wave> waves;
 
 	public final List<GameObject> enemies;
@@ -43,11 +42,11 @@ public abstract class World {
 	public int lives;
 	public float timeElapsed;
 
-	public World(WorldListener listener, int INITIAL_MONEY, List<Point> wayPoints,
+	public World(WorldListener listener, int INITIAL_MONEY, List<Vector2> wayPoints,
 			List<Wave> waves) {
 		this.enemies = new ArrayList<GameObject>();
 		this.towers = new ArrayList<GameObject>();
-		this.state = WORLD_STATE_INITIAL_BUILD;
+		this.state = WORLD_STATE_RUNNING; // Will need to change this *************************************************
 		timeElapsed = 0;
 		nextWave = 0;
 		lives = INITIAL_LIVES;
@@ -87,7 +86,7 @@ public abstract class World {
 			updateTowers(deltaTime);
 			updateEnemies(deltaTime);
 			
-			if(lives==0)
+			if(lives<=0)
 				state = WORLD_STATE_GAME_OVER;
 			break;
 			
@@ -104,14 +103,16 @@ public abstract class World {
 			waveCreator.run();
 			nextWave++; // possible concurrency issues?? ****************************************************************
 		}
-
 	}
 
 	private void updateEnemies(float deltaTime) { // add code to check if enemy has crossed the finish line, and deduct 1 life
 		int len = enemies.size();
+		Vector2 finishLine = wayPoints.get(wayPoints.size()-1);
 		for (int i = 0; i < len; i++) {
-			Orange orange = (Orange)enemies.get(i);  // Will need to change this once more types of enemy are added
-			orange.update(deltaTime);
+			GameObject enemy = enemies.get(i);  
+			enemy.update(deltaTime);
+			if(enemy.position.dist(finishLine)<0.1)
+				lives--;
 		}		
 	}
 
