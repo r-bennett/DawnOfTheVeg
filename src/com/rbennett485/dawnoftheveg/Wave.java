@@ -1,7 +1,5 @@
 package com.rbennett485.dawnoftheveg;
 
-import java.util.List;
-
 import com.badlogic.androidgames.framework.DynamicGameObject;
 
 public class Wave {
