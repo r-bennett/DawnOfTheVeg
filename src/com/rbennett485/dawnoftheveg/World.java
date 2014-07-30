@@ -26,7 +26,7 @@ public class World {
 	
 	public final Runnable waveCreator;
 
-	public final int INITIAL_MONEY; // to be initialised in the child class
+	public final int INITIAL_MONEY;
 	public final List<Vector2> wayPoints;
 	public final List<Wave> waves;
 
@@ -99,7 +99,7 @@ public class World {
 
 	private void checkNewWave() {
 		if(timeElapsed>waves.get(nextWave).time) {
-			waveCreator.run();
+			new Thread(waveCreator).start();
 			nextWave++; // possible concurrency issues?? ****************************************************************
 		}
 	}
