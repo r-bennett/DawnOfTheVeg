@@ -2,6 +2,8 @@ package com.rbennett485.dawnoftheveg;
 
 import java.util.List;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.DynamicGameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
 
@@ -19,17 +21,26 @@ public class Orange extends DynamicGameObject {
 	public Orange(float x, float y, List<Vector2> wayPoints) {
 		super(x, y, ORANGE_WIDTH, ORANGE_HEIGHT);
 		this.wayPoints = wayPoints;
-		nextWayPoint = 1; // create the orange at waypoint 0, have it head to waypoint 1
+		nextWayPoint = 0; // create the orange at waypoint 0, have it head to waypoint 1
+		Log.d("coords", this.wayPoints.get(0).x + ", " + this.wayPoints.get(0).y + "\n" +
+				this.wayPoints.get(1).x + ", " + this.wayPoints.get(1).y + "\n");
 	}
 
 	public void update(float deltaTime) {
 		if(nextWayPoint<wayPoints.size()) {
 			if(position.dist(wayPoints.get(nextWayPoint))<0.1) {
+//				Log.d("wp", nextWayPoint +"\n" +
+//							"pos: " + this.position.x + ", " + this.position.y + "\n" +
+//							"previous wp: " + this.wayPoints.get(nextWayPoint).x + ", " + this.wayPoints.get(nextWayPoint).y + "\n");
 				nextWayPoint++;
+//				Log.d("wp", "first next wp: " + this.wayPoints.get(nextWayPoint).x + ", " + this.wayPoints.get(nextWayPoint).y);
+				if(nextWayPoint<wayPoints.size()) {
+					velocity.set(wayPoints.get(nextWayPoint).cpy().sub(this.position).nor().mul(ORANGE_VELOCITY));
+//					Log.d("wp", "vel: " + this.velocity.x  + ", " + this.velocity.y + "\n" +
+//							"next wp: " + this.wayPoints.get(nextWayPoint).x + ", " + this.wayPoints.get(nextWayPoint).y);
+				}
 			}
-			if(nextWayPoint<wayPoints.size()) {
-				velocity = wayPoints.get(nextWayPoint).sub(this.position).nor().mul(ORANGE_VELOCITY);
-			}
+			
 		} 
 
 		position.add(velocity.x * deltaTime, velocity.y * deltaTime);
