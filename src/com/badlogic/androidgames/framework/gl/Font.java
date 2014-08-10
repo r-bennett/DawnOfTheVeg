@@ -58,4 +58,17 @@ public class Font {
             x += glyphWidth;
         }
     }
+    
+    public void drawTextScaled(SpriteBatcher batcher, String text, float x, float y, float width, float height) {
+        int len = text.length();
+        for(int i = 0; i < len; i++) {
+            int c = text.charAt(i) - ' ';
+            if(c < 0 || c > glyphs.length - 1) 
+                continue;
+            
+            TextureRegion glyph = glyphs[c];
+            batcher.drawSprite(x, y, width * glyphWidth / 800f, height * glyphHeight / 480f, glyph);
+            x += width * glyphWidth / 800f;
+        }
+    }
 }
