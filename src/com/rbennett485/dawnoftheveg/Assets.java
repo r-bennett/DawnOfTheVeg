@@ -8,6 +8,10 @@ import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
 public class Assets {
+	public static Texture healthBars;
+	public static TextureRegion healthBarRed;
+	public static TextureRegion healthBarGreen;
+	
 	public static Texture background;
 	public static TextureRegion backgroundRegion;
 	
@@ -35,6 +39,10 @@ public class Assets {
 	public static Sound clickSound;
 	
 	public static void load(GLGame game) {
+		healthBars = new Texture(game, "healthBars.png");
+		healthBarRed = new TextureRegion(healthBars, 0, 0, 32, 3);
+		healthBarGreen = new TextureRegion(healthBars, 0, 5, 32, 3);
+		
 		background = new Texture(game,"background.png");
 		backgroundRegion = new TextureRegion(background, 0, 0, 800, 480);
 		
@@ -69,6 +77,7 @@ public class Assets {
 	}
 	
 	public static void reload() {
+		healthBars.reload();
 		background.reload();
 		icons.reload();
 		fontImage.reload();
