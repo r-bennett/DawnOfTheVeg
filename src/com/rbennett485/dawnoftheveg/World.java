@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
 
@@ -81,28 +83,36 @@ public class World {
 		
 		switch(state) {
 		case(WORLD_STATE_RUNNING):
-			if(nextWave<waves.size())
+			if(nextWave<waves.size()){
 				checkNewWave();
-			else if(enemies.isEmpty())
+			}
+			else if(enemies.isEmpty()) {
+				Log.d("complete", "no more enemies");
 				state = WORLD_STATE_COMPLETE;
+			}
 				
 			updateTowers(deltaTime);
 			updateEnemies(deltaTime);
 			
-			if(lives<=0)
+			if(lives<=0) {
+				Log.d("complete", "no more lives: " + lives);
 				state = WORLD_STATE_GAME_OVER;
+			}
 			break;
 			
 		case(WORLD_STATE_COMPLETE):
 			// display complete message and wait for user input..... should probably delegate this task to GameScreen
+			break;
 		case(WORLD_STATE_GAME_OVER):
 			// display gameover message and wait for user input..... should probably delegate this task to GameScreen
+			break;
 		}
 		
 	}
 
 	private void checkNewWave() {
 		if(timeElapsed>waves.get(nextWave).time && !updating) {
+			Log.d("complete", "new wave");
 			updating = true;
 			new Thread(waveCreator).start();
 		}
@@ -114,8 +124,11 @@ public class World {
 		for (int i = 0; i < len; i++) {
 			GameObject enemy = enemies.get(i);  
 			enemy.update(deltaTime);
-			if(enemy.position.dist(finishLine)<0.1)
+			if(enemy.position.dist(finishLine)<0.1 && enemy.inGame) {
 				lives--;
+				Log.d("complete", "lives: " + lives);
+				enemy.inGame = false;
+			}
 		}		
 	}
 
