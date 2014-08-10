@@ -42,12 +42,12 @@ public class WorldRenderer {
 		GL10 gl = glGraphics.getGL();
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+		
+		batcher.beginBatch(Assets.towerImage);
+		renderTowers();
+		batcher.endBatch();
 
 		if(!world.enemies.isEmpty()) {
-			batcher.beginBatch(Assets.towerImage);
-			renderTowers();
-			batcher.endBatch();
-			
 			batcher.beginBatch(Assets.characters);
 			renderEnemies();
 			batcher.endBatch();
