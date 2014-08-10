@@ -7,6 +7,7 @@ public class GameObject {
     public final Vector2 position;
     public final Rectangle bounds;
 	public boolean inGame;
+	public int hp;
     
     public GameObject(float x, float y, float width, float height) {
     	inGame = true;
