@@ -5,6 +5,7 @@ import javax.microedition.khronos.opengles.GL10;
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
+import com.badlogic.androidgames.framework.math.Vector2;
 
 public class WorldRenderer {
 	static final float FRUSTUM_WIDTH = 20;
@@ -43,6 +44,10 @@ public class WorldRenderer {
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
 		if(!world.enemies.isEmpty()) {
+			batcher.beginBatch(Assets.towerImage);
+			renderTowers();
+			batcher.endBatch();
+			
 			batcher.beginBatch(Assets.characters);
 			renderEnemies();
 			batcher.endBatch();
@@ -57,6 +62,14 @@ public class WorldRenderer {
 		batcher.endBatch();
 		
 		gl.glDisable(GL10.GL_BLEND);
+	}
+	
+	private void renderTowers() {
+		int len = world.towerPatches.size();
+		for(int i=0 ; i<len ; i++) {
+			Vector2 patch = world.towerPatches.get(i);
+			batcher.drawSprite(patch.x, patch.y, 1, 1, Assets.patch);
+		}
 	}
 
 	private void renderEnemies() {
