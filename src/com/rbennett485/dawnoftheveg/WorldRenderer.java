@@ -2,8 +2,6 @@ package com.rbennett485.dawnoftheveg;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.Log;
-
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
@@ -53,6 +51,11 @@ public class WorldRenderer {
 			renderHealthBars();
 			batcher.endBatch();
 		}
+		
+		batcher.beginBatch(Assets.fontImage);
+		renderText();
+		batcher.endBatch();
+		
 		gl.glDisable(GL10.GL_BLEND);
 	}
 
@@ -73,5 +76,10 @@ public class WorldRenderer {
 			batcher.drawSprite(orange.position.x-0.5f*(orange.initialHp - orange.hp)/orange.initialHp, orange.position.y + orange.bounds.height/2 + HEALTH_BAR_GAP, 
 					(float)orange.hp/orange.initialHp, HEALTH_BAR_HEIGHT, Assets.healthBarGreen);
 		}
+	}
+	
+	private void renderText() {
+		 Assets.font.drawTextScaled(batcher, "$" + world.money, 0.5f, 0.5f, 20, 12);
+		 Assets.font.drawTextScaled(batcher, "lives: " + world.lives, 20-3.5f, 0.5f, 20, 12);
 	}
 }
