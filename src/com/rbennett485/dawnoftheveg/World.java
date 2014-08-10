@@ -31,6 +31,7 @@ public class World {
 	public final int INITIAL_MONEY;
 	public final List<Vector2> wayPoints;
 	public final List<Wave> waves;
+	public final List<Vector2> towerPatches;
 
 	public final List<GameObject> enemies;
 	public final List<GameObject> towers;
@@ -76,6 +77,7 @@ public class World {
 		this.money = INITIAL_MONEY;
 		this.wayPoints = level.wayPoints;
 		this.waves = level.waves;
+		this.towerPatches = level.towerPatches;
 	}
 
 	public void update(float deltaTime) {
