@@ -12,7 +12,7 @@ public class OrangeTest extends TestCase {
 	
 	@Before
 	public void setUp() {
-		orange = new Orange(2,4);
+		orange = new Orange(2,4,null);
 	}
 	
 	@Test
