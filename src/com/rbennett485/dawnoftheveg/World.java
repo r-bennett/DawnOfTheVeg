@@ -49,7 +49,7 @@ public class World {
 	public World(WorldListener listener, Level level) {
 		this.enemies = new ArrayList<GameObject>();
 		this.towers = new ArrayList<GameObject>();
-		this.state = WORLD_STATE_RUNNING; // Will need to change this *************************************************
+		this.state = WORLD_STATE_INITIAL_BUILD;
 		timeElapsed = 0;
 		nextWave = 0;
 		lives = INITIAL_LIVES;
