@@ -10,7 +10,8 @@ import com.badlogic.androidgames.framework.impl.GLGraphics;
 
 public class WorldRenderer {
 	static final float FRUSTUM_WIDTH = 20;
-	static final float FRUSTUM_HEIGHT = 12;    
+	static final float FRUSTUM_HEIGHT = 12;
+	static final float HEALTH_BAR_GAP = 0.1f;
 	GLGraphics glGraphics;
 	World world;
 	Camera2D cam;
@@ -55,6 +56,10 @@ public class WorldRenderer {
 		for(int i = 0; i < len; i++) {
 			Orange orange = (Orange)world.enemies.get(i); // Will need to change this once more types of enemy are added
 			batcher.drawSprite(orange.position.x, orange.position.y, 1, 1, Assets.orange); // and this
+			batcher.drawSprite(orange.position.x, orange.position.y + orange.bounds.height/2 + HEALTH_BAR_GAP, 
+					1f, 0.1f, Assets.healthBarRed);
+			batcher.drawSprite(orange.position.x-0.5f*(orange.initialHp - orange.hp)/orange.initialHp, orange.position.y + orange.bounds.height/2 + HEALTH_BAR_GAP, 
+					(orange.initialHp - orange.hp)/orange.initialHp, 0.1f, Assets.healthBarGreen);
 		}
 	}
 }
