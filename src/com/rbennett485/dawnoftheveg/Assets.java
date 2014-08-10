@@ -8,6 +8,13 @@ import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
 public class Assets {
+	public static Texture towerImage;
+	public static TextureRegion patch;
+	public static TextureRegion towerA;
+	public static TextureRegion towerB;
+	public static TextureRegion towerC;
+	public static TextureRegion towerD;
+	
 	public static Texture healthBars;
 	public static TextureRegion healthBarRed;
 	public static TextureRegion healthBarGreen;
@@ -39,6 +46,13 @@ public class Assets {
 	public static Sound clickSound;
 	
 	public static void load(GLGame game) {
+		towerImage = new Texture(game, "towerImage.png");
+		patch = new TextureRegion(towerImage, 0, 0, 40, 40);
+		towerA = new TextureRegion(towerImage, 40, 0, 40, 40);
+		towerB = new TextureRegion(towerImage, 80, 0, 40, 40);
+		towerC = new TextureRegion(towerImage, 0, 40, 40, 40);
+		towerD = new TextureRegion(towerImage, 40, 40, 40, 40);
+		
 		healthBars = new Texture(game, "healthBars.png");
 		healthBarRed = new TextureRegion(healthBars, 0, 0, 32, 3);
 		healthBarGreen = new TextureRegion(healthBars, 0, 5, 32, 3);
@@ -77,6 +91,7 @@ public class Assets {
 	}
 	
 	public static void reload() {
+		towerImage.reload();
 		healthBars.reload();
 		background.reload();
 		icons.reload();
