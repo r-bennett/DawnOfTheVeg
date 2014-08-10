@@ -42,10 +42,11 @@ public class WorldRenderer {
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
-		batcher.beginBatch(Assets.characters);
-		renderEnemies();
-		Log.d("renderer", "rendered enemies");
-		batcher.endBatch();
+		if(!world.enemies.isEmpty()) {
+			batcher.beginBatch(Assets.characters);
+			renderEnemies();
+			batcher.endBatch();
+		}
 		gl.glDisable(GL10.GL_BLEND);
 	}
 
@@ -53,7 +54,6 @@ public class WorldRenderer {
 		int len = world.enemies.size();
 		for(int i = 0; i < len; i++) {
 			Orange orange = (Orange)world.enemies.get(i); // Will need to change this once more types of enemy are added
-			Log.d("coords", orange.position.x + ", " + orange.position.y);
 			batcher.drawSprite(orange.position.x, orange.position.y, 1, 1, Assets.orange); // and this
 		}
 	}
