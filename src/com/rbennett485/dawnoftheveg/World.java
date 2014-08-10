@@ -73,6 +73,7 @@ public class World {
 
 		this.listener = listener;
 		this.INITIAL_MONEY = level.INITIAL_MONEY;
+		this.money = INITIAL_MONEY;
 		this.wayPoints = level.wayPoints;
 		this.waves = level.waves;
 	}
