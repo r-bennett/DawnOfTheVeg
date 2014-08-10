@@ -41,6 +41,7 @@ public class World {
 	public int nextWave;
 	public int lives;
 	public float timeElapsed;
+	public boolean updating;
 
 	public World(WorldListener listener, Level level) {
 		this.enemies = new ArrayList<GameObject>();
@@ -50,6 +51,7 @@ public class World {
 		nextWave = 0;
 		lives = INITIAL_LIVES;
 		rand = new Random();
+		updating = false;
 		
 		waveCreator = new Runnable() {
 			public void run() {
@@ -62,6 +64,8 @@ public class World {
 						// nothing to do here - just generates the next enemy a little early
 					}
 				}
+				updating = false;
+				nextWave++;
 			}
 		};
 
@@ -98,9 +102,9 @@ public class World {
 	}
 
 	private void checkNewWave() {
-		if(timeElapsed>waves.get(nextWave).time) {
+		if(timeElapsed>waves.get(nextWave).time && !updating) {
+			updating = true;
 			new Thread(waveCreator).start();
-			nextWave++; // possible concurrency issues?? ****************************************************************
 		}
 	}
 
