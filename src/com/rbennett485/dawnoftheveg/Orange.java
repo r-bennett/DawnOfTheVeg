@@ -13,7 +13,6 @@ public class Orange extends DynamicGameObject {
 	public static final float ORANGE_VELOCITY = 2f;
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
-	public boolean reachedEnd;
 	
 	public Orange(List<Vector2> wayPoints) {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
@@ -22,7 +21,6 @@ public class Orange extends DynamicGameObject {
 	public Orange(float x, float y, List<Vector2> wayPoints) {
 		super(x, y, ORANGE_WIDTH, ORANGE_HEIGHT);
 		this.wayPoints = wayPoints;
-		reachedEnd = false;
 		nextWayPoint = 0; // create the orange at waypoint 0, have it head to waypoint 1
 		Log.d("coords", this.wayPoints.get(0).x + ", " + this.wayPoints.get(0).y + "\n" +
 				this.wayPoints.get(1).x + ", " + this.wayPoints.get(1).y + "\n");
