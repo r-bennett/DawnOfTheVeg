@@ -141,6 +141,9 @@ public class GameScreen extends GLScreen {
 	
 	public void presentRunning() {
 		batcher.drawSprite(780, 460, 40, 40, Assets.back);
+		if(world.state == World.WORLD_STATE_INITIAL_BUILD) {
+			batcher.drawSprite(40, 240, 40, 40, Assets.callWave);
+		}
 	}
 	
 	public void presentPaused() {
