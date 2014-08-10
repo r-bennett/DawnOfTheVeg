@@ -12,6 +12,7 @@ public class WorldRenderer {
 	static final float FRUSTUM_WIDTH = 20;
 	static final float FRUSTUM_HEIGHT = 12;
 	static final float HEALTH_BAR_GAP = 0.1f;
+	static final float HEALTH_BAR_HEIGHT = 0.05f;
 	GLGraphics glGraphics;
 	World world;
 	Camera2D cam;
@@ -47,6 +48,10 @@ public class WorldRenderer {
 			batcher.beginBatch(Assets.characters);
 			renderEnemies();
 			batcher.endBatch();
+			
+			batcher.beginBatch(Assets.healthBars);
+			renderHealthBars();
+			batcher.endBatch();
 		}
 		gl.glDisable(GL10.GL_BLEND);
 	}
@@ -56,10 +61,17 @@ public class WorldRenderer {
 		for(int i = 0; i < len; i++) {
 			Orange orange = (Orange)world.enemies.get(i); // Will need to change this once more types of enemy are added
 			batcher.drawSprite(orange.position.x, orange.position.y, 1, 1, Assets.orange); // and this
+		}
+	}
+	
+	private void renderHealthBars() {
+		int len = world.enemies.size();
+		for(int i = 0; i < len; i++) {
+			Orange orange = (Orange)world.enemies.get(i); // Will need to change this once more types of enemy are added
 			batcher.drawSprite(orange.position.x, orange.position.y + orange.bounds.height/2 + HEALTH_BAR_GAP, 
-					1f, 0.1f, Assets.healthBarRed);
+					1f, HEALTH_BAR_HEIGHT, Assets.healthBarRed);
 			batcher.drawSprite(orange.position.x-0.5f*(orange.initialHp - orange.hp)/orange.initialHp, orange.position.y + orange.bounds.height/2 + HEALTH_BAR_GAP, 
-					(orange.initialHp - orange.hp)/orange.initialHp, 0.1f, Assets.healthBarGreen);
+					(float)orange.hp/orange.initialHp, HEALTH_BAR_HEIGHT, Assets.healthBarGreen);
 		}
 	}
 }
