@@ -29,6 +29,11 @@ class Level1 extends Level {
 		return result;
 	}
 	
-	
+	@Override
+	public List<Vector2> towerPatchGenerator() {
+		List<Vector2> result = new ArrayList<>();
+		result.add(new Vector2(5,3));
+		return result;
+	}
 	
 }
