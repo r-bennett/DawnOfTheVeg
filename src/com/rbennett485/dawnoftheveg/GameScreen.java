@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
@@ -87,6 +89,11 @@ public class GameScreen extends GLScreen {
 					state = GAME_PAUSED;
 					return;
 				}
+				if(OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint) &&
+						world.state == World.WORLD_STATE_INITIAL_BUILD) {
+					Assets.playSound(Assets.clickSound);
+					world.state = World.WORLD_STATE_RUNNING;
+				}
 			}
 		}
 		world.update(deltaTime);
@@ -110,11 +117,6 @@ public class GameScreen extends GLScreen {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new MapScreen(game));
 					return;
-				}
-				if(OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint) &&
-						world.state == World.WORLD_STATE_INITIAL_BUILD) {
-					Assets.playSound(Assets.clickSound);
-					world.state = World.WORLD_STATE_RUNNING;
 				}
 			}
 		}
