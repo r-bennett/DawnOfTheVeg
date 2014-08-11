@@ -70,10 +70,6 @@ public class WorldRenderer {
 			Vector2 patch = world.towerPatches.get(i);
 			batcher.drawSprite(patch.x, patch.y, 1, 1, Assets.patch);
 		}
-		if(world.patchMenuCentre != null) {
-			batcher.drawSprite(world.patchMenuCentre.x, world.patchMenuCentre.y, 80, 80, 
-					Assets.towerMenu);
-		}
 	}
 
 	private void renderEnemies() {
