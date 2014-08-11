@@ -19,10 +19,7 @@ import com.rbennett485.dawnoftheveg.World.WorldListener;
 
 public class GameScreen extends GLScreen {
 
-	static final int GAME_RUNNING = 0;
-	static final int GAME_PAUSED = 1;
-
-	int state;
+	boolean paused;
 	Camera2D guiCam;
 	SpriteBatcher batcher;
 	World world;
@@ -37,7 +34,6 @@ public class GameScreen extends GLScreen {
 
 	public GameScreen(Game game, Level level) {
 		super(game);
-		state = GAME_RUNNING;
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		pauseBounds = new Rectangle(760, 440, 40, 40);
@@ -46,6 +42,7 @@ public class GameScreen extends GLScreen {
 		quitBounds = new Rectangle(400-37, 240-43, 60, 20);
 		touchPoint = new Vector2();
 		fpsCounter = new FPSCounter();
+		paused = false;
 		worldListener = new WorldListener() {
 
 			@Override
@@ -65,17 +62,33 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void update(float deltaTime) {
-		switch(state) {
-		case(GAME_RUNNING):
-			updateRunning(deltaTime);
-		break;
-		case(GAME_PAUSED):
+		if(paused) {
 			updatePaused();
-		break;
+			return;
+		} else {
+			switch(world.state) {
+
+			case(World.WORLD_STATE_RUNNING):
+				updateRunning(deltaTime);
+			updateRunningOrInitialBuild(deltaTime);
+			break; 
+
+			case(World.WORLD_STATE_INITIAL_BUILD):
+				updateInitialBuild(deltaTime);
+			updateRunningOrInitialBuild(deltaTime);
+			break;
+
+			case(World.WORLD_STATE_GAME_OVER):
+				break;
+
+			case(World.WORLD_STATE_COMPLETE):
+				break;
+
+			}
 		}
 	}
 
-	public void updateRunning(float deltaTime) {
+	private void updateInitialBuild(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
@@ -84,19 +97,62 @@ public class GameScreen extends GLScreen {
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
 			if(event.type == TouchEvent.TOUCH_UP) {
-				if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
-					Assets.playSound(Assets.clickSound);
-					state = GAME_PAUSED;
-					return;
-				}
-				if(OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint) &&
-						world.state == World.WORLD_STATE_INITIAL_BUILD) {
+				
+				// check callWave
+				if(OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					world.state = World.WORLD_STATE_RUNNING;
+					return;
+				}
+			}
+		}
+
+	}
+
+
+	private void updateRunning(float deltaTime) {
+		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
+		game.getInput().getKeyEvents();
+		int len = touchEvents.size();
+		for(int i=0 ; i<len ; i++) {
+			TouchEvent event = touchEvents.get(i);
+			touchPoint.set(event.x, event.y);
+			guiCam.touchToWorld(touchPoint);
+			if(event.type == TouchEvent.TOUCH_UP) {
+				// do some stuff
+			}
+		}
+	}
+
+	private void updateRunningOrInitialBuild(float deltaTime) {
+		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
+		game.getInput().getKeyEvents();
+		int len = touchEvents.size();
+		for(int i=0 ; i<len ; i++) {
+			TouchEvent event = touchEvents.get(i);
+			touchPoint.set(event.x, event.y);
+			guiCam.touchToWorld(touchPoint);
+			if(event.type == TouchEvent.TOUCH_UP) {
+
+				// check pause
+				if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
+					Assets.playSound(Assets.clickSound);
+					paused = true;
+					return;
+				}
+
+				// check tower patches
+				for(Vector2 patchCentre : world.towerPatches) {
+					if(OverlapTester.pointInRectangle(new Rectangle(patchCentre.x - 20, patchCentre.y - 20, 40, 40), 
+							touchPoint)) {
+						world.patchMenuCentre = patchCentre;
+						return;
+					}
 				}
 			}
 		}
 		world.update(deltaTime);
+
 	}
 
 	public void updatePaused() {
@@ -110,7 +166,7 @@ public class GameScreen extends GLScreen {
 			if(event.type == TouchEvent.TOUCH_UP) {
 				if(OverlapTester.pointInRectangle(continueBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					state = GAME_RUNNING;
+					paused = false;
 					return;
 				}
 				if(OverlapTester.pointInRectangle(quitBounds, touchPoint)) {
@@ -133,28 +189,36 @@ public class GameScreen extends GLScreen {
 		guiCam.setViewportAndMatrices();
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-		batcher.beginBatch(Assets.icons);          
-		switch(state) {
-		case(GAME_RUNNING):
-			presentRunning();
-		break;
-		case(GAME_PAUSED):
+		batcher.beginBatch(Assets.icons);   
+		if(paused) {
 			presentPaused();
-		break;
+		} else {
+			switch(world.state) {
+			case(World.WORLD_STATE_RUNNING):
+			case(World.WORLD_STATE_INITIAL_BUILD):
+				presentRunning();
+			break;
+
+			case(World.WORLD_STATE_GAME_OVER):
+				break;
+
+			case(World.WORLD_STATE_COMPLETE):
+				break;
+			}
 		}
 
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
 		fpsCounter.logFrame();
 	}
-	
+
 	public void presentRunning() {
 		batcher.drawSprite(780, 460, 40, 40, Assets.back);
 		if(world.state == World.WORLD_STATE_INITIAL_BUILD) {
 			batcher.drawSprite(40, 240, 40, 40, Assets.callWave);
 		}
 	}
-	
+
 	public void presentPaused() {
 		batcher.drawSprite(400, 240, 132, 101, Assets.pauseMenu);
 	}
