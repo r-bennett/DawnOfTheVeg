@@ -45,6 +45,7 @@ public class World {
 	public int lives;
 	public float timeElapsed;
 	public boolean updating;
+	public Vector2 patchMenuCentre;
 
 	public World(WorldListener listener, Level level) {
 		this.enemies = new ArrayList<GameObject>();
@@ -78,6 +79,7 @@ public class World {
 		this.wayPoints = level.wayPoints;
 		this.waves = level.waves;
 		this.towerPatches = level.towerPatches;
+		patchMenuCentre = null;
 	}
 
 	public void update(float deltaTime) {
@@ -138,5 +140,4 @@ public class World {
 	private void updateTowers(float deltaTime) {
 		// TODO Auto-generated method stub
 	}
-
 }
