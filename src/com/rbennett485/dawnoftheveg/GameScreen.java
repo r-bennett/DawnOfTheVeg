@@ -119,10 +119,11 @@ public class GameScreen extends GLScreen {
 
 				// check tower patches
 				if(world.patchMenuCentre != null){
+					Vector2 guiCoordsPatchMenuCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
 					if(OverlapTester.pointInRectangle(
-							new Rectangle(world.patchMenuCentre.x-40, world.patchMenuCentre.y, 40, 40), touchPoint)){
+							new Rectangle(guiCoordsPatchMenuCentre.x-40, guiCoordsPatchMenuCentre.y, 40, 40), touchPoint)){
 						world.towers.add(new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y, 40, 40));
-						world.patchMenuCentre = null;
+						Log.d("patches", "made towerA");
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(world.patchMenuCentre.x, world.patchMenuCentre.y, 40, 40), touchPoint)){
 						//towerB
@@ -135,7 +136,9 @@ public class GameScreen extends GLScreen {
 							new Rectangle(world.patchMenuCentre.x, world.patchMenuCentre.y-40, 40, 40), touchPoint)){
 						//towerD
 						world.patchMenuCentre = null;
-					}
+					} 
+					world.patchMenuCentre = null;
+					Log.d("patches", "clicked off menu");
 				}
 
 				for(Vector2 patchCentre : world.towerPatches) {
