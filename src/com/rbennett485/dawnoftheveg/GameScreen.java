@@ -112,7 +112,7 @@ public class GameScreen extends GLScreen {
 			guiCam.touchToWorld(touchPoint);
 			if(event.type == TouchEvent.TOUCH_UP) {
 
-				
+
 				// check pause
 				if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
@@ -120,7 +120,28 @@ public class GameScreen extends GLScreen {
 					return;
 				}
 
+
 				// check tower patches
+				if(world.patchMenuCentre != null){
+					if(OverlapTester.pointInRectangle(
+							new Rectangle(world.patchMenuCentre.x-40, world.patchMenuCentre.y, 40, 40), touchPoint)){
+						world.towers.add(new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y, 40, 40));
+						world.patchMenuCentre = null;
+					}else if(OverlapTester.pointInRectangle(
+							new Rectangle(world.patchMenuCentre.x, world.patchMenuCentre.y, 40, 40), touchPoint)){
+						//towerB
+						world.patchMenuCentre = null;
+					}else if(OverlapTester.pointInRectangle(
+							new Rectangle(world.patchMenuCentre.x-40, world.patchMenuCentre.y-40, 40, 40), touchPoint)){
+						//towerC
+						world.patchMenuCentre = null;
+					}else if(OverlapTester.pointInRectangle(
+							new Rectangle(world.patchMenuCentre.x, world.patchMenuCentre.y-40, 40, 40), touchPoint)){
+						//towerD
+						world.patchMenuCentre = null;
+					}
+				}
+
 				for(Vector2 patchCentre : world.towerPatches) {
 					if(OverlapTester.pointInRectangle(new Rectangle(patchCentre.x - 20, patchCentre.y - 20, 40, 40), 
 							touchPoint)) {
