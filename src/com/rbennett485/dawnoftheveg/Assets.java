@@ -14,6 +14,7 @@ public class Assets {
 	public static TextureRegion towerB;
 	public static TextureRegion towerC;
 	public static TextureRegion towerD;
+	public static TextureRegion towerMenu;
 	
 	public static Texture healthBars;
 	public static TextureRegion healthBarRed;
@@ -53,6 +54,7 @@ public class Assets {
 		towerB = new TextureRegion(towerImage, 80, 0, 40, 40);
 		towerC = new TextureRegion(towerImage, 0, 40, 40, 40);
 		towerD = new TextureRegion(towerImage, 40, 40, 40, 40);
+		towerMenu = new TextureRegion(towerImage, 120, 0, 80, 80);
 		
 		healthBars = new Texture(game, "healthBars.png");
 		healthBarRed = new TextureRegion(healthBars, 0, 0, 32, 3);
