@@ -67,14 +67,11 @@ public class GameScreen extends GLScreen {
 			switch(world.state) {
 
 			case(World.WORLD_STATE_RUNNING):
-
 				updateRunningOrInitialBuild(deltaTime);
-			updateRunning(deltaTime);
 			break; 
 
 			case(World.WORLD_STATE_INITIAL_BUILD):
-				updateInitialBuild(deltaTime);
-			updateRunningOrInitialBuild(deltaTime);
+				updateRunningOrInitialBuild(deltaTime);
 			break;
 
 			case(World.WORLD_STATE_GAME_OVER):
