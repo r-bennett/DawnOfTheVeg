@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
@@ -67,12 +69,9 @@ public class GameScreen extends GLScreen {
 			switch(world.state) {
 
 			case(World.WORLD_STATE_RUNNING):
-				updateRunningOrInitialBuild(deltaTime);
-			break; 
-
 			case(World.WORLD_STATE_INITIAL_BUILD):
 				updateRunningOrInitialBuild(deltaTime);
-			break;
+			break; 
 
 			case(World.WORLD_STATE_GAME_OVER):
 				break;
@@ -140,7 +139,8 @@ public class GameScreen extends GLScreen {
 				}
 
 				for(Vector2 patchCentre : world.towerPatches) {
-					if(OverlapTester.pointInRectangle(new Rectangle(patchCentre.x - 20, patchCentre.y - 20, 40, 40), 
+					Vector2 guiCoordsPatchCentre = new Vector2(800*patchCentre.x/20f, 480*patchCentre.y/12f);
+					if(OverlapTester.pointInRectangle(new Rectangle(guiCoordsPatchCentre.x - 20, guiCoordsPatchCentre.y - 20, 40, 40), 
 							touchPoint)) {
 						world.patchMenuCentre = patchCentre;
 						return;
@@ -218,6 +218,10 @@ public class GameScreen extends GLScreen {
 		batcher.drawSprite(780, 460, 40, 40, Assets.back);
 		if(world.state == World.WORLD_STATE_INITIAL_BUILD) {
 			batcher.drawSprite(40, 240, 40, 40, Assets.callWave);
+		}
+		if(world.patchMenuCentre != null) {
+			Vector2 guiCoordsPatchCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
+			batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 80, 80, Assets.towerMenu);
 		}
 	}
 
