@@ -139,14 +139,15 @@ public class GameScreen extends GLScreen {
 					} 
 					world.patchMenuCentre = null;
 					Log.d("patches", "clicked off menu");
-				}
+				} else {
 
-				for(Vector2 patchCentre : world.towerPatches) {
-					Vector2 guiCoordsPatchCentre = new Vector2(800*patchCentre.x/20f, 480*patchCentre.y/12f);
-					if(OverlapTester.pointInRectangle(new Rectangle(guiCoordsPatchCentre.x - 20, guiCoordsPatchCentre.y - 20, 40, 40), 
-							touchPoint)) {
-						world.patchMenuCentre = patchCentre;
-						return;
+					for(Vector2 patchCentre : world.towerPatches) {
+						Vector2 guiCoordsPatchCentre = new Vector2(800*patchCentre.x/20f, 480*patchCentre.y/12f);
+						if(OverlapTester.pointInRectangle(new Rectangle(guiCoordsPatchCentre.x - 20, guiCoordsPatchCentre.y - 20, 40, 40), 
+								touchPoint)) {
+							world.patchMenuCentre = patchCentre;
+							return;
+						}
 					}
 				}
 
