@@ -67,8 +67,9 @@ public class GameScreen extends GLScreen {
 			switch(world.state) {
 
 			case(World.WORLD_STATE_RUNNING):
-				updateRunning(deltaTime);
-			updateRunningOrInitialBuild(deltaTime);
+
+				updateRunningOrInitialBuild(deltaTime);
+			updateRunning(deltaTime);
 			break; 
 
 			case(World.WORLD_STATE_INITIAL_BUILD):
@@ -87,39 +88,18 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void updateInitialBuild(float deltaTime) {
-		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
-		game.getInput().getKeyEvents();
-		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
-			TouchEvent event = touchEvents.get(i);
-			touchPoint.set(event.x, event.y);
-			guiCam.touchToWorld(touchPoint);
-			if(event.type == TouchEvent.TOUCH_UP) {
-				
-				// check callWave
-				if(OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint)) {
-					Assets.playSound(Assets.clickSound);
-					world.state = World.WORLD_STATE_RUNNING;
-					return;
-				}
-			}
+		// check callWave
+		if(OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint)) {
+			Assets.playSound(Assets.clickSound);
+			world.state = World.WORLD_STATE_RUNNING;
+			return;
 		}
 
 	}
 
 
 	private void updateRunning(float deltaTime) {
-		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
-		game.getInput().getKeyEvents();
-		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
-			TouchEvent event = touchEvents.get(i);
-			touchPoint.set(event.x, event.y);
-			guiCam.touchToWorld(touchPoint);
-			if(event.type == TouchEvent.TOUCH_UP) {
-				// do some stuff
-			}
-		}
+		//do some stuff
 	}
 
 	private void updateRunningOrInitialBuild(float deltaTime) {
@@ -132,6 +112,7 @@ public class GameScreen extends GLScreen {
 			guiCam.touchToWorld(touchPoint);
 			if(event.type == TouchEvent.TOUCH_UP) {
 
+				
 				// check pause
 				if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
@@ -147,6 +128,11 @@ public class GameScreen extends GLScreen {
 						return;
 					}
 				}
+
+				if(world.state == World.WORLD_STATE_RUNNING)
+					updateRunning(deltaTime);
+				else if(world.state == World.WORLD_STATE_INITIAL_BUILD)
+					updateInitialBuild(deltaTime);
 			}
 		}
 		world.update(deltaTime);
