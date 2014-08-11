@@ -33,6 +33,9 @@ class Level1 extends Level {
 	public List<Vector2> towerPatchGenerator() {
 		List<Vector2> result = new ArrayList<>();
 		result.add(new Vector2(5,3));
+		result.add(new Vector2(10,2));
+		result.add(new Vector2(15,8));
+		
 		return result;
 	}
 	
