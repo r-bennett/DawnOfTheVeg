@@ -8,5 +8,11 @@ public class Enemy extends DynamicGameObject {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
+	
+    @Override 
+    public Enemy clone() {
+    	return new Enemy(this.position.x, this.position.y, 
+    			this.bounds.width, this.bounds.height); 
+    }
 
 }
