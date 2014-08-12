@@ -122,7 +122,7 @@ public class GameScreen extends GLScreen {
 					Vector2 guiCoordsPatchMenuCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
 					if(OverlapTester.pointInRectangle(
 							new Rectangle(guiCoordsPatchMenuCentre.x-40, guiCoordsPatchMenuCentre.y, 40, 40), touchPoint)){
-						world.towers.add(new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y, 40, 40));
+						world.towers.add(new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y));
 						Log.d("patches", "made towerA");
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(world.patchMenuCentre.x, world.patchMenuCentre.y, 40, 40), touchPoint)){
