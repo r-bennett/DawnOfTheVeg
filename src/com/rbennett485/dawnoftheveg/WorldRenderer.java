@@ -2,8 +2,11 @@ package com.rbennett485.dawnoftheveg;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
+import com.badlogic.androidgames.framework.gl.Texture;
+import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 import com.badlogic.androidgames.framework.math.Vector2;
 
@@ -74,9 +77,16 @@ public class WorldRenderer {
 
 	private void renderEnemies() {
 		int len = world.enemies.size();
+		GameObject enemy;
+		TextureRegion region;
 		for(int i = 0; i < len; i++) {
-			Orange orange = (Orange)world.enemies.get(i); // Will need to change this once more types of enemy are added
-			batcher.drawSprite(orange.position.x, orange.position.y, 1, 1, Assets.orange); // and this
+			enemy = world.enemies.get(i);
+			if(enemy instanceof Orange) {
+				region = Assets.orange;
+			} else {
+				region = Assets.grape;
+			}
+			batcher.drawSprite(enemy.position.x, enemy.position.y, 1, 1, region); 
 		}
 	}
 	
