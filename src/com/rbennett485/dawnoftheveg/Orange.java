@@ -4,10 +4,9 @@ import java.util.List;
 
 import android.util.Log;
 
-import com.badlogic.androidgames.framework.DynamicGameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
 
-public class Orange extends DynamicGameObject {
+public class Orange extends Enemy {
 	public static final float ORANGE_WIDTH = 1f;
 	public static final float ORANGE_HEIGHT = 1f;
 	public static final float ORANGE_VELOCITY = 2f;

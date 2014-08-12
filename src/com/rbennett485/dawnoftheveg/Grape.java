@@ -2,10 +2,9 @@ package com.rbennett485.dawnoftheveg;
 
 import java.util.List;
 
-import com.badlogic.androidgames.framework.DynamicGameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
 
-public class Grape extends DynamicGameObject {
+public class Grape extends Enemy {
 	public static final float GRAPE_WIDTH = 1f;
 	public static final float GRAPE_HEIGHT = 1f;
 	public static final float GRAPE_VELOCITY = 2f;
