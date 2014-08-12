@@ -94,16 +94,15 @@ public class World {
 				checkNewWave();
 			}
 			else if(enemies.isEmpty()) {
-				Log.d("complete", "no more enemies");
 				state = WORLD_STATE_COMPLETE;
 			}
 				
 			updateTowers(deltaTime);
 			updateEnemies(deltaTime);
 			updateProjectiles(deltaTime);
+			checkCollisions();
 			
 			if(lives<=0) {
-				Log.d("complete", "no more lives: " + lives);
 				state = WORLD_STATE_GAME_OVER;
 			}
 			break;
@@ -118,9 +117,16 @@ public class World {
 		
 	}
 
-	private void updateProjectiles(float deltaTime) {
+	private void checkCollisions() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	private void updateProjectiles(float deltaTime) {
+		int len = projectiles.size();
+		for(int i=0 ; i<len ; i++) {
+			projectiles.get(i).update(deltaTime);
+		}
 	}
 
 	private void checkNewWave() {
