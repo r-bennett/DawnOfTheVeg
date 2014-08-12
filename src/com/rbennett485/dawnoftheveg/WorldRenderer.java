@@ -47,6 +47,7 @@ public class WorldRenderer {
 		
 		batcher.beginBatch(Assets.towerImage);
 		renderTowers();
+		renderProjectiles();
 		batcher.endBatch();
 
 		if(!world.enemies.isEmpty()) {
@@ -87,6 +88,15 @@ public class WorldRenderer {
 			else 
 				region = Assets.towerD;
 			batcher.drawSprite(tower.position.x, tower.position.y, tower.bounds.width, tower.bounds.height, region);
+		}
+	}
+	
+	private void renderProjectiles() {
+		int len = world.projectiles.size();
+		TextureRegion region = Assets.projectileA;
+		for(int i=0 ; i<len ; i++) {
+			Projectile proj = world.projectiles.get(i);
+			batcher.drawSprite(proj.position.x, proj.position.y, proj.bounds.width, proj.bounds.height, region);
 		}
 	}
 
