@@ -122,18 +122,24 @@ public class GameScreen extends GLScreen {
 					Vector2 guiCoordsPatchMenuCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
 					if(OverlapTester.pointInRectangle(
 							new Rectangle(guiCoordsPatchMenuCentre.x-40, guiCoordsPatchMenuCentre.y, 40, 40), touchPoint)){
-						world.towers.add(new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y));
-						Log.d("tower", "A created");
+						Tower towerA = new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y);
+						world.towers.add(towerA);
+						world.money -= towerA.getCost();
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y, 40, 40), touchPoint)){
-						world.towers.add(new TowerB(world.patchMenuCentre.x, world.patchMenuCentre.y));
-						Log.d("tower", "B created");
+						Tower towerB = new TowerB(world.patchMenuCentre.x, world.patchMenuCentre.y);
+						world.towers.add(towerB);
+						world.money -= towerB.getCost();
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(guiCoordsPatchMenuCentre.x-40, guiCoordsPatchMenuCentre.y-40, 40, 40), touchPoint)){
-						world.towers.add(new TowerC(world.patchMenuCentre.x, world.patchMenuCentre.y));
+						Tower towerC = new TowerC(world.patchMenuCentre.x, world.patchMenuCentre.y);
+						world.towers.add(towerC);
+						world.money-= towerC.getCost();
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y-40, 40, 40), touchPoint)){
-						world.towers.add(new TowerD(world.patchMenuCentre.x, world.patchMenuCentre.y));
+						Tower towerD = new TowerD(world.patchMenuCentre.x, world.patchMenuCentre.y);
+						world.towers.add(towerD);
+						world.money -= towerD.getCost();
 					} 
 					world.patchMenuCentre = null;
 					Log.d("patches", "clicked off menu");
