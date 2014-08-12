@@ -11,5 +11,11 @@ public class Projectile extends DynamicGameObject {
 		super(x, y, width, height);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public void update(float deltaTime) {
+        position.add(velocity.x * deltaTime, velocity.y * deltaTime);
+        bounds.lowerLeft.set(position).sub(bounds.width / 2, bounds.height / 2);
+	}
 
 }
