@@ -164,7 +164,6 @@ public class World {
 		}
 	}
 
-	@SuppressWarnings("unused")
 	private void updateTowers(float deltaTime) {
 		int len = towers.size();
 		for(int i=0 ; i<len ; i++) {
@@ -182,7 +181,9 @@ public class World {
 				}
 				if(closest <= tower.range) {
 					tower.idleTime = 0;
-					// fire new projectile at closestEnemy here ***********************************************************
+					Vector2 projVel = closestEnemy.position.cpy().sub(tower.position).
+							nor().mul(ProjectileA.PROJECTILE_A_SPEED); // will need to change this to allow different projectiles **********************************
+					projectiles.add(new ProjectileA(tower.position, projVel));
 				}
 			}
 		}
