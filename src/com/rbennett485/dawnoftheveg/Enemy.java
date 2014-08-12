@@ -16,8 +16,9 @@ public class Enemy extends DynamicGameObject {
     }
 
 	public void hit(Projectile p) {
-		// TODO Auto-generated method stub
-		
+		hp -= p.damagePoints;
+		if(hp<0)
+			hp = 0;
 	}
 
 }
