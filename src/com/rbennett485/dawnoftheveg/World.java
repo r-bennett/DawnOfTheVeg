@@ -6,7 +6,6 @@ import java.util.Random;
 
 import android.util.Log;
 
-import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
 
 public class World {
@@ -33,8 +32,8 @@ public class World {
 	public final List<Wave> waves;
 	public final List<Vector2> towerPatches;
 
-	public List<GameObject> enemies;
-	public List<GameObject> towers;
+	public List<Enemy> enemies;
+	public List<Tower> towers;
 	public List<Projectile> projectiles;
 
 	public final WorldListener listener;
@@ -148,11 +147,10 @@ public class World {
 		int len = enemies.size();
 		Vector2 finishLine = wayPoints.get(wayPoints.size()-1);
 		for (int i = 0; i < len; i++) {
-			GameObject enemy = enemies.get(i);  
+			Enemy enemy = enemies.get(i);  
 			enemy.update(deltaTime);
 			if(enemy.position.dist(finishLine)<0.1 && enemy.inGame) {
 				lives--;
-				Log.d("complete", "lives: " + lives);
 				enemy.inGame = false;
 			}
 		}		
