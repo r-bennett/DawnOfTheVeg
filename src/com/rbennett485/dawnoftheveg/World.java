@@ -6,6 +6,7 @@ import java.util.Random;
 
 import android.util.Log;
 
+import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Vector2;
 
 public class World {
@@ -119,9 +120,11 @@ public class World {
 	private void checkCollisions() {
 		for(Projectile p : projectiles) {
 			for(Enemy e : enemies) {
-				if (p.position.dist(e.position) <= 0.1) {
+				if (OverlapTester.overlapRectangles(p.bounds, e.bounds)) {
+					Log.d("proj", "hit");
 					e.hit(p);
 					projectiles.remove(p);
+					Log.d("proj", "Removed");
 					break;
 				}
 			}
@@ -137,7 +140,6 @@ public class World {
 
 	private void checkNewWave() {
 		if(timeElapsed>waves.get(nextWave).time && !updating) {
-			Log.d("complete", "new wave");
 			updating = true;
 			new Thread(waveCreator).start();
 		}
@@ -169,7 +171,6 @@ public class World {
 		for(int i=0 ; i<len ; i++) {
 			Tower tower = towers.get(i);
 			tower.update(deltaTime);
-			Log.d("reload", "idle: " + tower.idleTime + ", reload: " + tower.reloadTime);
 			if(tower.idleTime >= tower.reloadTime) {
 				float closest = Float.MAX_VALUE;
 				Enemy closestEnemy = null;
