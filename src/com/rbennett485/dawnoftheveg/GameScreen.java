@@ -206,14 +206,10 @@ public class GameScreen extends GLScreen {
 			switch(world.state) {
 			case(World.WORLD_STATE_RUNNING):
 			case(World.WORLD_STATE_INITIAL_BUILD):
+			case(World.WORLD_STATE_GAME_OVER):
+			case(World.WORLD_STATE_COMPLETE):
 				presentRunning();
 			break;
-
-			case(World.WORLD_STATE_GAME_OVER):
-				break;
-
-			case(World.WORLD_STATE_COMPLETE):
-				break;
 			}
 		}
 
