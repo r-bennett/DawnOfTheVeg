@@ -20,9 +20,4 @@ public class TowerA extends Tower {
 		return TOWER_A_COST;
 	}
 
-	@Override
-	public void update(float deltaTime) {
-		idleTime += deltaTime;
-	}
-
 }

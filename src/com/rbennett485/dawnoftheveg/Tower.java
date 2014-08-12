@@ -17,5 +17,10 @@ public abstract class Tower extends GameObject {
 	}
 	
 	abstract int getCost();
+	
+	@Override
+	public void update(float deltaTime) {
+		idleTime += deltaTime;
+	}
 
 }
