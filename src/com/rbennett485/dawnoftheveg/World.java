@@ -48,6 +48,8 @@ public class World {
 	public boolean updating;
 	public Vector2 patchMenuCentre;
 
+	private Object enemyLock;
+
 	public World(WorldListener listener, Level level) {
 		this.enemies = new ArrayList<>();
 		this.towers = new ArrayList<>();
@@ -58,12 +60,17 @@ public class World {
 		lives = INITIAL_LIVES;
 		rand = new Random();
 		updating = false;
+		enemyLock = new Object();
 
 		waveCreator = new Runnable() {
 			public void run() {
 				Wave wave = World.this.waves.get(nextWave);
 				for(int i=0 ; i<wave.number ; i++) {
-					enemies.add(wave.seed.clone());
+
+					synchronized(enemyLock) {
+						enemies.add(wave.seed.clone());
+					}
+
 					try {
 						Thread.sleep((long) (World.this.rand.nextFloat()*2000));
 					} catch (InterruptedException e) {
@@ -119,15 +126,19 @@ public class World {
 
 	private void checkCollisions() {
 		for(Projectile p : projectiles) {
-			for(Enemy e : enemies) {
-				if (OverlapTester.overlapRectangles(p.bounds, e.bounds)) {
-					Log.d("proj", "hit");
-					e.hit(p);
-					projectiles.remove(p);
-					Log.d("proj", "Removed");
-					break;
+
+			synchronized(enemyLock) {
+				for(Enemy e : enemies) {
+					if (OverlapTester.overlapRectangles(p.bounds, e.bounds)) {
+						Log.d("proj", "hit");
+						e.hit(p);
+						projectiles.remove(p);
+						Log.d("proj", "Removed");
+						break;
+					}
 				}
 			}
+
 		}
 	}
 
@@ -146,23 +157,27 @@ public class World {
 	}
 
 	private void updateEnemies(float deltaTime) {
-		for(Enemy e : enemies) {
-			if(e.hp<=0) {
-				enemies.remove(e);
+		synchronized(enemyLock) {
+			for(Enemy e : enemies) {
+				if(e.hp<=0) {
+					enemies.remove(e);
+				}
 			}
 		}
 
-		int len = enemies.size();
-		Vector2 finishLine = wayPoints.get(wayPoints.size()-1);
-		for (int i = 0; i < len; i++) {
-			Enemy enemy = enemies.get(i);  
-			enemy.update(deltaTime);
-			if(enemy.position.dist(finishLine)<0.1 && enemy.inGame) {
-				lives--;
-				enemy.inGame = false;
+		synchronized(enemyLock) {
+			int len = enemies.size();
+			Vector2 finishLine = wayPoints.get(wayPoints.size()-1);
+			for (int i = 0; i < len; i++) {
+				Enemy enemy = enemies.get(i);  
+				enemy.update(deltaTime);
+				if(enemy.position.dist(finishLine)<0.1 && enemy.inGame) {
+					lives--;
+					enemy.inGame = false;
+				}
+				if(enemy.position.x > WORLD_WIDTH + 1)
+					enemies.remove(enemy);
 			}
-			if(enemy.position.x > WORLD_WIDTH + 1)
-				enemies.remove(enemy);
 		}
 	}
 
@@ -174,11 +189,13 @@ public class World {
 			if(tower.idleTime >= tower.reloadTime) {
 				float closest = Float.MAX_VALUE;
 				Enemy closestEnemy = null;
-				for(Enemy e : enemies) {
-					float dist = e.position.dist(tower.position);
-					if(dist < closest) {
-						closestEnemy = e;
-						closest = dist;
+				synchronized(enemyLock) {
+					for(Enemy e : enemies) {
+						float dist = e.position.dist(tower.position);
+						if(dist < closest) {
+							closestEnemy = e;
+							closest = dist;
+						}
 					}
 				}
 				if(closest <= tower.range) {
