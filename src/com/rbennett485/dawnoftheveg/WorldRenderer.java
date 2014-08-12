@@ -73,6 +73,22 @@ public class WorldRenderer {
 			Vector2 patch = world.towerPatches.get(i);
 			batcher.drawSprite(patch.x, patch.y, 1, 1, Assets.patch);
 		}
+		
+		len = world.towers.size();
+		GameObject tower;
+		TextureRegion region;
+		for(int i=0 ; i<len ; i++) {
+			tower = world.towers.get(i);
+			if(tower instanceof TowerA)
+				region = Assets.towerA;
+			else if(tower instanceof TowerB)
+				region = Assets.towerB;
+			else if(tower instanceof TowerC)
+				region = Assets.towerC;
+			else 
+				region = Assets.towerD;
+			batcher.drawSprite(tower.position.x, tower.position.y, width, height, region);
+		}
 	}
 
 	private void renderEnemies() {
@@ -86,7 +102,7 @@ public class WorldRenderer {
 			} else {
 				region = Assets.grape;
 			}
-			batcher.drawSprite(enemy.position.x, enemy.position.y, 1, 1, region); 
+			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.1, 1, region); 
 		}
 	}
 	
