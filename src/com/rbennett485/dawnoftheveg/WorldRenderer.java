@@ -87,7 +87,7 @@ public class WorldRenderer {
 				region = Assets.towerC;
 			else 
 				region = Assets.towerD;
-			batcher.drawSprite(tower.position.x, tower.position.y, width, height, region);
+			batcher.drawSprite(tower.position.x, tower.position.y, tower.bounds.width, tower.bounds.height, region);
 		}
 	}
 
@@ -102,7 +102,7 @@ public class WorldRenderer {
 			} else {
 				region = Assets.grape;
 			}
-			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.1, 1, region); 
+			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.bounds.width, enemy.bounds.height, region); 
 		}
 	}
 	
