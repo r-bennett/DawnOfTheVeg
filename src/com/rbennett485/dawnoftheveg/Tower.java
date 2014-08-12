@@ -7,5 +7,7 @@ public abstract class Tower extends GameObject {
 	public Tower(float x, float y, float width, float height) {
 		super(x, y, width, height);
 	}
+	
+	abstract int getCost();
 
 }
