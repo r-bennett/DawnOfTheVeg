@@ -49,8 +49,9 @@ public class World {
 	public Vector2 patchMenuCentre;
 
 	public World(WorldListener listener, Level level) {
-		this.enemies = new ArrayList<GameObject>();
-		this.towers = new ArrayList<GameObject>();
+		this.enemies = new ArrayList<>();
+		this.towers = new ArrayList<>();
+		this.projectiles = new ArrayList<>();
 		this.state = WORLD_STATE_INITIAL_BUILD;
 		timeElapsed = 0;
 		nextWave = 0;
@@ -99,6 +100,7 @@ public class World {
 				
 			updateTowers(deltaTime);
 			updateEnemies(deltaTime);
+			updateProjectiles(deltaTime);
 			
 			if(lives<=0) {
 				Log.d("complete", "no more lives: " + lives);
@@ -113,6 +115,11 @@ public class World {
 			// display gameover message and wait for user input..... should probably delegate this task to GameScreen
 			break;
 		}
+		
+	}
+
+	private void updateProjectiles(float deltaTime) {
+		// TODO Auto-generated method stub
 		
 	}
 
