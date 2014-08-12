@@ -24,7 +24,7 @@ public class World {
 	public static final int WORLD_STATE_INITIAL_BUILD = 3;	// the initial state - the timer is not running, no 
 	// waves appear. Allows player to build initial towers
 	// note - no pause state needed since GameScreen handles this, and does not update World when paused
-	
+
 	public final Runnable waveCreator;
 
 	public final int INITIAL_MONEY;
@@ -57,7 +57,7 @@ public class World {
 		lives = INITIAL_LIVES;
 		rand = new Random();
 		updating = false;
-		
+
 		waveCreator = new Runnable() {
 			public void run() {
 				Wave wave = World.this.waves.get(nextWave);
@@ -86,7 +86,7 @@ public class World {
 	public void update(float deltaTime) {
 		if(state!=WORLD_STATE_INITIAL_BUILD)
 			timeElapsed+=deltaTime;
-		
+
 		switch(state) {
 		case(WORLD_STATE_RUNNING):
 			if(nextWave<waves.size()){
@@ -95,17 +95,17 @@ public class World {
 			else if(enemies.isEmpty()) {
 				state = WORLD_STATE_COMPLETE;
 			}
-				
-			updateTowers(deltaTime);
-			updateEnemies(deltaTime);
-			updateProjectiles(deltaTime);
-			checkCollisions();
-			
-			if(lives<=0) {
-				state = WORLD_STATE_GAME_OVER;
-			}
-			break;
-			
+
+		updateEnemies(deltaTime);
+		updateTowers(deltaTime);
+		updateProjectiles(deltaTime);
+		checkCollisions();
+
+		if(lives<=0) {
+			state = WORLD_STATE_GAME_OVER;
+		}
+		break;
+
 		case(WORLD_STATE_COMPLETE):
 			// display complete message and wait for user input..... should probably delegate this task to GameScreen
 			break;
@@ -113,7 +113,7 @@ public class World {
 			// display gameover message and wait for user input..... should probably delegate this task to GameScreen
 			break;
 		}
-		
+
 	}
 
 	private void checkCollisions() {
@@ -149,6 +149,7 @@ public class World {
 				enemies.remove(e);
 			}
 		}
+
 		int len = enemies.size();
 		Vector2 finishLine = wayPoints.get(wayPoints.size()-1);
 		for (int i = 0; i < len; i++) {
@@ -158,11 +159,8 @@ public class World {
 				lives--;
 				enemy.inGame = false;
 			}
-		}
-		for(Enemy e : enemies) {
-			if(e.hp<=0) {
-				enemies.remove(e);
-			}
+			if(enemy.position.x > WORLD_WIDTH + 1)
+				enemies.remove(enemy);
 		}
 	}
 
