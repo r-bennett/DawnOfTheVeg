@@ -123,19 +123,15 @@ public class GameScreen extends GLScreen {
 					if(OverlapTester.pointInRectangle(
 							new Rectangle(guiCoordsPatchMenuCentre.x-40, guiCoordsPatchMenuCentre.y, 40, 40), touchPoint)){
 						world.towers.add(new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y));
-						Log.d("patches", "made towerA");
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(world.patchMenuCentre.x, world.patchMenuCentre.y, 40, 40), touchPoint)){
-						//towerB
-						world.patchMenuCentre = null;
+						world.towers.add(new TowerB(world.patchMenuCentre.x, world.patchMenuCentre.y));
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(world.patchMenuCentre.x-40, world.patchMenuCentre.y-40, 40, 40), touchPoint)){
-						//towerC
-						world.patchMenuCentre = null;
+						world.towers.add(new TowerC(world.patchMenuCentre.x, world.patchMenuCentre.y));
 					}else if(OverlapTester.pointInRectangle(
 							new Rectangle(world.patchMenuCentre.x, world.patchMenuCentre.y-40, 40, 40), touchPoint)){
-						//towerD
-						world.patchMenuCentre = null;
+						world.towers.add(new TowerD(world.patchMenuCentre.x, world.patchMenuCentre.y));
 					} 
 					world.patchMenuCentre = null;
 					Log.d("patches", "clicked off menu");
