@@ -120,7 +120,7 @@ public class World {
 		for(Projectile p : projectiles) {
 			for(Enemy e : enemies) {
 				if (p.position.dist(e.position) <= 0.1) {
-					// got a hit. Do some HP deductions on e *****************************************************************p
+					e.hit(p);
 					projectiles.remove(p);
 					break;
 				}
@@ -159,7 +159,23 @@ public class World {
 	private void updateTowers(float deltaTime) {
 		int len = towers.size();
 		for(int i=0 ; i<len ; i++) {
-			towers.get(i).update(deltaTime);
+			Tower tower = towers.get(i);
+			tower.update(deltaTime);
+			if(tower.idleTime >= tower.reloadTime) {
+				float closest = Float.MAX_VALUE;
+				Enemy closestEnemy = null;
+				for(Enemy e : enemies) {
+					float dist = e.position.dist(tower.position);
+					if(dist < closest) {
+						closestEnemy = e;
+						closest = dist;
+					}
+				}
+				if(closest <= tower.range) {
+					tower.idleTime = 0;
+					// fire new projectile at closestEnemy here ***********************************************************
+				}
+			}
 		}
 	} 
 }
