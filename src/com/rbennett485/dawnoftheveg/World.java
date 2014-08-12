@@ -169,6 +169,7 @@ public class World {
 		for(int i=0 ; i<len ; i++) {
 			Tower tower = towers.get(i);
 			tower.update(deltaTime);
+			Log.d("reload", "idle: " + tower.idleTime + ", reload: " + tower.reloadTime);
 			if(tower.idleTime >= tower.reloadTime) {
 				float closest = Float.MAX_VALUE;
 				Enemy closestEnemy = null;

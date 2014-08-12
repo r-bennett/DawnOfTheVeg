@@ -15,6 +15,7 @@ public class TowerA extends Tower {
 	private TowerA(float x, float y, float width, float height) {
 		super(x, y, width, height);
 		this.range = TOWER_A_RANGE;
+		reloadTime = RELOAD_TIME;
 	}
 
 	@Override
