@@ -15,4 +15,9 @@ public class Enemy extends DynamicGameObject {
     			this.bounds.width, this.bounds.height); 
     }
 
+	public void hit(Projectile p) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
