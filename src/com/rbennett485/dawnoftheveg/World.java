@@ -118,8 +118,15 @@ public class World {
 	}
 
 	private void checkCollisions() {
-		// TODO Auto-generated method stub
-		
+		for(Projectile p : projectiles) {
+			for(Enemy e : enemies) {
+				if (p.position.dist(e.position) <= 0.1) {
+					// got a hit. Do some HP deductions on e *****************************************************************p
+					projectiles.remove(p);
+					break;
+				}
+			}
+		}
 	}
 
 	private void updateProjectiles(float deltaTime) {
