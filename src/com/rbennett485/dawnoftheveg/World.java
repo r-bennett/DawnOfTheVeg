@@ -33,8 +33,9 @@ public class World {
 	public final List<Wave> waves;
 	public final List<Vector2> towerPatches;
 
-	public final List<GameObject> enemies;
-	public final List<GameObject> towers;
+	public List<GameObject> enemies;
+	public List<GameObject> towers;
+	public List<Projectile> projectiles;
 
 	public final WorldListener listener;
 	public final Random rand;
@@ -138,6 +139,9 @@ public class World {
 	}
 
 	private void updateTowers(float deltaTime) {
-		// TODO Auto-generated method stub
-	}
+		int len = towers.size();
+		for(int i=0 ; i<len ; i++) {
+			towers.get(i).update(deltaTime);
+		}
+	} 
 }
