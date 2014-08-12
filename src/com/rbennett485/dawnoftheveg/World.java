@@ -143,7 +143,12 @@ public class World {
 		}
 	}
 
-	private void updateEnemies(float deltaTime) { // add code to check if enemy has crossed the finish line, and deduct 1 life
+	private void updateEnemies(float deltaTime) {
+		for(Enemy e : enemies) {
+			if(e.hp<=0) {
+				enemies.remove(e);
+			}
+		}
 		int len = enemies.size();
 		Vector2 finishLine = wayPoints.get(wayPoints.size()-1);
 		for (int i = 0; i < len; i++) {
@@ -153,9 +158,15 @@ public class World {
 				lives--;
 				enemy.inGame = false;
 			}
-		}		
+		}
+		for(Enemy e : enemies) {
+			if(e.hp<=0) {
+				enemies.remove(e);
+			}
+		}
 	}
 
+	@SuppressWarnings("unused")
 	private void updateTowers(float deltaTime) {
 		int len = towers.size();
 		for(int i=0 ; i<len ; i++) {
