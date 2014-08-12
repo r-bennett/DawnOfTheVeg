@@ -24,6 +24,8 @@ public class Assets {
 	
 	public static Texture characters;
 	public static TextureRegion orange;
+	public static TextureRegion grape;
+	public static TextureRegion banana;
 	
 	public static Texture icons;
 	public static TextureRegion back;
@@ -64,6 +66,8 @@ public class Assets {
 		
 		characters = new Texture(game, "characters.png");
 		orange = new TextureRegion(characters, 0, 0, 40, 40);
+		grape = new TextureRegion(characters, 40, 0, 40, 40);
+		banana = new TextureRegion(characters, 80, 0, 40, 40);
 		
 		icons = new Texture(game, "icons.png");
 		back = new TextureRegion(icons, 0, 180, 40, 40);
