@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.androidgames.framework.GameObject;
+import com.badlogic.androidgames.framework.math.Vector2;
 
 public abstract class Tower extends GameObject {
 	public float idleTime;
@@ -22,5 +23,7 @@ public abstract class Tower extends GameObject {
 	public void update(float deltaTime) {
 		idleTime += deltaTime;
 	}
+
+	public abstract Projectile newProj(Vector2 projVel);
 
 }

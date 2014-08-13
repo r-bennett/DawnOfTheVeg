@@ -1,5 +1,7 @@
 package com.rbennett485.dawnoftheveg;
 
+import com.badlogic.androidgames.framework.math.Vector2;
+
 
 public class TowerA extends Tower {
 	public static final float RELOAD_TIME = 0.5f;
@@ -21,6 +23,11 @@ public class TowerA extends Tower {
 	@Override
 	int getCost() {
 		return TOWER_A_COST;
+	}
+
+	@Override
+	public Projectile newProj(Vector2 projVel) {
+		return new ProjectileA(this.position, projVel);
 	}
 
 }
