@@ -195,8 +195,8 @@ public class World {
 				if(closest <= tower.range) {
 					tower.idleTime = 0;
 					Vector2 projVel = closestEnemy.position.cpy().sub(tower.position).
-							nor().mul(ProjectileA.PROJECTILE_A_SPEED); // will need to change this to allow different projectiles **********************************
-					projectiles.add(new ProjectileA(tower.position, projVel));
+							nor().mul(ProjectileA.PROJECTILE_A_SPEED); 
+					projectiles.add(tower.newProj(projVel)); 
 				}
 			}
 		}
