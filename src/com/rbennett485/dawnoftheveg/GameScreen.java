@@ -74,6 +74,7 @@ public class GameScreen extends GLScreen {
 			break; 
 
 			case(World.WORLD_STATE_GAME_OVER):
+				updateGameOver();
 				break;
 
 			case(World.WORLD_STATE_COMPLETE):
@@ -96,7 +97,20 @@ public class GameScreen extends GLScreen {
 				game.setScreen(new MapScreen(game));
 			}
 		}
-
+	}
+	
+	private void updateGameOver() {
+		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
+		game.getInput().getKeyEvents();
+		int len = touchEvents.size();
+		for(int i=0 ; i<len ; i++) {
+			TouchEvent event = touchEvents.get(i);
+			touchPoint.set(event.x, event.y);
+			guiCam.touchToWorld(touchPoint);
+			if(event.type == TouchEvent.TOUCH_UP) {
+				game.setScreen(new MapScreen(game));
+			}
+		}
 	}
 
 	private void updateInitialBuild(float deltaTime) {
@@ -222,12 +236,16 @@ public class GameScreen extends GLScreen {
 			switch(world.state) {
 			case(World.WORLD_STATE_RUNNING):
 			case(World.WORLD_STATE_INITIAL_BUILD):
-			case(World.WORLD_STATE_GAME_OVER):
 				presentRunning();
 			break;
 			
 			case(World.WORLD_STATE_COMPLETE):
 				presentComplete();
+			break;
+			
+
+			case(World.WORLD_STATE_GAME_OVER):
+				presentGameOver();
 			break;
 			}
 		}
@@ -235,6 +253,11 @@ public class GameScreen extends GLScreen {
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
 		fpsCounter.logFrame();
+	}
+
+	private void presentGameOver() {
+		batcher.drawSprite(400, 240, 240, 120, Assets.gameOver);
+		
 	}
 
 	private void presentComplete() {
