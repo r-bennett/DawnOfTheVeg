@@ -14,6 +14,7 @@ public class TowerD extends Tower {
 	private TowerD(float x, float y, float width, float height) {
 		super(x, y, width, height);
 		this.range = TOWER_D_RANGE;
+		reloadTime = RELOAD_TIME;
 	}
 
 	@Override
