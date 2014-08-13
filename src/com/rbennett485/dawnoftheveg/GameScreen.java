@@ -223,8 +223,11 @@ public class GameScreen extends GLScreen {
 			case(World.WORLD_STATE_RUNNING):
 			case(World.WORLD_STATE_INITIAL_BUILD):
 			case(World.WORLD_STATE_GAME_OVER):
-			case(World.WORLD_STATE_COMPLETE):
 				presentRunning();
+			break;
+			
+			case(World.WORLD_STATE_COMPLETE):
+				presentComplete();
 			break;
 			}
 		}
@@ -232,6 +235,10 @@ public class GameScreen extends GLScreen {
 		batcher.endBatch();
 		gl.glDisable(GL10.GL_BLEND);
 		fpsCounter.logFrame();
+	}
+
+	private void presentComplete() {
+		batcher.drawSprite(400, 240, 240, 120, Assets.complete);
 	}
 
 	public void presentRunning() {
