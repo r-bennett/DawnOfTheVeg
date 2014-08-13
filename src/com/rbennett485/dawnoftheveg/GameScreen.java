@@ -77,10 +77,26 @@ public class GameScreen extends GLScreen {
 				break;
 
 			case(World.WORLD_STATE_COMPLETE):
-				break;
+				updateComplete();
+			break;
 
 			}
 		}
+	}
+
+	private void updateComplete() {
+		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
+		game.getInput().getKeyEvents();
+		int len = touchEvents.size();
+		for(int i=0 ; i<len ; i++) {
+			TouchEvent event = touchEvents.get(i);
+			touchPoint.set(event.x, event.y);
+			guiCam.touchToWorld(touchPoint);
+			if(event.type == TouchEvent.TOUCH_UP) {
+				game.setScreen(new MapScreen(game));
+			}
+		}
+
 	}
 
 	private void updateInitialBuild(float deltaTime) {
