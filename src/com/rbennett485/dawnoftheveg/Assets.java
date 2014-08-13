@@ -42,6 +42,7 @@ public class Assets {
 	public static TextureRegion shop;
 	public static TextureRegion callWave;
 	public static TextureRegion towerMenu;
+	public static TextureRegion complete;
 	
 	public static Texture fontImage;
 	public static Font font;
@@ -85,6 +86,7 @@ public class Assets {
 		shop = new TextureRegion(icons, 130, 73, 47, 30);
 		callWave = new TextureRegion(icons, 88, 195, 40, 40);
 		towerMenu = new TextureRegion(icons, 160, 160, 80, 80);
+		complete = new TextureRegion(icons, 240, 0, 240, 120);
 		
 		characters = new Texture(game, "characters.png");
 		orange = new TextureRegion(characters, 0, 0, 40, 40);
