@@ -44,7 +44,7 @@ public class WorldRenderer {
 		GL10 gl = glGraphics.getGL();
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-		
+
 		batcher.beginBatch(Assets.towerImage);
 		renderTowers();
 		renderProjectiles();
@@ -54,26 +54,26 @@ public class WorldRenderer {
 			batcher.beginBatch(Assets.characters);
 			renderEnemies();
 			batcher.endBatch();
-			
+
 			batcher.beginBatch(Assets.healthBars);
 			renderHealthBars();
 			batcher.endBatch();
 		}
-		
+
 		batcher.beginBatch(Assets.fontImage);
 		renderText();
 		batcher.endBatch();
-		
+
 		gl.glDisable(GL10.GL_BLEND);
 	}
-	
+
 	private void renderTowers() {
 		int len = world.towerPatches.size();
 		for(int i=0 ; i<len ; i++) {
 			Vector2 patch = world.towerPatches.get(i);
 			batcher.drawSprite(patch.x, patch.y, 1, 1, Assets.patch);
 		}
-		
+
 		len = world.towers.size();
 		GameObject tower;
 		TextureRegion region;
@@ -90,12 +90,20 @@ public class WorldRenderer {
 			batcher.drawSprite(tower.position.x, tower.position.y, tower.bounds.width, tower.bounds.height, region);
 		}
 	}
-	
+
 	private void renderProjectiles() {
 		int len = world.projectiles.size();
-		TextureRegion region = Assets.projectileA;
+		TextureRegion region;
 		for(int i=0 ; i<len ; i++) {
 			Projectile proj = world.projectiles.get(i);
+			if(proj instanceof ProjectileA)
+				region = Assets.projectileA;
+			else if(proj instanceof ProjectileB)
+				region = Assets.projectileB;
+			else if(proj instanceof ProjectileC)
+				region = Assets.projectileC;
+			else 
+				region = Assets.projectileA;
 			batcher.drawSprite(proj.position.x, proj.position.y, proj.bounds.width, proj.bounds.height, region);
 		}
 	}
@@ -114,7 +122,7 @@ public class WorldRenderer {
 			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.bounds.width, enemy.bounds.height, region); 
 		}
 	}
-	
+
 	private void renderHealthBars() {
 		int len = world.enemies.size();
 		for(int i = 0; i < len; i++) {
@@ -125,9 +133,9 @@ public class WorldRenderer {
 					(float)orange.hp/orange.initialHp, HEALTH_BAR_HEIGHT, Assets.healthBarGreen);
 		}
 	}
-	
+
 	private void renderText() {
-		 Assets.font.drawTextScaled(batcher, "$" + world.money, 0.5f, 0.5f, 20, 12);
-		 Assets.font.drawTextScaled(batcher, "lives: " + world.lives, 20-3.5f, 0.5f, 20, 12);
+		Assets.font.drawTextScaled(batcher, "$" + world.money, 0.5f, 0.5f, 20, 12);
+		Assets.font.drawTextScaled(batcher, "lives: " + world.lives, 20-3.5f, 0.5f, 20, 12);
 	}
 }
