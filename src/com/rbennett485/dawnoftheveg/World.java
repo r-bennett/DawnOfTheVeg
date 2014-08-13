@@ -68,12 +68,11 @@ public class World {
 					synchronized(World.this){
 						enemies.add(wave.seed.clone());
 					}
-				}
-
-				try {
-					Thread.sleep((long) (World.this.rand.nextFloat()*2000));
-				} catch (InterruptedException e) {
-					// nothing to do here - just generates the next enemy a little early
+					try {
+						Thread.sleep((long) (World.this.rand.nextFloat()*2000));
+					} catch (InterruptedException e) {
+						// nothing to do here - just generates the next enemy a little early
+					}
 				}
 				updating = false;
 				nextWave++;
