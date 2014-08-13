@@ -64,7 +64,7 @@ public class Assets {
 		towerD = new TextureRegion(towerImage, 40, 40, 40, 40);
 		projectileA = new TextureRegion(towerImage, 80, 0, 40, 40);
 		projectileB = new TextureRegion(towerImage, 40, 0, 40, 40);
-		projectileC = new TextureRegion(towerImage, 40, 40, 40, 40);
+		projectileC = new TextureRegion(towerImage, 80, 0, 40, 40);
 		projectileD = new TextureRegion(towerImage, 0, 40, 40, 40);
 		
 		healthBars = new Texture(game, "healthBars.png");
