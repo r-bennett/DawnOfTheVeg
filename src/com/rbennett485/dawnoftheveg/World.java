@@ -46,6 +46,7 @@ public class World {
 	public float timeElapsed;
 	public boolean updating;
 	public Vector2 patchMenuCentre;
+	private Level level;
 
 	private List<GameObject> removals; // used for storing all objects to be removed during an iteration of a collection
 
@@ -60,6 +61,7 @@ public class World {
 		rand = new Random();
 		updating = false;
 		removals = new ArrayList<>();
+		this.level = level;
 
 		waveCreator = new Runnable() {
 			public void run() {
@@ -99,6 +101,9 @@ public class World {
 			}
 			else if(enemies.isEmpty()) {
 				state = WORLD_STATE_COMPLETE;
+				if(Progress.NUMBER_OF_LEVELS>level.number) {
+					Progress.level[level.number] = true; 
+				}
 			}
 
 		updateEnemies(deltaTime);
