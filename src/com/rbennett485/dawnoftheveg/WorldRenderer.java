@@ -127,11 +127,11 @@ public class WorldRenderer {
 	private void renderHealthBars() {
 		int len = world.enemies.size();
 		for(int i = 0; i < len; i++) {
-			Orange orange = (Orange)world.enemies.get(i); // Will need to change this once more types of enemy are added
-			batcher.drawSprite(orange.position.x, orange.position.y + orange.bounds.height/2 + HEALTH_BAR_GAP, 
+			Enemy enemy = world.enemies.get(i); // Will need to change this once more types of enemy are added
+			batcher.drawSprite(enemy.position.x, enemy.position.y + enemy.bounds.height/2 + HEALTH_BAR_GAP, 
 					1f, HEALTH_BAR_HEIGHT, Assets.healthBarRed);
-			batcher.drawSprite(orange.position.x-0.5f*(orange.initialHp - orange.hp)/orange.initialHp, orange.position.y + orange.bounds.height/2 + HEALTH_BAR_GAP, 
-					(float)orange.hp/orange.initialHp, HEALTH_BAR_HEIGHT, Assets.healthBarGreen);
+			batcher.drawSprite(enemy.position.x-0.5f*(enemy.initialHp - enemy.hp)/enemy.initialHp, enemy.position.y + enemy.bounds.height/2 + HEALTH_BAR_GAP, 
+					(float)enemy.hp/enemy.initialHp, HEALTH_BAR_HEIGHT, Assets.healthBarGreen);
 		}
 	}
 
