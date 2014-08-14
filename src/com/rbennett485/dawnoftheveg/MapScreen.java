@@ -18,6 +18,7 @@ public class MapScreen extends GLScreen {
 	SpriteBatcher batcher;
 	Rectangle backBounds;
 	Rectangle level1Bounds;
+	Rectangle level2Bounds;
 	Vector2 touchPoint;
 
 	public MapScreen(Game game) {
@@ -27,6 +28,8 @@ public class MapScreen extends GLScreen {
 		backBounds = new Rectangle(760, 440, 40, 40);
 		level1Bounds = new Rectangle(100-Assets.font.glyphWidth/2, 
 				300-Assets.font.glyphHeight/2, 7*Assets.font.glyphWidth, Assets.font.glyphHeight);
+		level2Bounds = new Rectangle(200-Assets.font.glyphWidth/2, 
+				200-Assets.font.glyphHeight/2, 7*Assets.font.glyphWidth, Assets.font.glyphHeight);
 		touchPoint = new Vector2();
 	}
 
@@ -46,9 +49,14 @@ public class MapScreen extends GLScreen {
 					game.setScreen(new TitleScreen(game));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(level1Bounds, touchPoint)) {
+				if(OverlapTester.pointInRectangle(level1Bounds, touchPoint) && Progress.level[0]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new GameScreen(game, new Level1()));
+					return;
+				}
+				if(OverlapTester.pointInRectangle(level2Bounds, touchPoint) && Progress.level[1]) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new GameScreen(game, new Level2()));
 					return;
 				}
 			}
