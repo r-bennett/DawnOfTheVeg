@@ -15,7 +15,7 @@ public class Settings {
 	public static void load(FileIO files) {
 		BufferedReader in = null;
 		try {
-			in = new BufferedReader(new InputStreamReader(files.readFile(file)));
+			in = new BufferedReader(new InputStreamReader(files.readExternalFile(file)));
 			soundEnabled = Boolean.parseBoolean(in.readLine());
 		} catch (IOException ex) {
 			// resort to initialisation defaults
@@ -34,7 +34,7 @@ public class Settings {
 	public static void save(FileIO files) {
 		BufferedWriter out = null;
 		try {
-			out = new BufferedWriter(new OutputStreamWriter(files.writeFile(file)));
+			out = new BufferedWriter(new OutputStreamWriter(files.writeExternalFile(file)));
 			out.write(Boolean.toString(soundEnabled));
 			out.write("\n");
 		} catch (IOException ex) {

@@ -7,7 +7,11 @@ import java.io.OutputStream;
 public interface FileIO {
     public InputStream readAsset(String fileName) throws IOException;
 
-    public InputStream readFile(String fileName) throws IOException;
+    public InputStream readExternalFile(String fileName) throws IOException;
+    
+    public InputStream readInternalFile(String fileName) throws IOException;
 
-    public OutputStream writeFile(String fileName) throws IOException;
+    public OutputStream writeExternalFile(String fileName) throws IOException;
+    
+    public OutputStream writeInternalFile(String fileName) throws IOException;
 }

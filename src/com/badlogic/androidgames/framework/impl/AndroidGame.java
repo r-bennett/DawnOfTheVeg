@@ -44,7 +44,7 @@ public abstract class AndroidGame extends Activity implements Game {
 
         renderView = new AndroidFastRenderView(this, frameBuffer);
         graphics = new AndroidGraphics(getAssets(), frameBuffer);
-        fileIO = new AndroidFileIO(getAssets());
+        fileIO = new AndroidFileIO(getAssets(), this);
         audio = new AndroidAudio(this);
         input = new AndroidInput(this, renderView, scaleX, scaleY);
         screen = getStartScreen();

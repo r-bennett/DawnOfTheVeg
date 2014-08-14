@@ -51,7 +51,7 @@ public abstract class GLGame extends Activity implements Game, Renderer {
         setContentView(glView);
         
         glGraphics = new GLGraphics(glView);
-        fileIO = new AndroidFileIO(getAssets());
+        fileIO = new AndroidFileIO(getAssets(), this);
         audio = new AndroidAudio(this);
         input = new AndroidInput(this, glView, 1, 1);
         PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
