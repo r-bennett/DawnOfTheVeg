@@ -114,11 +114,12 @@ public class WorldRenderer {
 		TextureRegion region;
 		for(int i = 0; i < len; i++) {
 			enemy = world.enemies.get(i);
-			if(enemy instanceof Orange) {
+			if(enemy instanceof Orange) 
 				region = Assets.orange;
-			} else {
+			else if(enemy instanceof Grape)
 				region = Assets.grape;
-			}
+			else 
+				region = Assets.banana;
 			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.bounds.width, enemy.bounds.height, region); 
 		}
 	}
