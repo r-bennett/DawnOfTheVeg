@@ -8,6 +8,7 @@ import com.badlogic.androidgames.framework.math.Vector2;
 class Level1 extends Level {
 	public Level1() {
 		super(1000);
+		number = 1;
 	}
 
 	@Override

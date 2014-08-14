@@ -9,6 +9,7 @@ public abstract class Level {
 	public final List<Vector2> wayPoints;
 	public final List<Wave> waves;
 	public final List<Vector2> towerPatches;
+	public int number;
 	
 	public Level(int INITIAL_MONEY) {
 		this.INITIAL_MONEY = INITIAL_MONEY;
