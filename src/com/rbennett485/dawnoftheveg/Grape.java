@@ -5,10 +5,10 @@ import java.util.List;
 import com.badlogic.androidgames.framework.math.Vector2;
 
 public class Grape extends Enemy {
-	public static final float GRAPE_WIDTH = 1f;
-	public static final float GRAPE_HEIGHT = 1f;
+	public static final float GRAPE_WIDTH = 0.5f;
+	public static final float GRAPE_HEIGHT = 0.5f;
 	public static final float GRAPE_VELOCITY = 2f;
-	public static final int GRAPE_HP = 10;
+	public static final int GRAPE_HP = 5;
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
 	

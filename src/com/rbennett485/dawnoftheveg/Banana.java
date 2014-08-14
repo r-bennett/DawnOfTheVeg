@@ -8,7 +8,7 @@ public class Banana extends Enemy {
 	public static final float BANANA_WIDTH = 1f;
 	public static final float BANANA_HEIGHT = 1f;
 	public static final float BANANA_VELOCITY = 2f;
-	public static final int BANANA_HP = 20;
+	public static final int BANANA_HP = 10;
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
 
