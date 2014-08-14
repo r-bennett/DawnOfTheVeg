@@ -30,9 +30,6 @@ public class Progress {
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
-		} catch (NumberFormatException ex) {
-			// resort to initialisation defaults
-			Log.d("exception", "level progress load failed - NumberFormatException");
 		} finally {
 			try {
 				if (in != null) {
