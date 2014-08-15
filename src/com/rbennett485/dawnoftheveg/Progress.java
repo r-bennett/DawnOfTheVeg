@@ -18,6 +18,7 @@ public class Progress {
 	public static boolean[] level;
 	public static boolean[][] objective;
 	public static boolean[] shop;
+	public static int currentObjectiveSet;
 	public final static String file = ".dawnoftheveg";
 
 	static {
@@ -25,6 +26,7 @@ public class Progress {
 		level[0] = true;
 		objective = new boolean[NUMBER_OF_OBJECTIVE_SETS][NUMBER_OF_OBJECTIVES_PER_SET];
 		shop = new boolean[NUMBER_OF_SHOP_ITEMS];
+		currentObjectiveSet = 0;
 	}
 
 	public static void load(FileIO files) {
@@ -43,6 +45,7 @@ public class Progress {
 			for(int i=0 ; i<NUMBER_OF_SHOP_ITEMS ; i++) {
 				shop[i] = Boolean.parseBoolean(in.readLine());
 			}
+			currentObjectiveSet = Integer.parseInt(in.readLine());
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
@@ -53,6 +56,8 @@ public class Progress {
 				}
 			} catch (IOException ex) {
 				Log.d("exception", "BufferedReader failed to close - IOException");
+			} catch (NumberFormatException ex) {
+				Log.d("exception", "BufferedReader failed to read number - NumberFormatException");
 			}
 		}
 		Log.d("progress", level[0]+"");
