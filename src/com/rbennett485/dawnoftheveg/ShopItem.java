@@ -12,5 +12,15 @@ public class ShopItem {
 		this.region = region;
 		this.cost = cost;
 	}
+	
+	public boolean purchase() {
+		if(Progress.funds >= cost) {
+			Progress.shop[itemId] = true;
+			Progress.funds -= cost;
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }
