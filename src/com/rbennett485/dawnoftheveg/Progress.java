@@ -19,6 +19,7 @@ public class Progress {
 	public static boolean[][] objective;
 	public static boolean[] shop;
 	public static int currentObjectiveSet;
+	public static int funds;
 	public final static String file = ".dawnoftheveg";
 
 	static {
@@ -27,6 +28,7 @@ public class Progress {
 		objective = new boolean[NUMBER_OF_OBJECTIVE_SETS][NUMBER_OF_OBJECTIVES_PER_SET];
 		shop = new boolean[NUMBER_OF_SHOP_ITEMS];
 		currentObjectiveSet = 0;
+		funds = 0;
 	}
 
 	public static void load(FileIO files) {
@@ -46,6 +48,7 @@ public class Progress {
 				shop[i] = Boolean.parseBoolean(in.readLine());
 			}
 			currentObjectiveSet = Integer.parseInt(in.readLine());
+			funds = Integer.parseInt(in.readLine());
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
@@ -82,6 +85,8 @@ public class Progress {
 				out.write("\n");
 			}
 			out.write(Integer.toString(currentObjectiveSet));
+			out.write("\n");
+			out.write(Integer.toString(funds));
 			out.write("\n");
 		} catch (IOException ex) {
 			Log.d("exception", "level progress save failed - IOException");
