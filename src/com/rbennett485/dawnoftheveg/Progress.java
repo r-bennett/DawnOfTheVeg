@@ -52,15 +52,15 @@ public class Progress {
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
-		} finally {
+		}  catch (NumberFormatException ex) {
+			Log.d("exception", "BufferedReader failed to read number - NumberFormatException");
+		}  finally {
 			try {
 				if (in != null) {
 					in.close();
 				}
 			} catch (IOException ex) {
 				Log.d("exception", "BufferedReader failed to close - IOException");
-			} catch (NumberFormatException ex) {
-				Log.d("exception", "BufferedReader failed to read number - NumberFormatException");
 			}
 		}
 		Log.d("progress", level[0]+"");
