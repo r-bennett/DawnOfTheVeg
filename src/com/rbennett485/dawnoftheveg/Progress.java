@@ -71,6 +71,18 @@ public class Progress {
 				out.write(Boolean.toString(level[i]));
 				out.write("\n");
 			}
+			for(int i=0 ; i<NUMBER_OF_OBJECTIVE_SETS ; i++) {
+				for(int j=0 ; j<NUMBER_OF_OBJECTIVES_PER_SET ; j++) {
+					out.write(Boolean.toString(objective[i][j]));
+					out.write("\n");
+				}
+			}
+			for(int i=0 ; i<NUMBER_OF_SHOP_ITEMS ; i++) {
+				out.write(Boolean.toString(shop[i]));
+				out.write("\n");
+			}
+			out.write(Integer.toString(currentObjectiveSet));
+			out.write("\n");
 		} catch (IOException ex) {
 			Log.d("exception", "level progress save failed - IOException");
 		} finally {
