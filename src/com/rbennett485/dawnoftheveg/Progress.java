@@ -14,7 +14,6 @@ public class Progress {
 	public final static int NUMBER_OF_LEVELS = 2;
 	public final static int NUMBER_OF_OBJECTIVE_SETS = 4;
 	public final static int NUMBER_OF_OBJECTIVES_PER_SET = 3;
-	public final static int NUMBER_OF_SHOP_ITEMS = 1;
 	public static boolean[] level;
 	public static boolean[][] objective;
 	public static boolean[] shop;
@@ -26,7 +25,7 @@ public class Progress {
 		level = new boolean[NUMBER_OF_LEVELS];
 		level[0] = true;
 		objective = new boolean[NUMBER_OF_OBJECTIVE_SETS][NUMBER_OF_OBJECTIVES_PER_SET];
-		shop = new boolean[NUMBER_OF_SHOP_ITEMS];
+		shop = new boolean[Shop.NUMBER_OF_ITEMS];
 		currentObjectiveSet = 0;
 		funds = 0;
 	}
@@ -44,7 +43,7 @@ public class Progress {
 					objective[i][j] = Boolean.parseBoolean(in.readLine());
 				}
 			}
-			for(int i=0 ; i<NUMBER_OF_SHOP_ITEMS ; i++) {
+			for(int i=0 ; i<Shop.NUMBER_OF_ITEMS ; i++) {
 				shop[i] = Boolean.parseBoolean(in.readLine());
 			}
 			currentObjectiveSet = Integer.parseInt(in.readLine());
@@ -80,7 +79,7 @@ public class Progress {
 					out.write("\n");
 				}
 			}
-			for(int i=0 ; i<NUMBER_OF_SHOP_ITEMS ; i++) {
+			for(int i=0 ; i<Shop.NUMBER_OF_ITEMS ; i++) {
 				out.write(Boolean.toString(shop[i]));
 				out.write("\n");
 			}
