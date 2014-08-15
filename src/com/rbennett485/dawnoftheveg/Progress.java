@@ -12,14 +12,19 @@ import com.badlogic.androidgames.framework.FileIO;
 
 public class Progress {
 	public final static int NUMBER_OF_LEVELS = 2;
+	public final static int NUMBER_OF_OBJECTIVE_SETS = 4;
+	public final static int NUMBER_OF_OBJECTIVES_PER_SET = 3;
+	public final static int NUMBER_OF_SHOP_ITEMS = 1;
 	public static boolean[] level;
+	public static boolean[][] objective;
+	public static boolean[] shop;
 	public final static String file = ".dawnoftheveg";
 
 	static {
-		Log.d("progress", "init");
 		level = new boolean[NUMBER_OF_LEVELS];
 		level[0] = true;
-		Log.d("progress", level[0]+"");
+		objective = new boolean[NUMBER_OF_OBJECTIVE_SETS][NUMBER_OF_OBJECTIVES_PER_SET];
+		shop = new boolean[NUMBER_OF_SHOP_ITEMS];
 	}
 
 	public static void load(FileIO files) {
@@ -29,6 +34,14 @@ public class Progress {
 			in = new BufferedReader(new InputStreamReader(files.readInternalFile(file)));
 			for(int i=0 ; i<NUMBER_OF_LEVELS ; i++) {
 				level[i] = Boolean.parseBoolean(in.readLine());
+			}
+			for(int i=0 ; i<NUMBER_OF_OBJECTIVE_SETS ; i++) {
+				for(int j=0 ; j<NUMBER_OF_OBJECTIVES_PER_SET ; j++) {
+					objective[i][j] = Boolean.parseBoolean(in.readLine());
+				}
+			}
+			for(int i=0 ; i<NUMBER_OF_SHOP_ITEMS ; i++) {
+				shop[i] = Boolean.parseBoolean(in.readLine());
 			}
 		} catch (IOException ex) {
 			// resort to initialisation defaults
