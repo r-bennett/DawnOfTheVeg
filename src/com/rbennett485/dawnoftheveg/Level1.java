@@ -14,10 +14,10 @@ class Level1 extends Level {
 	@Override
 	public List<Vector2> wayPointGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(0,6));
-		result.add(new Vector2(10,3));
-		result.add(new Vector2(15,11));
-		result.add(new Vector2(20,6));
+		result.add(new Vector2(0,10));
+		result.add(new Vector2(8,10));
+		result.add(new Vector2(8,2));
+		result.add(new Vector2(20,2));
 		return result;
 	}
 
@@ -33,9 +33,9 @@ class Level1 extends Level {
 	@Override
 	public List<Vector2> towerPatchGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(5,3));
-		result.add(new Vector2(10,2));
-		result.add(new Vector2(15,8));
+		result.add(new Vector2(7,9));
+		result.add(new Vector2(9,1));
+		result.add(new Vector2(16,3));
 		
 		return result;
 	}
