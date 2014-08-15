@@ -47,6 +47,8 @@ public class Assets {
 	public static TextureRegion towerMenu;
 	public static TextureRegion complete;
 	public static TextureRegion gameOver;
+	public static TextureRegion buy;
+	public static TextureRegion bought;
 	
 	public static Texture fontImage;
 	public static Font font;
@@ -95,6 +97,8 @@ public class Assets {
 		towerMenu = new TextureRegion(icons, 160, 160, 80, 80);
 		complete = new TextureRegion(icons, 240, 0, 240, 120);
 		gameOver = new TextureRegion(icons, 257, 125, 240, 120);
+		buy = new TextureRegion(icons, 0, 260, 150, 50);
+		bought = new TextureRegion(icons, 0, 320, 150, 50);
 		
 		characters = new Texture(game, "characters.png");
 		orange = new TextureRegion(characters, 0, 0, 40, 40);
