@@ -16,11 +16,14 @@ public class Progress {
 	public final static String file = ".dawnoftheveg";
 
 	static {
+		Log.d("progress", "init");
 		level = new boolean[NUMBER_OF_LEVELS];
 		level[0] = true;
+		Log.d("progress", level[0]+"");
 	}
 
 	public static void load(FileIO files) {
+		Log.d("progress", "load");
 		BufferedReader in = null;
 		try {
 			in = new BufferedReader(new InputStreamReader(files.readInternalFile(file)));
@@ -39,6 +42,7 @@ public class Progress {
 				Log.d("exception", "BufferedReader failed to close - IOException");
 			}
 		}
+		Log.d("progress", level[0]+"");
 	}
 
 	public static void save(FileIO files) {

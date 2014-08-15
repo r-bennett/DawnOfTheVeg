@@ -3,6 +3,8 @@ package com.rbennett485.dawnoftheveg;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
@@ -19,6 +21,8 @@ public class DawnOfTheVeg extends GLGame {
 		super.onSurfaceCreated(gl, config);
 		if(firstTimeCreate) {
 			Settings.load(getFileIO());
+			Progress.load(getFileIO());
+			Log.d("progress", Progress.level[0] + ", " + Progress.level[1]);
 			Assets.load(this);
 			firstTimeCreate = false;
 		} else {
@@ -31,5 +35,6 @@ public class DawnOfTheVeg extends GLGame {
 		super.onPause();
 		if(Settings.soundEnabled)
 			Assets.music.pause();
+		Progress.save(getFileIO());
 	}
 }

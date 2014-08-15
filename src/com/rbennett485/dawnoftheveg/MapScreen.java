@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
@@ -23,6 +25,8 @@ public class MapScreen extends GLScreen {
 
 	public MapScreen(Game game) {
 		super(game);
+
+		Log.d("progress", Progress.level[0] + ", " + Progress.level[1]);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		backBounds = new Rectangle(760, 440, 40, 40);
