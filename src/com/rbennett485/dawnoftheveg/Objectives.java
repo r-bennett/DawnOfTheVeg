@@ -22,7 +22,6 @@ public class Objectives {
 		objectives[1][1][1] = "Destroy 50 enemies";
 		objectives[1][2][0] = "Help!";
 		objectives[1][2][1] = "Visit the help page";
-		
 	}
 	
 	
