@@ -1,6 +1,6 @@
 package com.rbennett485.dawnoftheveg.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,8 @@ import com.rbennett485.dawnoftheveg.Banana;
 import com.rbennett485.dawnoftheveg.Enemy;
 import com.rbennett485.dawnoftheveg.Grape;
 import com.rbennett485.dawnoftheveg.Orange;
+import com.rbennett485.dawnoftheveg.Projectile;
+import com.rbennett485.dawnoftheveg.ProjectileA;
 
 public class EnemyTest {
 	private Enemy orange;
@@ -40,6 +42,18 @@ public class EnemyTest {
 		assertEquals(orange.bounds.width, orangeClone.bounds.width, 0.0001);
 		assertEquals(orange.bounds.lowerLeft.x, orangeClone.bounds.lowerLeft.x, 0.0001);
 		assertEquals(orange.bounds.lowerLeft.y, orangeClone.bounds.lowerLeft.y, 0.0001);
+	}
+	
+	@Test
+	public void testHit() {
+		Projectile projA = new ProjectileA(new Vector2(0,0), new Vector2(1,1));
+		orange.hit(projA);
+		assertEquals(orange.hp, Orange.ORANGE_HP-ProjectileA.PROJECTILE_A_DAMAGE);
+		orange.hp = 4;
+		orange.hit(projA);
+		assertEquals(orange.hp, 0);
+		orange.hit(projA);
+		assertEquals(orange.hp, 0);
 	}
 
 }
