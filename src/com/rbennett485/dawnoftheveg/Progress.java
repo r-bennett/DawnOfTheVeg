@@ -75,7 +75,7 @@ public class Progress {
 			}
 			for(int i=0 ; i<NUMBER_OF_OBJECTIVE_SETS ; i++) {
 				for(int j=0 ; j<NUMBER_OF_OBJECTIVES_PER_SET ; j++) {
-					out.write(Boolean.toString(objective[i][j]));
+					out.write(Boolean.toString(objective[i][j]));					
 					out.write("\n");
 				}
 			}

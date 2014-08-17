@@ -36,7 +36,7 @@ public class WorldTest {
 	}
 	
 	@Test
-	public void test() {
+	public void updateTest() {
 		fail("Not yet implemented");
 	}
 

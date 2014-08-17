@@ -46,38 +46,47 @@ public class ObjectivesScreen extends GLScreen {
 			}
 		}
 	}
-	
-    @Override
-    public void present(float deltaTime) {
-        GL10 gl = glGraphics.getGL();        
-        gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        guiCam.setViewportAndMatrices();
-                
+
+	@Override
+	public void present(float deltaTime) {
+		GL10 gl = glGraphics.getGL();        
+		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		guiCam.setViewportAndMatrices();
+
 		gl.glEnable(GL10.GL_TEXTURE_2D);
-       
-        gl.glEnable(GL10.GL_BLEND);
-        gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-        
-        batcher.beginBatch(Assets.icons);          
-        batcher.drawSprite(400, 420, 68, 37, Assets.objectives);
-        batcher.drawSprite(780, 460, 40, 40, Assets.back);
-        batcher.endBatch();
-        
-        batcher.beginBatch(Assets.fontImage);
-        Assets.font.drawText(batcher, "1. Objective 1 here", 300, 300);
-        batcher.endBatch();
-        
-        gl.glDisable(GL10.GL_BLEND);
-    }
-    
+
+		gl.glEnable(GL10.GL_BLEND);
+		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+
+		batcher.beginBatch(Assets.icons);          
+		batcher.drawSprite(400, 420, 68, 37, Assets.objectives);
+		batcher.drawSprite(780, 460, 40, 40, Assets.back);
+		for(int i=0 ; i<3 ; i++) {
+			batcher.drawSprite(760, 360-140*i, 40, 40, Assets.tickBox);
+			if(Progress.objective[Progress.currentObjectiveSet][i]) 
+				batcher.drawSprite(760, 360-140*i, 40, 40, Assets.tickBox);
+		}
+		batcher.endBatch();
+
+		batcher.beginBatch(Assets.fontImage);
+		for(int i=0 ; i<3 ; i++) {
+			Assets.font.drawText(batcher, (i+1) +". " + Objectives.objectives[Progress.currentObjectiveSet][i][0], 100, 360-140*i);
+			Assets.font.drawText(batcher, Objectives.objectives[Progress.currentObjectiveSet][i][1], 100, 320-140*i);
+
+		}
+		batcher.endBatch();
+
+		gl.glDisable(GL10.GL_BLEND);
+	}
+
 	@Override
 	public void pause() {
 	}
-	
+
 	@Override
 	public void resume() {
 	}
-	
+
 	@Override 
 	public void dispose() {
 	}
