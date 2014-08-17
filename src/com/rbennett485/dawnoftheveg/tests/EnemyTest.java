@@ -46,14 +46,33 @@ public class EnemyTest {
 	
 	@Test
 	public void testHit() {
+		testHitHelper(orange);
+	}
+	
+	public void testHitHelper(Enemy enemy) {
+		int hp = enemy.hp;
 		Projectile projA = new ProjectileA(new Vector2(0,0), new Vector2(1,1));
-		orange.hit(projA);
-		assertEquals(orange.hp, Orange.ORANGE_HP-ProjectileA.PROJECTILE_A_DAMAGE);
-		orange.hp = 4;
-		orange.hit(projA);
-		assertEquals(orange.hp, 0);
-		orange.hit(projA);
-		assertEquals(orange.hp, 0);
+		enemy.hit(projA);
+		assertEquals(enemy.hp, hp-ProjectileA.PROJECTILE_A_DAMAGE<0 ?
+				0 : hp-ProjectileA.PROJECTILE_A_DAMAGE);
+		enemy.hp = 4;
+		enemy.hit(projA);
+		assertEquals(enemy.hp, 0);
+		enemy.hit(projA);
+		assertEquals(enemy.hp, 0);
 	}
 
+	
+	@Test
+	public void testUpdate() {
+		testUpdateHelper(orange);
+		testUpdateHelper(grape);
+		testUpdateHelper(banana);
+	}
+	
+	public void testUpdateHelper(Enemy enemy) {
+		enemy.update(1);
+		assertEquals(enemy.velocity.x*1,enemy.position.x, 0.0001);
+		assertEquals(10 + enemy.velocity.y*1,enemy.position.y, 0.0001);
+	}
 }
