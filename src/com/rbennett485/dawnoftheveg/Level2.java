@@ -3,12 +3,15 @@ package com.rbennett485.dawnoftheveg;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.math.Vector2;
 
 public class Level2 extends Level {
 	public Level2() {
-		super(1000, Assets.level2backgroundRegion);
+		super(1000, Assets.level2background, Assets.level2backgroundRegion);
 		number = 2;
+		Log.d("background", "making level 2");
 	}
 
 	@Override
