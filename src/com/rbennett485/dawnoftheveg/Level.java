@@ -2,6 +2,7 @@ package com.rbennett485.dawnoftheveg;
 
 import java.util.List;
 
+import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.math.Vector2;
 
 public abstract class Level {
@@ -9,9 +10,11 @@ public abstract class Level {
 	public final List<Vector2> wayPoints;
 	public final List<Wave> waves;
 	public final List<Vector2> towerPatches;
+	public final TextureRegion background;
 	public int number;
 	
-	public Level(int INITIAL_MONEY) {
+	public Level(int INITIAL_MONEY, TextureRegion background) {
+		this.background = background;
 		this.INITIAL_MONEY = INITIAL_MONEY;
 		this.wayPoints = wayPointGenerator();
 		this.waves = waveGenerator();
