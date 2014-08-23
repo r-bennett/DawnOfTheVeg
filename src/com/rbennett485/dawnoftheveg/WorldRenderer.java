@@ -7,7 +7,6 @@ import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
-import com.badlogic.androidgames.framework.math.Vector2;
 
 public class WorldRenderer {
 	static final float FRUSTUM_WIDTH = 20;
