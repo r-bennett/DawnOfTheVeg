@@ -46,7 +46,7 @@ public class World {
 	public float timeElapsed;
 	public boolean updating;
 	public Vector2 patchMenuCentre;
-	private Level level;
+	public Level level;
 
 	private List<GameObject> removals; // used for storing all objects to be removed during an iteration of a collection
 
