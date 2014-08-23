@@ -26,6 +26,15 @@ public class Assets {
 	public static Texture background;
 	public static TextureRegion backgroundRegion;
 	
+	public static Texture level1background;
+	public static TextureRegion level1backgroundRegion;
+	public static Texture level2background;
+	public static TextureRegion level2backgroundRegion;
+	public static Texture level3background;
+	public static TextureRegion level3backgroundRegion;
+	public static Texture level4background;
+	public static TextureRegion level4backgroundRegion;
+	
 	public static Texture characters;
 	public static TextureRegion orange;
 	public static TextureRegion grape;
@@ -74,6 +83,15 @@ public class Assets {
 		healthBars = new Texture(game, "healthBars.png");
 		healthBarRed = new TextureRegion(healthBars, 0, 0, 32, 3);
 		healthBarGreen = new TextureRegion(healthBars, 0, 5, 32, 3);
+		
+		level1background = new Texture(game, "level_1_background.png");
+		level1backgroundRegion = new TextureRegion(level1background, 0, 0, 800, 480);
+		level2background = new Texture(game, "level_2_background.png");
+		level2backgroundRegion = new TextureRegion(level2background, 0, 0, 800, 480);
+		level3background = new Texture(game, "level_3_background.png");
+		level3backgroundRegion = new TextureRegion(level3background, 0, 0, 800, 480);
+		level4background = new Texture(game, "level_4_background.png");
+		level4backgroundRegion = new TextureRegion(level4background, 0, 0, 800, 480);
 		
 		background = new Texture(game,"background.png");
 		backgroundRegion = new TextureRegion(background, 0, 0, 800, 480);
@@ -125,6 +143,11 @@ public class Assets {
 		icons.reload();
 		fontImage.reload();
 		characters.reload();
+		level1background.reload();
+		level2background.reload();
+		level3background.reload();
+		level4background.reload();
+		
 		
 		if(Settings.soundEnabled)
 			music.play();
