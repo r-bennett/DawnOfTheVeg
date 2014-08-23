@@ -7,7 +7,7 @@ import com.badlogic.androidgames.framework.math.Vector2;
 
 public class Level2 extends Level {
 	public Level2() {
-		super(1000);
+		super(1000, Assets.level2backgroundRegion);
 		number = 2;
 	}
 
