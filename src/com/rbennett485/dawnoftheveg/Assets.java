@@ -64,6 +64,10 @@ public class Assets {
 	public static Texture fontImage;
 	public static Font font;
 	
+	public static Texture helpImage;
+	public static TextureRegion[] helpRegion;
+	public static int NUMBER_OF_HELP_REGIONS = 2;
+	
 	public static Music music;
 	
 	public static Sound clickSound;
@@ -127,6 +131,11 @@ public class Assets {
 		
 		fontImage = new Texture(game, "font2.png");
 		font = new Font(fontImage, 0, 0, 16, 16, 32);
+		
+		helpImage = new Texture(game, "help.png");
+		helpRegion =  new TextureRegion[NUMBER_OF_HELP_REGIONS];
+		helpRegion[0] =  new TextureRegion(helpImage, 0, 0, 560, 320);
+		helpRegion[1] = new TextureRegion(helpImage, 560, 0, 560, 320);
 		
 		music = game.getAudio().newMusic("music.mp3");
 		music.setLooping(true);
