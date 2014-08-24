@@ -54,13 +54,14 @@ public class ShopScreen extends GLScreen {
 				}
 				if(OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					currentItem = (currentItem + 1) % Shop.NUMBER_OF_ITEMS;
+					currentItem = ((currentItem + 1) % Shop.NUMBER_OF_ITEMS + Shop.NUMBER_OF_ITEMS)
+							% Shop.NUMBER_OF_ITEMS;
 					return;
 				}
 				if(OverlapTester.pointInRectangle(previousBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new TitleScreen(game));
-					currentItem = (currentItem - 1) % Shop.NUMBER_OF_ITEMS;
+					currentItem = ((currentItem - 1) % Shop.NUMBER_OF_ITEMS + Shop.NUMBER_OF_ITEMS)
+							% Shop.NUMBER_OF_ITEMS;
 					return;
 				}
 				if(!Progress.shop[currentItem] 
