@@ -32,10 +32,10 @@ public class WorldRenderer {
 	}
 
 	private void renderBackground() {
-		batcher.beginBatch(Assets.level1background);
+		batcher.beginBatch(Assets.background);
 		batcher.drawSprite(cam.position.x, cam.position.y,
 				FRUSTUM_WIDTH, FRUSTUM_HEIGHT, 
-				world.level.background);
+				Assets.backgroundRegion);
 		batcher.endBatch();
 	}
 
