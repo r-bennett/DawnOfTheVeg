@@ -58,7 +58,7 @@ public class TitleScreen extends GLScreen {
 				}
 				if(OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new HelpScreen1(game));
+					game.setScreen(new HelpScreen(game));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(playBounds, touchPoint)) {
@@ -102,10 +102,6 @@ public class TitleScreen extends GLScreen {
 		batcher.drawSprite(780, 460, 40, 40, Assets.help);
 		batcher.drawSprite(20, 460, 40, 40, Settings.soundEnabled?Assets.soundOn:Assets.soundOff);
 		
-		batcher.endBatch();
-		
-		batcher.beginBatch(Assets.fontImage);
-		Assets.font.drawText(batcher, "Just some testing 12345 $ ", 300, 100);
 		batcher.endBatch();
 		
 		gl.glDisable(GL10.GL_BLEND);		
