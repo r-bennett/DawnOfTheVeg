@@ -67,7 +67,13 @@ public class WorldRenderer {
 	}
 
 	private void renderTowers() {
-		int len = world.towers.size();
+		int len = world.towerPatches.size();
+		for(int i=0 ; i<len ; i++) {
+			Vector2 patch = world.towerPatches.get(i);
+			batcher.drawSprite(patch.x, patch.y, 1, 1, Assets.patch);
+		}
+
+		len = world.towers.size();
 		GameObject tower;
 		TextureRegion region;
 		for(int i=0 ; i<len ; i++) {
