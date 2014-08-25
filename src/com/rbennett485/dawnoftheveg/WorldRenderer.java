@@ -113,17 +113,10 @@ public class WorldRenderer {
 
 	private void renderEnemies() {
 		int len = world.enemies.size();
-		GameObject enemy;
-		TextureRegion region;
+		Enemy enemy;
 		for(int i = 0; i < len; i++) {
 			enemy = world.enemies.get(i);
-			if(enemy instanceof Orange) 
-				region = Assets.orange;
-			else if(enemy instanceof Grape)
-				region = Assets.grape;
-			else 
-				region = Assets.banana;
-			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.bounds.width, enemy.bounds.height, region); 
+			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.bounds.width, enemy.bounds.height, enemy.region); 
 		}
 	}
 
