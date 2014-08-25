@@ -85,14 +85,14 @@ public class Assets {
 		pea = new TextureRegion(sprites, 472, 168, 80, 80);
 		back = new TextureRegion(sprites, 180, 1, 80, 80);
 		help = new TextureRegion(sprites, 145, 0, 35, 80);
-		menu = new TextureRegion(sprites, 255, 304, 290, 240);
-		objectives = new TextureRegion(sprites, 254, 469, 291, 74);
+		menu = new TextureRegion(sprites, 255, 311, 290, 240);
+		objectives = new TextureRegion(sprites, 254, 476, 291, 74);
 		pauseMenu = new TextureRegion(sprites, 0, 703, 313, 304);
 		rightArrow = new TextureRegion(sprites, 0, 81, 60, 200);
 		soundOff = new TextureRegion(sprites, 54, 0, 50, 80);
 		soundOn = new TextureRegion(sprites, 54, 0, 90, 80);
 		title = new TextureRegion(sprites, 60, 82, 375, 224);
-		shop = new TextureRegion(sprites, 306, 386, 171, 71);
+		shop = new TextureRegion(sprites, 306, 393, 171, 71);
 		callWave = new TextureRegion(sprites, 376, 1, 80, 80);
 		complete = new TextureRegion(sprites, 486, 81, 291, 73);
 		gameOver = new TextureRegion(sprites, 486, 1, 291, 82);
@@ -137,7 +137,8 @@ public class Assets {
 		level2background.reload();
 		level3background.reload();
 		level4background.reload();
-		sprites.reload();		
+		sprites.reload();
+		helpImage.reload();
 		
 		if(Settings.soundEnabled)
 			music.play();
