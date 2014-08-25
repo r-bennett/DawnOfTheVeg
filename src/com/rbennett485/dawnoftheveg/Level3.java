@@ -27,7 +27,7 @@ public class Level3 extends Level {
 	public List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
 		result.add(new Wave(0, new Grape(wayPoints), 10));
-		result.add(new Wave(10, new Banana(wayPoints), 8));
+		result.add(new Wave(10, new Chilli(wayPoints), 8));
 		result.add(new Wave(20, new Orange(wayPoints), 3));
 		return result;
 	}

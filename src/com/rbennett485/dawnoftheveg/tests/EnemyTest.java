@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.badlogic.androidgames.framework.math.Vector2;
-import com.rbennett485.dawnoftheveg.Banana;
+import com.rbennett485.dawnoftheveg.Chilli;
 import com.rbennett485.dawnoftheveg.Enemy;
 import com.rbennett485.dawnoftheveg.Grape;
 import com.rbennett485.dawnoftheveg.Orange;
@@ -29,7 +29,7 @@ public class EnemyTest {
 		waypoints.add(new Vector2(0,10));
 		waypoints.add(new Vector2(2,12));
 		orange = new Orange(waypoints);
-		banana = new Banana(waypoints);
+		banana = new Chilli(waypoints);
 		grape = new Grape(waypoints);
 	}
 	

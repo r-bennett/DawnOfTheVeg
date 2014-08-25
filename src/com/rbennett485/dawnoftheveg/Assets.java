@@ -41,6 +41,7 @@ public class Assets {
 	public static TextureRegion bought;
 	public static TextureRegion tickBox;
 	public static TextureRegion tick;
+	public static TextureRegion towerMenu;
 	
 	public static Font font;
 	
@@ -99,6 +100,9 @@ public class Assets {
 		bought = new TextureRegion(sprites, 0, 559, 291, 72);
 		tickBox = new TextureRegion(sprites, 456, 0, 30, 30);
 		tick = new TextureRegion(sprites, 456, 30, 25, 23);
+		// Remove this only temporary botch ********************************************************************************
+		towerMenu = new TextureRegion(sprites, 456, 30, 25, 23);
+		
 		
 		font = new Font(sprites, 1, 307, 16, 16, 32);
 				
