@@ -22,7 +22,7 @@ public class TitleScreen extends GLScreen {
 	Rectangle shopBounds;
 	Rectangle objectivesBounds;
 	Vector2 touchPoint;
-	
+
 	public TitleScreen(Game game) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
@@ -34,19 +34,19 @@ public class TitleScreen extends GLScreen {
 		objectivesBounds = new Rectangle(400-60/2, 200, 60, 89/3f);
 		touchPoint = new Vector2();
 	}
-	
+
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
-		
+
 		int len = touchEvents.size();
 		for(int i=0 ; i<len ; i++) {
 			TouchEvent event = touchEvents.get(i);
 			if(event.type == TouchEvent.TOUCH_UP) {
 				touchPoint.set(event.x, event.y);
 				guiCam.touchToWorld(touchPoint);
-				
+
 				if(OverlapTester.pointInRectangle(soundBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					Settings.soundEnabled = !Settings.soundEnabled;
@@ -79,43 +79,46 @@ public class TitleScreen extends GLScreen {
 			}
 		}
 	}
-	
+
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		guiCam.setViewportAndMatrices();
-		
+
 		gl.glEnable(GL10.GL_TEXTURE_2D);
-		
+
 		batcher.beginBatch(Assets.background);
 		batcher.drawSprite(400, 240, 800, 480, Assets.backgroundRegion);
 		batcher.endBatch();
-		
+
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-		
+
 		batcher.beginBatch(Assets.sprites);
-		
-		batcher.drawSprite(400, 340, 179, 42, Assets.title);
-		batcher.drawSprite(400, 200+89/2f, 60, 89, Assets.menu);
-		batcher.drawSprite(780, 460, 40, 40, Assets.help);
-		batcher.drawSprite(20, 460, 40, 40, Settings.soundEnabled?Assets.soundOn:Assets.soundOff);
-		
+
+		batcher.drawSprite(400, 360, 375, 224, Assets.title);
+		batcher.drawSprite(400, 120, 290, 240, Assets.menu);
+		batcher.drawSprite(782.5f, 440, 35, 80, Assets.help);
+		if(Settings.soundEnabled)
+			batcher.drawSprite(45, 440, 90, 80, Assets.soundOn);
+		else
+			batcher.drawSprite(25, 440, 50, 80, Assets.soundOff);
+
 		batcher.endBatch();
-		
+
 		gl.glDisable(GL10.GL_BLEND);		
 	}
-	
+
 	@Override
 	public void pause() {
 		Settings.save(game.getFileIO());
 	}
-	
+
 	@Override
 	public void resume() {
 	}
-	
+
 	@Override 
 	public void dispose() {
 	}
