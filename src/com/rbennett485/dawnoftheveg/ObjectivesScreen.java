@@ -25,7 +25,7 @@ public class ObjectivesScreen extends GLScreen {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 1000);
-		backBounds = new Rectangle(760, 440, 40, 40);
+		backBounds = new Rectangle(720, 400, 80, 80);
 		touchPoint = new Vector2();
 	}
 
@@ -61,8 +61,8 @@ public class ObjectivesScreen extends GLScreen {
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
 		batcher.beginBatch(Assets.sprites);          
-		batcher.drawSprite(400, 420, 68, 37, Assets.objectives);
-		batcher.drawSprite(780, 460, 40, 40, Assets.back);
+		batcher.drawSprite(400, 420, 291, 74, Assets.objectives);
+		batcher.drawSprite(760, 440, 80, 80, Assets.back);
 		for(int i=0 ; i<3 ; i++) {
 			batcher.drawSprite(760, 360-140*i, 40, 40, Assets.tickBox);
 			if(Progress.objective[Progress.currentObjectiveSet][i]) 
