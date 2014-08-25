@@ -27,11 +27,11 @@ public class TitleScreen extends GLScreen {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
-		soundBounds = new Rectangle(0, 440, 40, 40);
-		helpBounds = new Rectangle(760,440,40,40);
-		playBounds = new Rectangle(400-60/2, 200+(2*89)/3f, 60, 89/3f);
-		shopBounds = new Rectangle(400-60/2, 200+89/3f, 60, 89/3f);
-		objectivesBounds = new Rectangle(400-60/2, 200, 60, 89/3f);
+		soundBounds = new Rectangle(0, 400, 90, 80);
+		helpBounds = new Rectangle(765,400,35,80);
+		playBounds = new Rectangle(355, 1600, 290, 80);
+		shopBounds = new Rectangle(355, 80, 290, 80);
+		objectivesBounds = new Rectangle(355, 0, 290, 80);
 		touchPoint = new Vector2();
 	}
 
