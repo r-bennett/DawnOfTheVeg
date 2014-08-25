@@ -22,6 +22,7 @@ public class Orange extends Enemy {
 		initialHp = ORANGE_HP;
 		hp = initialHp;
 		nextWayPoint = 0; // create the orange at waypoint 0, have it head to waypoint 1
+		this.region = Assets.orange;
 	}
 
 	public void update(float deltaTime) {

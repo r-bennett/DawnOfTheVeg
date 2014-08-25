@@ -22,6 +22,7 @@ public class Grape extends Enemy {
 		initialHp = GRAPE_HP;
 		hp = initialHp;
 		nextWayPoint = 0; // create the enemy at waypoint 0, have it head to waypoint 1
+		this.region = Assets.grape;
 	}
 
 	public void update(float deltaTime) {

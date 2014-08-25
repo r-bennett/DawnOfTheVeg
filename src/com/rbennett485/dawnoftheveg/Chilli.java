@@ -22,6 +22,7 @@ public class Chilli extends Enemy {
 		initialHp = CHILLI_HP;
 		hp = initialHp;
 		nextWayPoint = 0; // create the banana at waypoint 0, have it head to waypoint 1
+		this.region = Assets.chilli;
 	}
 
 	public void update(float deltaTime) {
