@@ -8,7 +8,7 @@ import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
 public class Assets {
-	public static Texture towerImage;
+	public static Texture sprites;
 	public static TextureRegion patch;
 	public static TextureRegion towerA;
 	public static TextureRegion towerB;
@@ -18,10 +18,31 @@ public class Assets {
 	public static TextureRegion projectileB;
 	public static TextureRegion projectileC;
 	public static TextureRegion projectileD;
-	
-	public static Texture healthBars;
 	public static TextureRegion healthBarRed;
 	public static TextureRegion healthBarGreen;
+	public static TextureRegion orange;
+	public static TextureRegion grape;
+	public static TextureRegion chilli;
+	public static TextureRegion pea;
+	public static TextureRegion back;
+	public static TextureRegion help;
+	public static TextureRegion menu;
+	public static TextureRegion objectives;
+	public static TextureRegion pauseMenu;
+	public static TextureRegion rightArrow;
+	public static TextureRegion soundOff;
+	public static TextureRegion soundOn;
+	public static TextureRegion title;
+	public static TextureRegion shop;
+	public static TextureRegion callWave;
+	public static TextureRegion complete;
+	public static TextureRegion gameOver;
+	public static TextureRegion buy;
+	public static TextureRegion bought;
+	public static TextureRegion tickBox;
+	public static TextureRegion tick;
+	
+	public static Font font;
 	
 	public static Texture background;
 	public static TextureRegion backgroundRegion;
@@ -34,36 +55,7 @@ public class Assets {
 	public static TextureRegion level3backgroundRegion;
 	public static Texture level4background;
 	public static TextureRegion level4backgroundRegion;
-	
-	public static Texture characters;
-	public static TextureRegion orange;
-	public static TextureRegion grape;
-	public static TextureRegion banana;
-	
-	public static Texture icons;
-	public static TextureRegion back;
-	public static TextureRegion help;
-	public static TextureRegion menu;
-	public static TextureRegion objectives;
-	public static TextureRegion pauseMenu;
-	public static TextureRegion rightArrow;
-	public static TextureRegion soundOff;
-	public static TextureRegion soundOn;
-	public static TextureRegion tip;
-	public static TextureRegion title;
-	public static TextureRegion shop;
-	public static TextureRegion callWave;
-	public static TextureRegion towerMenu;
-	public static TextureRegion complete;
-	public static TextureRegion gameOver;
-	public static TextureRegion buy;
-	public static TextureRegion bought;
-	public static TextureRegion tickBox;
-	public static TextureRegion tick;
-	
-	public static Texture fontImage;
-	public static Font font;
-	
+
 	public static Texture helpImage;
 	public static TextureRegion[] helpRegion;
 	public static int NUMBER_OF_HELP_REGIONS = 2;
@@ -73,21 +65,43 @@ public class Assets {
 	public static Sound clickSound;
 	
 	public static void load(GLGame game) {
-		towerImage = new Texture(game, "towerImage.png");
-		patch = new TextureRegion(towerImage, 0, 0, 40, 40);
-		towerA = new TextureRegion(towerImage, 40, 0, 40, 40);
-		towerB = new TextureRegion(towerImage, 80, 0, 40, 40);
-		towerC = new TextureRegion(towerImage, 0, 40, 40, 40);
-		towerD = new TextureRegion(towerImage, 40, 40, 40, 40);
-		projectileA = new TextureRegion(towerImage, 80, 0, 40, 40);
-		projectileB = new TextureRegion(towerImage, 40, 0, 40, 40);
-		projectileC = new TextureRegion(towerImage, 80, 0, 40, 40);
-		projectileD = new TextureRegion(towerImage, 0, 40, 40, 40);
 		
-		healthBars = new Texture(game, "healthBars.png");
-		healthBarRed = new TextureRegion(healthBars, 0, 0, 32, 3);
-		healthBarGreen = new TextureRegion(healthBars, 0, 5, 32, 3);
+		sprites = new Texture(game, "spritesheet.png");
+		patch = new TextureRegion(sprites, 336, 0, 40, 40);
+		towerA = new TextureRegion(sprites, 871, 0, 50, 81);
+		towerB = new TextureRegion(sprites, 930, 90, 80, 61);
+		towerC = new TextureRegion(sprites, 811, 0, 54, 80);
+		towerD = new TextureRegion(sprites, 929, 0, 76, 80);
+		projectileA = new TextureRegion(sprites, 782, 2, 22, 10);
+		projectileB = new TextureRegion(sprites, 783, 37, 4, 4);
+		projectileC = new TextureRegion(sprites, 783, 18, 19, 4);
+		projectileD = new TextureRegion(sprites, 783, 26, 17, 5);
+		healthBarRed = new TextureRegion(sprites, 281, 0, 32, 3);
+		healthBarGreen = new TextureRegion(sprites, 281, 5, 32, 3);
+		orange = new TextureRegion(sprites, 559, 160, 80, 88);
+		grape = new TextureRegion(sprites, 650, 164, 52, 81);
+		chilli = new TextureRegion(sprites, 715, 164, 56, 81);
+		pea = new TextureRegion(sprites, 472, 168, 80, 80);
+		back = new TextureRegion(sprites, 180, 1, 80, 80);
+		help = new TextureRegion(sprites, 145, 0, 35, 80);
+		menu = new TextureRegion(sprites, 255, 304, 290, 240);
+		objectives = new TextureRegion(sprites, 254, 469, 291, 74);
+		pauseMenu = new TextureRegion(sprites, 0, 703, 313, 304);
+		rightArrow = new TextureRegion(sprites, 0, 81, 60, 200);
+		soundOff = new TextureRegion(sprites, 54, 0, 50, 80);
+		soundOn = new TextureRegion(sprites, 54, 0, 90, 80);
+		title = new TextureRegion(sprites, 60, 82, 375, 224);
+		shop = new TextureRegion(sprites, 306, 386, 171, 71);
+		callWave = new TextureRegion(sprites, 376, 1, 80, 80);
+		complete = new TextureRegion(sprites, 486, 81, 291, 73);
+		gameOver = new TextureRegion(sprites, 486, 1, 291, 82);
+		buy = new TextureRegion(sprites, 1, 631, 291, 72);
+		bought = new TextureRegion(sprites, 0, 559, 291, 72);
+		tickBox = new TextureRegion(sprites, 456, 0, 30, 30);
+		tick = new TextureRegion(sprites, 456, 30, 25, 23);
 		
+		font = new Font(sprites, 1, 307, 16, 16, 32);
+				
 		level1background = new Texture(game, "level_1_background.png");
 		level1backgroundRegion = new TextureRegion(level1background, 0, 0, 800, 480);
 		level2background = new Texture(game, "level_2_background.png");
@@ -98,40 +112,8 @@ public class Assets {
 		level4backgroundRegion = new TextureRegion(level4background, 0, 0, 800, 480);
 		
 		background = new Texture(game,"background.png");
-		backgroundRegion = new TextureRegion(background, 0, 0, 800, 480);
-		
-		characters = new Texture(game, "characters.png");
-		orange = new TextureRegion(characters, 0, 0, 40, 40);
-		grape = new TextureRegion(characters, 40, 0, 40, 40);
-		banana = new TextureRegion(characters, 80, 0, 40, 40);
-		
-		icons = new Texture(game, "icons.png");
-		back = new TextureRegion(icons, 0, 180, 40, 40);
-		help = new TextureRegion(icons, 68, 143, 40, 40);
-		menu = new TextureRegion(icons, 132, 42, 60, 89);
-		objectives = new TextureRegion(icons, 0, 143, 68, 37);
-		pauseMenu = new TextureRegion(icons, 0, 42, 132, 101);
-		rightArrow = new TextureRegion(icons, 192, 39, 40, 40);
-		soundOff = new TextureRegion(icons, 40, 183, 40, 40);
-		soundOn = new TextureRegion(icons, 108, 143, 40, 40);
-		tip = new TextureRegion(icons, 179, 0, 42, 39);
-		title = new TextureRegion(icons, 0, 0, 179, 42);
-		shop = new TextureRegion(icons, 130, 73, 47, 30);
-		callWave = new TextureRegion(icons, 88, 195, 40, 40);
-		towerMenu = new TextureRegion(icons, 160, 160, 80, 80);
-		complete = new TextureRegion(icons, 240, 0, 240, 120);
-		gameOver = new TextureRegion(icons, 257, 125, 240, 120);
-		buy = new TextureRegion(icons, 0, 260, 150, 50);
-		bought = new TextureRegion(icons, 0, 320, 150, 50);
-		tickBox = new TextureRegion(icons, 170, 260, 40, 40);
-		tick = new TextureRegion(icons, 170, 320, 40, 40);
-		
-		characters = new Texture(game, "characters.png");
-		orange = new TextureRegion(characters, 0, 0, 40, 40);
-		
-		fontImage = new Texture(game, "font2.png");
-		font = new Font(fontImage, 0, 0, 16, 16, 32);
-		
+		backgroundRegion = new TextureRegion(background, 0, 0, 4, 4);
+				
 		helpImage = new Texture(game, "help.png");
 		helpRegion =  new TextureRegion[NUMBER_OF_HELP_REGIONS];
 		helpRegion[0] =  new TextureRegion(helpImage, 0, 0, 560, 320);
@@ -146,17 +128,12 @@ public class Assets {
 	}
 	
 	public static void reload() {
-		towerImage.reload();
-		healthBars.reload();
 		background.reload();
-		icons.reload();
-		fontImage.reload();
-		characters.reload();
 		level1background.reload();
 		level2background.reload();
 		level3background.reload();
 		level4background.reload();
-		
+		sprites.reload();		
 		
 		if(Settings.soundEnabled)
 			music.play();
