@@ -1,8 +1,11 @@
 package com.rbennett485.dawnoftheveg;
 
 import com.badlogic.androidgames.framework.DynamicGameObject;
+import com.badlogic.androidgames.framework.gl.TextureRegion;
 
 public class Enemy extends DynamicGameObject {
+	
+	public TextureRegion region;
 
 	public Enemy(float x, float y, float width, float height) {
 		super(x, y, width, height);
