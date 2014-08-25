@@ -77,11 +77,8 @@ public class MapScreen extends GLScreen {
         gl.glEnable(GL10.GL_BLEND);
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
         
-        batcher.beginBatch(Assets.icons);
+        batcher.beginBatch(Assets.sprites);
         batcher.drawSprite(780, 460, 40, 40, Assets.back);
-        batcher.endBatch();
-        
-        batcher.beginBatch(Assets.fontImage);
         Assets.font.drawText(batcher, "Level 1", 100, 300);
         Assets.font.drawText(batcher, "Level 2", 200, 200);
         batcher.endBatch();
