@@ -85,10 +85,9 @@ public class HelpScreen extends GLScreen {
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 		
-		batcher.beginBatch(Assets.icons);
+		batcher.beginBatch(Assets.sprites);
 		batcher.drawSprite(740, 240, 40, 40, Assets.rightArrow);
 		batcher.drawSprite(60, 240, -40, 40, Assets.rightArrow);	//use -ve width for left arrow
-		batcher.drawSprite(400, 420, 42, 39, Assets.tip);
 		batcher.drawSprite(780, 460, 40, 40, Assets.back);
 		batcher.endBatch();
 		
