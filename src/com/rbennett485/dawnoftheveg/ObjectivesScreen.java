@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
@@ -22,7 +24,7 @@ public class ObjectivesScreen extends GLScreen {
 	public ObjectivesScreen(Game game) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
-		batcher = new SpriteBatcher(glGraphics, 100);
+		batcher = new SpriteBatcher(glGraphics, 1000);
 		backBounds = new Rectangle(760, 440, 40, 40);
 		touchPoint = new Vector2();
 	}
@@ -66,7 +68,7 @@ public class ObjectivesScreen extends GLScreen {
 			if(Progress.objective[Progress.currentObjectiveSet][i]) 
 				batcher.drawSprite(760, 360-140*i, 40, 40, Assets.tickBox);
 		}
-		
+				
 		for(int i=0 ; i<3 ; i++) {
 			Assets.font.drawText(batcher, (i+1) +". " + Objectives.objectives[Progress.currentObjectiveSet][i][0], 100, 360-140*i);
 			Assets.font.drawText(batcher, Objectives.objectives[Progress.currentObjectiveSet][i][1], 100, 320-140*i);
