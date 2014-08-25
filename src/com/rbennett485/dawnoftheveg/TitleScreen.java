@@ -29,9 +29,9 @@ public class TitleScreen extends GLScreen {
 		batcher = new SpriteBatcher(glGraphics, 100);
 		soundBounds = new Rectangle(0, 400, 90, 80);
 		helpBounds = new Rectangle(765,400,35,80);
-		playBounds = new Rectangle(355, 1600, 290, 80);
-		shopBounds = new Rectangle(355, 80, 290, 80);
-		objectivesBounds = new Rectangle(355, 0, 290, 80);
+		playBounds = new Rectangle(255, 1600, 290, 80);
+		shopBounds = new Rectangle(255, 80, 290, 80);
+		objectivesBounds = new Rectangle(255, 0, 290, 80);
 		touchPoint = new Vector2();
 	}
 
