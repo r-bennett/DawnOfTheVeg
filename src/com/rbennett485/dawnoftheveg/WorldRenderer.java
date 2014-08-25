@@ -2,11 +2,14 @@ package com.rbennett485.dawnoftheveg;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
+import com.badlogic.androidgames.framework.math.Vector2;
 
 public class WorldRenderer {
 	static final float FRUSTUM_WIDTH = 20;
@@ -32,10 +35,10 @@ public class WorldRenderer {
 	}
 
 	private void renderBackground() {
-		batcher.beginBatch(Assets.background);
+		batcher.beginBatch(world.level.background);
 		batcher.drawSprite(cam.position.x, cam.position.y,
 				FRUSTUM_WIDTH, FRUSTUM_HEIGHT, 
-				Assets.backgroundRegion);
+				world.level.backgroundRegion);
 		batcher.endBatch();
 	}
 
@@ -68,8 +71,15 @@ public class WorldRenderer {
 
 	private void renderTowers() {
 		int len = world.towerPatches.size();
+		outerloop:
 		for(int i=0 ; i<len ; i++) {
 			Vector2 patch = world.towerPatches.get(i);
+			Log.d("patch", "patch: " + patch.x + ", " + patch.y);
+			for(Tower t : world.towers) {
+				Log.d("patch", "tower: " + t.position.x + ", " + t.position.y);
+				if(patch.x == t.position.x && patch.y == t.position.y)
+					continue outerloop; // don't render patch - there is a tower there
+			}
 			batcher.drawSprite(patch.x, patch.y, 1, 1, Assets.patch);
 		}
 
