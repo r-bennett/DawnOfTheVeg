@@ -47,22 +47,16 @@ public class WorldRenderer {
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
-		batcher.beginBatch(Assets.towerImage);
+		batcher.beginBatch(Assets.sprites);
 		renderTowers();
 		renderProjectiles();
-		batcher.endBatch();
 
 		if(!world.enemies.isEmpty()) {
-			batcher.beginBatch(Assets.characters);
 			renderEnemies();
-			batcher.endBatch();
 
-			batcher.beginBatch(Assets.healthBars);
 			renderHealthBars();
-			batcher.endBatch();
 		}
 
-		batcher.beginBatch(Assets.fontImage);
 		renderText();
 		batcher.endBatch();
 
