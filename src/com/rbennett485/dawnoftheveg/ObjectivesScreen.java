@@ -58,7 +58,7 @@ public class ObjectivesScreen extends GLScreen {
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
 
-		batcher.beginBatch(Assets.icons);          
+		batcher.beginBatch(Assets.sprites);          
 		batcher.drawSprite(400, 420, 68, 37, Assets.objectives);
 		batcher.drawSprite(780, 460, 40, 40, Assets.back);
 		for(int i=0 ; i<3 ; i++) {
@@ -66,14 +66,12 @@ public class ObjectivesScreen extends GLScreen {
 			if(Progress.objective[Progress.currentObjectiveSet][i]) 
 				batcher.drawSprite(760, 360-140*i, 40, 40, Assets.tickBox);
 		}
-		batcher.endBatch();
-
-		batcher.beginBatch(Assets.fontImage);
+		
 		for(int i=0 ; i<3 ; i++) {
 			Assets.font.drawText(batcher, (i+1) +". " + Objectives.objectives[Progress.currentObjectiveSet][i][0], 100, 360-140*i);
 			Assets.font.drawText(batcher, Objectives.objectives[Progress.currentObjectiveSet][i][1], 100, 320-140*i);
-
 		}
+		
 		batcher.endBatch();
 
 		gl.glDisable(GL10.GL_BLEND);
