@@ -19,14 +19,7 @@ public class MapScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;
 	Rectangle backBounds;
-	Rectangle level1Bounds;
-	Rectangle level2Bounds;
-	Rectangle level3Bounds;
-	Rectangle level4Bounds;
-	Rectangle level5Bounds;
-	Rectangle level6Bounds;
-	Rectangle level7Bounds;
-	Rectangle level8Bounds;
+	Rectangle[] levelBounds;
 	Vector2 touchPoint;
 
 	public MapScreen(Game game) {
@@ -36,14 +29,15 @@ public class MapScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		backBounds = new Rectangle(760, 440, 40, 40);
-		level1Bounds = new Rectangle(346, 398, 40, 40);
-		level2Bounds = new Rectangle(344, 342, 40, 40);
-		level3Bounds = new Rectangle(150, 331, 40, 40);
-		level4Bounds = new Rectangle(760, 62, 40, 40);
-		level5Bounds = new Rectangle(185, 372, 40, 40);
-		level6Bounds = new Rectangle(88, 209, 40, 40);
-		level7Bounds = new Rectangle(434, 305, 40, 40);
-		level8Bounds = new Rectangle(696, 123, 40, 40);
+		levelBounds = new Rectangle[Progress.NUMBER_OF_LEVELS];
+		levelBounds[0] = new Rectangle(346, 398, 40, 40);
+		levelBounds[1] = new Rectangle(344, 342, 40, 40);
+		levelBounds[2] = new Rectangle(150, 331, 40, 40);
+		levelBounds[3] = new Rectangle(760, 62, 40, 40);
+		levelBounds[4] = new Rectangle(185, 372, 40, 40);
+		levelBounds[5] = new Rectangle(88, 209, 40, 40);
+		levelBounds[6] = new Rectangle(434, 305, 40, 40);
+		levelBounds[7] = new Rectangle(696, 123, 40, 40);
 		touchPoint = new Vector2();
 	}
 
@@ -63,12 +57,12 @@ public class MapScreen extends GLScreen {
 					game.setScreen(new TitleScreen(game));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(level1Bounds, touchPoint) && Progress.level[0]) {
+				if(OverlapTester.pointInRectangle(levelBounds[0], touchPoint) && Progress.level[0]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new GameScreen(game, new Level1()));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(level2Bounds, touchPoint) && Progress.level[1]) {
+				if(OverlapTester.pointInRectangle(levelBounds[1], touchPoint) && Progress.level[1]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new GameScreen(game, new Level2()));
 					return;
@@ -76,39 +70,50 @@ public class MapScreen extends GLScreen {
 			}
 		}
 	}
-	
-    @Override
-    public void present(float deltaTime) {
-        GL10 gl = glGraphics.getGL();        
-        gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-        guiCam.setViewportAndMatrices();
-       
-        gl.glEnable(GL10.GL_TEXTURE_2D);
-        gl.glEnable(GL10.GL_BLEND);
-        gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-        
-        batcher.beginBatch(Assets.map);
-        batcher.drawSprite(400, 240, 800, 480, Assets.mapRegion);
-        batcher.endBatch();
-        
-        batcher.beginBatch(Assets.sprites);
-        batcher.drawSprite(780, 460, 40, 40, Assets.back);
-        Assets.font.drawText(batcher, "Level 1", 100, 300);
-        Assets.font.drawText(batcher, "Level 2", 200, 200);
-        batcher.endBatch();
-        
-        gl.glDisable(GL10.GL_BLEND);
-    }
-    
+
+	@Override
+	public void present(float deltaTime) {
+		GL10 gl = glGraphics.getGL();        
+		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		guiCam.setViewportAndMatrices();
+
+		gl.glEnable(GL10.GL_TEXTURE_2D);
+		gl.glEnable(GL10.GL_BLEND);
+		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+
+		batcher.beginBatch(Assets.map);
+		batcher.drawSprite(400, 240, 800, 480, Assets.mapRegion);
+		batcher.endBatch();
+
+		batcher.beginBatch(Assets.sprites);
+		batcher.drawSprite(780, 460, 40, 40, Assets.back);
+		presentLevelIcons();
+		batcher.endBatch();
+
+		gl.glDisable(GL10.GL_BLEND);
+	}
+
+	private void presentLevelIcons() {
+		for(int i=0 ; i<Progress.NUMBER_OF_LEVELS ; i++) {
+			Rectangle bounds = levelBounds[i];
+			if(Progress.level[i]) 
+				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
+						bounds.lowerLeft.y + bounds.height/2f, 40, 40, Assets.hazard);
+			else
+				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
+						bounds.lowerLeft.y + bounds.height/2f, 36, 32, Assets.cross);
+		}
+	}
+
 	@Override
 	public void pause() {
 		Settings.save(game.getFileIO());
 	}
-	
+
 	@Override
 	public void resume() {
 	}
-	
+
 	@Override 
 	public void dispose() {
 	}
