@@ -21,6 +21,12 @@ public class MapScreen extends GLScreen {
 	Rectangle backBounds;
 	Rectangle level1Bounds;
 	Rectangle level2Bounds;
+	Rectangle level3Bounds;
+	Rectangle level4Bounds;
+	Rectangle level5Bounds;
+	Rectangle level6Bounds;
+	Rectangle level7Bounds;
+	Rectangle level8Bounds;
 	Vector2 touchPoint;
 
 	public MapScreen(Game game) {
@@ -30,10 +36,14 @@ public class MapScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		backBounds = new Rectangle(760, 440, 40, 40);
-		level1Bounds = new Rectangle(100-Assets.font.glyphWidth/2, 
-				300-Assets.font.glyphHeight/2, 7*Assets.font.glyphWidth, Assets.font.glyphHeight);
-		level2Bounds = new Rectangle(200-Assets.font.glyphWidth/2, 
-				200-Assets.font.glyphHeight/2, 7*Assets.font.glyphWidth, Assets.font.glyphHeight);
+		level1Bounds = new Rectangle(346, 398, 40, 40);
+		level2Bounds = new Rectangle(344, 342, 40, 40);
+		level3Bounds = new Rectangle(150, 331, 40, 40);
+		level4Bounds = new Rectangle(760, 62, 40, 40);
+		level5Bounds = new Rectangle(185, 372, 40, 40);
+		level6Bounds = new Rectangle(88, 209, 40, 40);
+		level7Bounds = new Rectangle(434, 305, 40, 40);
+		level8Bounds = new Rectangle(696, 123, 40, 40);
 		touchPoint = new Vector2();
 	}
 
@@ -76,6 +86,10 @@ public class MapScreen extends GLScreen {
         gl.glEnable(GL10.GL_TEXTURE_2D);
         gl.glEnable(GL10.GL_BLEND);
         gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
+        
+        batcher.beginBatch(Assets.map);
+        batcher.drawSprite(400, 240, 800, 480, Assets.mapRegion);
+        batcher.endBatch();
         
         batcher.beginBatch(Assets.sprites);
         batcher.drawSprite(780, 460, 40, 40, Assets.back);
