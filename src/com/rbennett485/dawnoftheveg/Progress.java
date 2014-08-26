@@ -11,7 +11,7 @@ import android.util.Log;
 import com.badlogic.androidgames.framework.FileIO;
 
 public class Progress {
-	public final static int NUMBER_OF_LEVELS = 2;
+	public final static int NUMBER_OF_LEVELS = 8;
 	public final static int NUMBER_OF_OBJECTIVE_SETS = 4;
 	public final static int NUMBER_OF_OBJECTIVES_PER_SET = 3;
 	public static boolean[] level;
