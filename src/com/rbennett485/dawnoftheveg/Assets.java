@@ -48,6 +48,9 @@ public class Assets {
 	public static Texture background;
 	public static TextureRegion backgroundRegion;
 	
+	public static Texture map;
+	public static TextureRegion mapRegion;
+	
 	public static Texture level1background;
 	public static TextureRegion level1backgroundRegion;
 	public static Texture level2background;
@@ -105,6 +108,9 @@ public class Assets {
 		
 		
 		font = new Font(sprites, 1, 307, 16, 16, 32);
+		
+		map =  new Texture(game, "map.png");
+		mapRegion = new TextureRegion(map, 0, 0, 800, 480);
 				
 		level1background = new Texture(game, "level_1_background.png");
 		level1backgroundRegion = new TextureRegion(level1background, 0, 0, 800, 480);
