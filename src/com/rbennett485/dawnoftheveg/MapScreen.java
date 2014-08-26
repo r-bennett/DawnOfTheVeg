@@ -30,8 +30,8 @@ public class MapScreen extends GLScreen {
 		batcher = new SpriteBatcher(glGraphics, 100);
 		backBounds = new Rectangle(760, 440, 40, 40);
 		levelBounds = new Rectangle[Progress.NUMBER_OF_LEVELS];
-		levelBounds[0] = new Rectangle(346, 398, 40, 40);
-		levelBounds[1] = new Rectangle(344, 342, 40, 40);
+		levelBounds[0] = new Rectangle(326, 398, 40, 40);
+		levelBounds[1] = new Rectangle(344, 362, 40, 40);
 		levelBounds[2] = new Rectangle(150, 331, 40, 40);
 		levelBounds[3] = new Rectangle(760, 62, 40, 40);
 		levelBounds[4] = new Rectangle(185, 372, 40, 40);
@@ -96,12 +96,15 @@ public class MapScreen extends GLScreen {
 	private void presentLevelIcons() {
 		for(int i=0 ; i<Progress.NUMBER_OF_LEVELS ; i++) {
 			Rectangle bounds = levelBounds[i];
-			if(Progress.level[i]) 
+			if(Progress.level[i]) {
 				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
 						bounds.lowerLeft.y + bounds.height/2f, 40, 40, Assets.hazard);
-			else
+				Log.d("levels", "drawing hazard at " + bounds.lowerLeft.x + bounds.width/2f + ", " + bounds.lowerLeft.y + bounds.height/2f);
+			} else {
 				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
 						bounds.lowerLeft.y + bounds.height/2f, 36, 32, Assets.cross);
+				Log.d("levels", "drawing cross");
+			}
 		}
 	}
 
