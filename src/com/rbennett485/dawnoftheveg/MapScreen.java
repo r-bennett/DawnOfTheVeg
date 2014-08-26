@@ -37,7 +37,7 @@ public class MapScreen extends GLScreen {
 		levelBounds[4] = new Rectangle(185, 372, 40, 40);
 		levelBounds[5] = new Rectangle(88, 209, 40, 40);
 		levelBounds[6] = new Rectangle(434, 305, 40, 40);
-		levelBounds[7] = new Rectangle(696, 357, 40, 40);
+		levelBounds[7] = new Rectangle(696, 317, 40, 40);
 		touchPoint = new Vector2();
 	}
 
