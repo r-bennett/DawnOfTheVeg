@@ -74,6 +74,10 @@ public class Assets {
 	public static TextureRegion[] helpRegion;
 	public static int NUMBER_OF_HELP_REGIONS = 2;
 	
+	public static Texture[] story;
+	public static TextureRegion[] storyRegion;
+	public static int NUMBER_OF_STORY_REGIONS = 12;
+	
 	public static Music music;
 	
 	public static Sound clickSound;
@@ -148,6 +152,33 @@ public class Assets {
 		helpRegion =  new TextureRegion[NUMBER_OF_HELP_REGIONS];
 		helpRegion[0] =  new TextureRegion(helpImage, 0, 0, 560, 320);
 		helpRegion[1] = new TextureRegion(helpImage, 560, 0, 560, 320);
+		
+		story = new Texture[NUMBER_OF_STORY_REGIONS];
+		storyRegion = new TextureRegion[NUMBER_OF_STORY_REGIONS];
+		story[0] = new Texture(game, "story0.png");
+		storyRegion[0] = new TextureRegion(story[0], 0, 0, 800, 480);
+		story[1] = new Texture(game, "story1.png");
+		storyRegion[1] = new TextureRegion(story[1], 0, 0, 800, 480);
+		story[2] = new Texture(game, "story2.png");
+		storyRegion[2] = new TextureRegion(story[2], 0, 0, 800, 480);
+		story[3] = new Texture(game, "story3.png");
+		storyRegion[3] = new TextureRegion(story[3], 0, 0, 800, 480);
+		story[4] = new Texture(game, "story4.png");
+		storyRegion[4] = new TextureRegion(story[4], 0, 0, 800, 480);
+		story[5] = new Texture(game, "story5.png");
+		storyRegion[5] = new TextureRegion(story[5], 0, 0, 800, 480);
+		story[6] = new Texture(game, "story6.png");
+		storyRegion[6] = new TextureRegion(story[6], 0, 0, 800, 480);
+		story[7] = new Texture(game, "story7.png");
+		storyRegion[7] = new TextureRegion(story[7], 0, 0, 800, 480);
+		story[8] = new Texture(game, "story8.png");
+		storyRegion[8] = new TextureRegion(story[8], 0, 0, 800, 480);
+		story[9] = new Texture(game, "story9.png");
+		storyRegion[9] = new TextureRegion(story[9], 0, 0, 800, 480);
+		story[10] = new Texture(game, "story10.png");
+		storyRegion[10] = new TextureRegion(story[10], 0, 0, 800, 480);
+		story[11] = new Texture(game, "story11.png");
+		storyRegion[11] = new TextureRegion(story[11], 0, 0, 800, 480);
 		
 		music = game.getAudio().newMusic("music.mp3");
 		music.setLooping(true);
