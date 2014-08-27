@@ -14,11 +14,13 @@ public class Progress {
 	public final static int NUMBER_OF_LEVELS = 8;
 	public final static int NUMBER_OF_OBJECTIVE_SETS = 4;
 	public final static int NUMBER_OF_OBJECTIVES_PER_SET = 3;
+	public final static int NUMBER_OF_TOWERS = 4;
 	public static boolean[] level;
 	public static boolean[][] objective;
 	public static boolean[] shop;
 	public static int currentObjectiveSet;
 	public static int funds;
+	public static boolean tower[];
 	public final static String file = ".dawnoftheveg";
 
 	static {
@@ -28,6 +30,9 @@ public class Progress {
 		shop = new boolean[Shop.NUMBER_OF_ITEMS];
 		currentObjectiveSet = 0;
 		funds = 0;
+		tower = new boolean[NUMBER_OF_TOWERS];
+		tower[0] = true;
+		tower[1] = true;
 	}
 
 	public static void load(FileIO files) {
@@ -48,6 +53,9 @@ public class Progress {
 			}
 			currentObjectiveSet = Integer.parseInt(in.readLine());
 			funds = Integer.parseInt(in.readLine());
+			for(int i=0 ; i<NUMBER_OF_TOWERS ; i++) {
+				tower[i] = Boolean.parseBoolean(in.readLine());
+			}
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
@@ -87,6 +95,10 @@ public class Progress {
 			out.write("\n");
 			out.write(Integer.toString(funds));
 			out.write("\n");
+			for(int i=0 ; i<NUMBER_OF_TOWERS ; i++) {
+				out.write(Boolean.toString(tower[i]));
+				out.write("\n");
+			}
 		} catch (IOException ex) {
 			Log.d("exception", "level progress save failed - IOException");
 		} finally {
