@@ -59,42 +59,42 @@ public class MapScreen extends GLScreen {
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[0], touchPoint) && Progress.level[0]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level1()));
+					game.setScreen(new StoryScreen(game, 0));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[1], touchPoint) && Progress.level[1]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level2()));
+					game.setScreen(new StoryScreen(game, 3));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[2], touchPoint) && Progress.level[2]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level3()));
+					game.setScreen(new StoryScreen(game, 4));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[3], touchPoint) && Progress.level[3]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level4()));
+					game.setScreen(new StoryScreen(game, 5));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[4], touchPoint) && Progress.level[4]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level5()));
+					game.setScreen(new StoryScreen(game, 6));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[5], touchPoint) && Progress.level[5]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level6()));
+					game.setScreen(new StoryScreen(game, 7));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[6], touchPoint) && Progress.level[6]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level7()));
+					game.setScreen(new StoryScreen(game, 8));
 					return;
 				}
 				if(OverlapTester.pointInRectangle(levelBounds[7], touchPoint) && Progress.level[7]) {
 					Assets.playSound(Assets.clickSound);
-					game.setScreen(new GameScreen(game, new Level8()));
+					game.setScreen(new StoryScreen(game, 9));
 					return;
 				}
 			}
