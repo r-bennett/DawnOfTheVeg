@@ -38,7 +38,7 @@ public class GameScreen extends GLScreen {
 		batcher = new SpriteBatcher(glGraphics, 1000);
 		pauseBounds = new Rectangle(760, 440, 40, 40);
 		continueBounds = new Rectangle(400-35, 240-21, 60, 20);
-		callNextWaveBounds = new Rectangle(20, 220, 40, 40);
+		callNextWaveBounds = new Rectangle(0, 440, 40, 40);
 		quitBounds = new Rectangle(400-37, 240-43, 60, 20);
 		touchPoint = new Vector2();
 		fpsCounter = new FPSCounter();
@@ -260,7 +260,7 @@ public class GameScreen extends GLScreen {
 
 	private void presentInitialBuild() {
 		presentRunning();
-		batcher.drawSprite(40, 240, 40, 40, Assets.callWave);
+		batcher.drawSprite(20, 460, 40, 40, Assets.callWave);
 	}
 
 	private void presentGameOver() {
