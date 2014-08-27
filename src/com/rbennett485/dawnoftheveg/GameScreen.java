@@ -36,7 +36,7 @@ public class GameScreen extends GLScreen {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 1000);
-		pauseBounds = new Rectangle(747, 400, 530, 80);
+		pauseBounds = new Rectangle(760, 440, 40, 40);
 		continueBounds = new Rectangle(400-35, 240-21, 60, 20);
 		callNextWaveBounds = new Rectangle(0, 440, 40, 40);
 		quitBounds = new Rectangle(400-37, 240-43, 60, 20);
@@ -272,7 +272,7 @@ public class GameScreen extends GLScreen {
 	}
 
 	public void presentRunning() {
-		batcher.drawSprite(773.5f, 440, 53, 80, Assets.pause);
+		batcher.drawSprite(780, 460, 40, 40, Assets.pause);
 		if(world.patchMenuCentre != null) {
 			Vector2 guiCoordsPatchCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
 			batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 80, 80, Assets.towerMenu);
