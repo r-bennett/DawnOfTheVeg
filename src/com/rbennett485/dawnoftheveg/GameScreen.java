@@ -75,7 +75,7 @@ public class GameScreen extends GLScreen {
 
 			case(World.WORLD_STATE_GAME_OVER):
 				updateGameOver();
-				break;
+			break;
 
 			case(World.WORLD_STATE_COMPLETE):
 				updateComplete();
@@ -98,7 +98,7 @@ public class GameScreen extends GLScreen {
 			}
 		}
 	}
-	
+
 	private void updateGameOver() {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
@@ -123,11 +123,6 @@ public class GameScreen extends GLScreen {
 
 	}
 
-
-	private void updateRunning(float deltaTime) {
-		//do some stuff
-	}
-
 	private void updateRunningOrInitialBuild(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
@@ -149,31 +144,68 @@ public class GameScreen extends GLScreen {
 				// check tower patches
 				if(world.patchMenuCentre != null){
 					Vector2 guiCoordsPatchMenuCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
-					if(OverlapTester.pointInRectangle(
-							new Rectangle(guiCoordsPatchMenuCentre.x-40, guiCoordsPatchMenuCentre.y, 40, 40), touchPoint)){
-						Tower towerA = new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y);
-						world.towers.add(towerA);
-						world.money -= towerA.getCost();
-					}else if(OverlapTester.pointInRectangle(
-							new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y, 40, 40), touchPoint)){
-						Tower towerB = new TowerB(world.patchMenuCentre.x, world.patchMenuCentre.y);
-						world.towers.add(towerB);
-						world.money -= towerB.getCost();
-					}else if(OverlapTester.pointInRectangle(
-							new Rectangle(guiCoordsPatchMenuCentre.x-40, guiCoordsPatchMenuCentre.y-40, 40, 40), touchPoint)){
-						Tower towerC = new TowerC(world.patchMenuCentre.x, world.patchMenuCentre.y);
-						world.towers.add(towerC);
-						world.money-= towerC.getCost();
-					}else if(OverlapTester.pointInRectangle(
-							new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y-40, 40, 40), touchPoint)){
-						Tower towerD = new TowerD(world.patchMenuCentre.x, world.patchMenuCentre.y);
-						world.towers.add(towerD);
-						world.money -= towerD.getCost();
-					} 
+					if(world.towerAt(world.patchMenuCentre)){
+						Tower t = world.getTowerAt(world.patchMenuCentre);
+						// proceed with upgrade menu for tower t
+						if(OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+								&& world.money >= Upgrades.RANGE_COST) {
+							//upgrade range
+							t.upgradeRange();
+							world.money -= Upgrades.RANGE_COST;
+						} else if(OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+								&& world.money >= Upgrades.DAMAGE_COST) {
+							//upgrade damage
+							t.upgradeDamage();
+							world.money -= Upgrades.DAMAGE_COST;
+						} else if(OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y-60, 60, 60), touchPoint)
+								&& world.money >= Upgrades.RELOAD_COST){
+							//upgrade reload time
+							t.upgradeReload();
+							world.money -= Upgrades.RELOAD_COST;
+						}
+					} else {
+						//proceed with tower menu
+						if(OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+								&& world.money >= TowerA.TOWER_A_COST
+								&& Progress.tower[0]) {
+							//build A
+							Tower towerA = new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y);
+							world.towers.add(towerA);
+							world.money -= towerA.getCost();
+						} else if(OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+								&& world.money >= TowerB.TOWER_B_COST
+								&& Progress.tower[1]) {
+							//build B
+							Tower towerB = new TowerB(world.patchMenuCentre.x, world.patchMenuCentre.y);
+							world.towers.add(towerB);
+							world.money -= towerB.getCost();
+						} else if(OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y-60, 60, 60), touchPoint)
+								&& world.money >= TowerC.TOWER_C_COST
+								&& Progress.tower[2]){
+							//build C
+							Tower towerC = new TowerC(world.patchMenuCentre.x, world.patchMenuCentre.y);
+							world.towers.add(towerC);
+							world.money-= towerC.getCost();
+						} else if(OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y-40, 40, 40), touchPoint)
+								&& world.money >= TowerD.TOWER_D_COST
+								&& Progress.tower[3]){
+							//build D
+							Tower towerD = new TowerD(world.patchMenuCentre.x, world.patchMenuCentre.y);
+							world.towers.add(towerD);
+							world.money -= towerD.getCost();
+						}
+					}
+
 					world.patchMenuCentre = null;
 					Log.d("patches", "clicked off menu");
 				} else {
-
 					for(Vector2 patchCentre : world.towerPatches) {
 						Vector2 guiCoordsPatchCentre = new Vector2(800*patchCentre.x/20f, 480*patchCentre.y/12f);
 						if(OverlapTester.pointInRectangle(new Rectangle(guiCoordsPatchCentre.x - 20, guiCoordsPatchCentre.y - 20, 40, 40), 
@@ -184,9 +216,7 @@ public class GameScreen extends GLScreen {
 					}
 				}
 
-				if(world.state == World.WORLD_STATE_RUNNING)
-					updateRunning(deltaTime);
-				else if(world.state == World.WORLD_STATE_INITIAL_BUILD)
+				if(world.state == World.WORLD_STATE_INITIAL_BUILD)
 					updateInitialBuild(deltaTime);
 			}
 		}
@@ -236,15 +266,15 @@ public class GameScreen extends GLScreen {
 			case(World.WORLD_STATE_INITIAL_BUILD):
 				presentInitialBuild();
 			break;
-			
+
 			case(World.WORLD_STATE_RUNNING):
 				presentRunning();
 			break;
-			
+
 			case(World.WORLD_STATE_COMPLETE):
 				presentComplete();
 			break;
-			
+
 
 			case(World.WORLD_STATE_GAME_OVER):
 				presentGameOver();
@@ -264,7 +294,7 @@ public class GameScreen extends GLScreen {
 
 	private void presentGameOver() {
 		batcher.drawSprite(400, 240, 240, 120, Assets.gameOver);
-		
+
 	}
 
 	private void presentComplete() {
