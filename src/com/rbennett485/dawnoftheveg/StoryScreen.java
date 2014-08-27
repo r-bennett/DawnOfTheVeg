@@ -79,7 +79,7 @@ public class StoryScreen extends GLScreen {
 
 		gl.glEnable(GL10.GL_TEXTURE_2D);
 		batcher.beginBatch(Assets.story[frame]);
-		batcher.drawSprite(0, 0, 800, 480, Assets.storyRegion[frame]);
+		batcher.drawSprite(400, 240, 800, 480, Assets.storyRegion[frame]);
 		batcher.endBatch();
 	}
 
