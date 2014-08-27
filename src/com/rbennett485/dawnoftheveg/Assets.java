@@ -45,6 +45,8 @@ public class Assets {
 	public static TextureRegion cross;
 	public static TextureRegion hazard;
 	public static TextureRegion pause;
+	public static TextureRegion upgradeMenu;
+	public static TextureRegion redCross;
 
 	public static Font font;
 
@@ -121,8 +123,9 @@ public class Assets {
 		cross = new TextureRegion(sprites, 835, 94, 36, 32);
 		hazard = new TextureRegion(sprites, 881, 90, 45, 40);
 		pause = new TextureRegion(sprites, 0, 0, 53, 80);
-		// Remove this only temporary botch ********************************************************************************
-		towerMenu = new TextureRegion(sprites, 456, 30, 25, 23);
+		towerMenu = new TextureRegion(sprites, 293, 559, 120, 120);
+		upgradeMenu = new TextureRegion(sprites, 413, 559, 120, 120);
+		redCross = new TextureRegion(sprites, 788, 91, 36, 32);
 
 
 		font = new Font(sprites, 1, 307, 16, 16, 32);
