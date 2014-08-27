@@ -15,6 +15,7 @@ import com.rbennett485.dawnoftheveg.Grape;
 import com.rbennett485.dawnoftheveg.Orange;
 import com.rbennett485.dawnoftheveg.Projectile;
 import com.rbennett485.dawnoftheveg.ProjectileA;
+import com.rbennett485.dawnoftheveg.TowerA;
 
 public class EnemyTest {
 	private Enemy orange;
@@ -51,10 +52,10 @@ public class EnemyTest {
 	
 	public void testHitHelper(Enemy enemy) {
 		int hp = enemy.hp;
-		Projectile projA = new ProjectileA(new Vector2(0,0), new Vector2(1,1));
+		Projectile projA = new ProjectileA(new Vector2(0,0), new Vector2(1,1), (int)TowerA.TOWER_A_DAMAGE);
 		enemy.hit(projA);
-		assertEquals(enemy.hp, hp-ProjectileA.PROJECTILE_A_DAMAGE<0 ?
-				0 : hp-ProjectileA.PROJECTILE_A_DAMAGE);
+		assertEquals(enemy.hp, hp-(int)TowerA.TOWER_A_DAMAGE<0 ?
+				0 : hp-(int)TowerA.TOWER_A_DAMAGE);
 		enemy.hp = 4;
 		enemy.hit(projA);
 		assertEquals(enemy.hp, 0);

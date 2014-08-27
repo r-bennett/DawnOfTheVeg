@@ -11,6 +11,10 @@ import com.rbennett485.dawnoftheveg.ProjectileA;
 import com.rbennett485.dawnoftheveg.ProjectileB;
 import com.rbennett485.dawnoftheveg.ProjectileC;
 import com.rbennett485.dawnoftheveg.ProjectileD;
+import com.rbennett485.dawnoftheveg.TowerA;
+import com.rbennett485.dawnoftheveg.TowerB;
+import com.rbennett485.dawnoftheveg.TowerC;
+import com.rbennett485.dawnoftheveg.TowerD;
 
 public class ProjectileTest {
 	
@@ -21,10 +25,10 @@ public class ProjectileTest {
 	
 	@Before
 	public void buildUp() {
-		projA = new ProjectileA(new Vector2(0,0), new Vector2(2,1));
-		projB = new ProjectileB(new Vector2(0,0), new Vector2(2,1));
-		projC = new ProjectileC(new Vector2(0,0), new Vector2(2,1));
-		projD = new ProjectileD(new Vector2(0,0), new Vector2(2,1));
+		projA = new ProjectileA(new Vector2(0,0), new Vector2(2,1), (int)TowerA.TOWER_A_DAMAGE);
+		projB = new ProjectileB(new Vector2(0,0), new Vector2(2,1), (int)TowerB.TOWER_B_DAMAGE);
+		projC = new ProjectileC(new Vector2(0,0), new Vector2(2,1), (int)TowerC.TOWER_C_DAMAGE);
+		projD = new ProjectileD(new Vector2(0,0), new Vector2(2,1), (int)TowerD.TOWER_D_DAMAGE);
 	}
 
 	@Test
