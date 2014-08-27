@@ -67,6 +67,36 @@ public class MapScreen extends GLScreen {
 					game.setScreen(new GameScreen(game, new Level2()));
 					return;
 				}
+				if(OverlapTester.pointInRectangle(levelBounds[2], touchPoint) && Progress.level[2]) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new GameScreen(game, new Level3()));
+					return;
+				}
+				if(OverlapTester.pointInRectangle(levelBounds[3], touchPoint) && Progress.level[3]) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new GameScreen(game, new Level4()));
+					return;
+				}
+				if(OverlapTester.pointInRectangle(levelBounds[4], touchPoint) && Progress.level[4]) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new GameScreen(game, new Level5()));
+					return;
+				}
+				if(OverlapTester.pointInRectangle(levelBounds[5], touchPoint) && Progress.level[5]) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new GameScreen(game, new Level6()));
+					return;
+				}
+				if(OverlapTester.pointInRectangle(levelBounds[6], touchPoint) && Progress.level[6]) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new GameScreen(game, new Level7()));
+					return;
+				}
+				if(OverlapTester.pointInRectangle(levelBounds[7], touchPoint) && Progress.level[7]) {
+					Assets.playSound(Assets.clickSound);
+					game.setScreen(new GameScreen(game, new Level8()));
+					return;
+				}
 			}
 		}
 	}
