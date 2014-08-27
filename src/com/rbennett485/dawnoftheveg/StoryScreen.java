@@ -2,6 +2,8 @@ package com.rbennett485.dawnoftheveg;
 
 import java.util.List;
 
+import javax.microedition.khronos.opengles.GL10;
+
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
@@ -20,6 +22,7 @@ public class StoryScreen extends GLScreen {
 		this.frame = frame;
 		batcher = new SpriteBatcher(glGraphics, 20);
 		touchPoint = new Vector2();
+		guiCam = new Camera2D(glGraphics, 800, 480);
 	}
 
 	@Override
@@ -70,6 +73,11 @@ public class StoryScreen extends GLScreen {
 
 	@Override
 	public void present(float deltaTime) {
+		GL10 gl = glGraphics.getGL();        
+		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		guiCam.setViewportAndMatrices();
+
+		gl.glEnable(GL10.GL_TEXTURE_2D);
 		batcher.beginBatch(Assets.story[frame]);
 		batcher.drawSprite(0, 0, 800, 480, Assets.storyRegion[frame]);
 		batcher.endBatch();
