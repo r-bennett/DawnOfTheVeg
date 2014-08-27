@@ -28,9 +28,9 @@ public class ShopScreen extends GLScreen {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
-		backBounds = new Rectangle(760, 440, 40, 40);
-		nextBounds = new Rectangle(720, 220, 40, 40);
-		previousBounds = new Rectangle(40, 220, 40, 40);
+		backBounds = new Rectangle(720, 400, 80, 80);
+		nextBounds = new Rectangle(710, 140, 60, 200);
+		previousBounds = new Rectangle(30, 140, 60, 200);
 		buyBounds = new Rectangle(325, 75, 150, 50);
 		touchPoint = new Vector2();
 		currentItem = 0;
@@ -94,8 +94,8 @@ public class ShopScreen extends GLScreen {
 	private void presentIcons() {
 		batcher.drawSprite(740, 240, 40, 40, Assets.rightArrow);
 		batcher.drawSprite(60, 240, -40, 40, Assets.rightArrow);
-		batcher.drawSprite(400, 420, 47, 30, Assets.shop);
-		batcher.drawSprite(780, 460, 40, 40, Assets.back);
+		batcher.drawSprite(400, 420, 171, 71, Assets.shop);
+		batcher.drawSprite(760, 440, 80, 80, Assets.back);
 		if(Progress.shop[currentItem]) 
 			batcher.drawSprite(400, 100, 150, 50, Assets.bought);
 		else 

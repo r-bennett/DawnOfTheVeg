@@ -26,9 +26,9 @@ public class HelpScreen extends GLScreen {
 		super(game);
 		
 		guiCam = new Camera2D(glGraphics, 800, 480);
-		nextBounds = new Rectangle(720, 220, 40, 40);
-		previousBounds = new Rectangle(40, 220, 40, 40);
-		backBounds = new Rectangle(760, 440, 40, 40);
+		nextBounds = new Rectangle(710, 140, 60, 200);
+		previousBounds = new Rectangle(30, 140, 60, 200);
+		backBounds = new Rectangle(720, 400, 80, 80);
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 100);
 		currentRegion = 0;
@@ -88,7 +88,7 @@ public class HelpScreen extends GLScreen {
 		batcher.beginBatch(Assets.sprites);
 		batcher.drawSprite(740, 240, 40, 40, Assets.rightArrow);
 		batcher.drawSprite(60, 240, -40, 40, Assets.rightArrow);	//use -ve width for left arrow
-		batcher.drawSprite(780, 460, 40, 40, Assets.back);
+		batcher.drawSprite(760, 440, 80, 80, Assets.back);
 		batcher.endBatch();
 		
 		gl.glDisable(GL10.GL_BLEND);
