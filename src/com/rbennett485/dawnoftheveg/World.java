@@ -215,4 +215,13 @@ public class World {
 		}
 		return false;
 	}
+	
+	public Tower getTowerAt(Vector2 pos) {
+		for(Tower t : towers) {
+			if(t.position.x==pos.x 
+					&& t.position.y == pos.y)
+				return t;
+		}
+		return null;
+	}
 }
