@@ -5,21 +5,17 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.math.Vector2;
 
-public class Level3 extends Level {
-	public Level3() {
-		super(1000, Assets.level3background, Assets.level3backgroundRegion);
-		number = 3;
+public class Level4 extends Level {
+	public Level4() {
+		super(1000, Assets.level4background, Assets.level4backgroundRegion);
+		number = 4;
 	}
 
 	@Override
 	public List<Vector2> wayPointGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(0,2.6f));
-		result.add(new Vector2(8.5f,2.6f));
-		result.add(new Vector2(5.1f,6.4f));
-		result.add(new Vector2(12.85f,6.4f));
-		result.add(new Vector2(16.25f,2.6f));
-		result.add(new Vector2(20,2.6f));
+		result.add(new Vector2(0,6.23f));
+		result.add(new Vector2(20,6.23f));
 		return result;
 	}
 
@@ -35,11 +31,17 @@ public class Level3 extends Level {
 	@Override
 	public List<Vector2> towerPatchGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(4.15f,5.5f));
-		result.add(new Vector2(9.5f,0.85f));
-		result.add(new Vector2(8.75f,5.03f));
-		result.add(new Vector2(14.85f,2.05f));
-		result.add(new Vector2(15.25f,6.5f));
+		result.add(new Vector2(1.75f,8.63f));
+		result.add(new Vector2(5.13f,8.63f));
+		result.add(new Vector2(8.75f,8.63f));
+		result.add(new Vector2(12.43f,8.63f));
+		result.add(new Vector2(15.88f,8.63f));
+		result.add(new Vector2(19.45f,8.63f));
+		result.add(new Vector2(4.13f,5.33f));
+		result.add(new Vector2(7.75f,5.33f));
+		result.add(new Vector2(11.43f,5.33f));
+		result.add(new Vector2(14.88f,5.33f));
+		result.add(new Vector2(18.63f,5.33f));
 		return result;
 	}
 	
