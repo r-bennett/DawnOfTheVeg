@@ -61,6 +61,14 @@ public class Assets {
 	public static TextureRegion level3backgroundRegion;
 	public static Texture level4background;
 	public static TextureRegion level4backgroundRegion;
+	public static Texture level5background;
+	public static TextureRegion level5backgroundRegion;
+	public static Texture level6background;
+	public static TextureRegion level6backgroundRegion;
+	public static Texture level7background;
+	public static TextureRegion level7backgroundRegion;
+	public static Texture level8background;
+	public static TextureRegion level8backgroundRegion;
 
 	public static Texture helpImage;
 	public static TextureRegion[] helpRegion;
@@ -124,6 +132,14 @@ public class Assets {
 		level3backgroundRegion = new TextureRegion(level3background, 0, 0, 800, 480);
 		level4background = new Texture(game, "level_4_background.png");
 		level4backgroundRegion = new TextureRegion(level4background, 0, 0, 800, 480);
+		level5background = new Texture(game, "level_5_background.png");
+		level5backgroundRegion = new TextureRegion(level5background, 0, 0, 800, 480);
+		level6background = new Texture(game, "level_6_background.png");
+		level6backgroundRegion = new TextureRegion(level6background, 0, 0, 800, 480);
+		level7background = new Texture(game, "level_7_background.png");
+		level7backgroundRegion = new TextureRegion(level7background, 0, 0, 800, 480);
+		level8background = new Texture(game, "level_8_background.png");
+		level8backgroundRegion = new TextureRegion(level8background, 0, 0, 800, 480);
 		
 		background = new Texture(game,"background.png");
 		backgroundRegion = new TextureRegion(background, 0, 0, 4, 4);
