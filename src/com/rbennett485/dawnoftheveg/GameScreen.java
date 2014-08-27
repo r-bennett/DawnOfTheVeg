@@ -234,8 +234,11 @@ public class GameScreen extends GLScreen {
 			presentPaused();
 		} else {
 			switch(world.state) {
-			case(World.WORLD_STATE_RUNNING):
 			case(World.WORLD_STATE_INITIAL_BUILD):
+				presentInitialBuild();
+			break;
+			
+			case(World.WORLD_STATE_RUNNING):
 				presentRunning();
 			break;
 			
@@ -255,6 +258,11 @@ public class GameScreen extends GLScreen {
 		fpsCounter.logFrame();
 	}
 
+	private void presentInitialBuild() {
+		presentRunning();
+		batcher.drawSprite(40, 240, 40, 40, Assets.callWave);
+	}
+
 	private void presentGameOver() {
 		batcher.drawSprite(400, 240, 240, 120, Assets.gameOver);
 		
@@ -266,9 +274,6 @@ public class GameScreen extends GLScreen {
 
 	public void presentRunning() {
 		batcher.drawSprite(780, 460, 40, 40, Assets.back);
-		if(world.state == World.WORLD_STATE_INITIAL_BUILD) {
-			batcher.drawSprite(40, 240, 40, 40, Assets.callWave);
-		}
 		if(world.patchMenuCentre != null) {
 			Vector2 guiCoordsPatchCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
 			batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 80, 80, Assets.towerMenu);
