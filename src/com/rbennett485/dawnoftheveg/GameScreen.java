@@ -35,7 +35,7 @@ public class GameScreen extends GLScreen {
 	public GameScreen(Game game, Level level) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
-		batcher = new SpriteBatcher(glGraphics, 100);
+		batcher = new SpriteBatcher(glGraphics, 1000);
 		pauseBounds = new Rectangle(760, 440, 40, 40);
 		continueBounds = new Rectangle(400-35, 240-21, 60, 20);
 		callNextWaveBounds = new Rectangle(20, 220, 40, 40);
