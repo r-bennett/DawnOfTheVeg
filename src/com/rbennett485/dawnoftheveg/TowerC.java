@@ -8,6 +8,7 @@ public class TowerC extends Tower {
 	public static final float TOWER_C_HEIGHT = 1f;
 	public static final int TOWER_C_COST = 140;
 	public static final float TOWER_C_RANGE = 3f;
+	public static final float TOWER_C_DAMAGE = 10;
 
 	public TowerC(float x, float y) {
 		this(x, y, TOWER_C_WIDTH, TOWER_C_HEIGHT);
@@ -17,6 +18,7 @@ public class TowerC extends Tower {
 		super(x, y, width, height);
 		this.range = TOWER_C_RANGE;
 		reloadTime = RELOAD_TIME;
+		damage = TOWER_C_DAMAGE;
 	}
 
 	@Override
