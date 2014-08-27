@@ -206,4 +206,13 @@ public class World {
 			}
 		}
 	} 
+	
+	public boolean towerAt(Vector2 pos) {
+		for(Tower t : towers) {
+			if(t.position.x==pos.x 
+					&& t.position.y == pos.y)
+				return true;
+		}
+		return false;
+	}
 }
