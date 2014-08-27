@@ -37,9 +37,9 @@ public class GameScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 1000);
 		pauseBounds = new Rectangle(760, 440, 40, 40);
-		continueBounds = new Rectangle(400-35, 240-21, 60, 20);
+		continueBounds = new Rectangle(400-313/2f, 240, 313, 304/2);
 		callNextWaveBounds = new Rectangle(0, 440, 40, 40);
-		quitBounds = new Rectangle(400-37, 240-43, 60, 20);
+		quitBounds = new Rectangle(400-313/2f, 240-304/2, 313, 304/2);
 		touchPoint = new Vector2();
 		fpsCounter = new FPSCounter();
 		paused = false;
@@ -280,7 +280,7 @@ public class GameScreen extends GLScreen {
 	}
 
 	public void presentPaused() {
-		batcher.drawSprite(400, 240, 132, 101, Assets.pauseMenu);
+		batcher.drawSprite(400, 240, 313, 304, Assets.pauseMenu);
 	}
 
 	@Override
