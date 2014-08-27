@@ -10,6 +10,7 @@ public abstract class Tower extends GameObject {
 	public float idleTime;
 	public float reloadTime;
 	public float range;
+	public float damage;
 	public List<Projectile> projectiles;
 
 	public Tower(float x, float y, float width, float height) {
@@ -25,5 +26,17 @@ public abstract class Tower extends GameObject {
 	}
 
 	public abstract Projectile newProj(Vector2 projVel);
+
+	public void upgradeRange() {
+		range *= Upgrades.RANGE_FACTOR;		
+	}
+
+	public void upgradeDamage() {
+		damage *= Upgrades.DAMAGE_FACTOR;
+	}
+
+	public void upgradeReload() {
+		reloadTime *= Upgrades.RELOAD_FACTOR;
+	}
 
 }
