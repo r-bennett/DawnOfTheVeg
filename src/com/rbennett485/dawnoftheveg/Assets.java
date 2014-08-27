@@ -115,7 +115,7 @@ public class Assets {
 		shop = new TextureRegion(sprites, 306, 393, 171, 71);
 		callWave = new TextureRegion(sprites, 376, 1, 80, 80);
 		complete = new TextureRegion(sprites, 486, 81, 291, 73);
-		gameOver = new TextureRegion(sprites, 486, 1, 291, 82);
+		gameOver = new TextureRegion(sprites, 486, 1, 291, 76);
 		buy = new TextureRegion(sprites, 1, 631, 291, 72);
 		bought = new TextureRegion(sprites, 0, 559, 291, 72);
 		tickBox = new TextureRegion(sprites, 456, 0, 30, 30);
