@@ -107,7 +107,8 @@ public class WorldRenderer {
 				region = Assets.projectileC;
 			else 
 				region = Assets.projectileD;
-			batcher.drawSprite(proj.position.x, proj.position.y, proj.bounds.width, proj.bounds.height, region);
+			batcher.drawSprite(proj.position.x, proj.position.y, proj.bounds.width, proj.bounds.height, 
+					proj.velocity.angle(), region);
 		}
 	}
 
