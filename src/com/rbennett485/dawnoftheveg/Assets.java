@@ -88,6 +88,8 @@ public class Assets {
 	public static Music music;
 
 	public static Sound clickSound;
+	public static Sound splat1;
+	public static Sound splat2;
 
 	public static void load(GLGame game) {
 
@@ -193,12 +195,14 @@ public class Assets {
 		story[11] = new Texture(game, "story11.png");
 		storyRegion[11] = new TextureRegion(story[11], 0, 0, 800, 480);
 
-		music = game.getAudio().newMusic("music.mp3");
+		music = game.getAudio().newMusic("music.ogg");
 		music.setLooping(true);
 		music.setVolume(0.5f);
 		if(Settings.soundEnabled)
 			music.play();
 		clickSound = game.getAudio().newSound("click.ogg");
+		splat1 = game.getAudio().newSound("splat1.ogg");
+		splat2 = game.getAudio().newSound("splat2.ogg");
 	}
 
 	public static void reload() {
