@@ -7,6 +7,12 @@ import com.badlogic.androidgames.framework.gl.Texture;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
+/**
+ * Stores and loads all assets
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class Assets {
 	public static Texture sprites;
 	public static TextureRegion patch;
@@ -91,6 +97,12 @@ public class Assets {
 	public static Sound splat1;
 	public static Sound splat2;
 
+	/**
+	 * Creates all the Texture and TextureRegion, Sound 
+	 * and Music objects
+	 * 
+	 * @param game 	The Game instance to which the assets belong
+	 */
 	public static void load(GLGame game) {
 
 		sprites = new Texture(game, "spritesheet.png");
@@ -205,6 +217,10 @@ public class Assets {
 		splat2 = game.getAudio().newSound("splat2.ogg");
 	}
 
+	/**
+	 * Reloads all Textures and plays music (if
+	 * sound enabled). Used when OpenGL context is lost
+	 */
 	public static void reload() {
 		sprites.reload();
 		background.reload();
@@ -225,6 +241,12 @@ public class Assets {
 			music.play();
 	}
 
+	/**
+	 * Plays the sound if sound is enabled in Settings,
+	 * otherwise does nothing
+	 * 
+	 * @param sound	The Sound object to play
+	 */
 	public static void playSound(Sound sound) {
 		if(Settings.soundEnabled)
 			sound.play(1);
