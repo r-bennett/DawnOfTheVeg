@@ -52,7 +52,7 @@ public class EnemyTest {
 	
 	public void testHitHelper(Enemy enemy) {
 		int hp = enemy.hp;
-		Projectile projA = new ProjectileA(new Vector2(0,0), new Vector2(1,1), (int)TowerA.TOWER_A_DAMAGE);
+		Projectile projA = new ProjectileA(new Vector2(0,0), new Vector2(1,1), (int)TowerA.TOWER_A_DAMAGE, TowerA.TOWER_A_RANGE);
 		enemy.hit(projA);
 		assertEquals(enemy.hp, hp-(int)TowerA.TOWER_A_DAMAGE<0 ?
 				0 : hp-(int)TowerA.TOWER_A_DAMAGE);

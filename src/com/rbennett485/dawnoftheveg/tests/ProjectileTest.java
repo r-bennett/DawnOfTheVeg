@@ -25,10 +25,10 @@ public class ProjectileTest {
 	
 	@Before
 	public void buildUp() {
-		projA = new ProjectileA(new Vector2(0,0), new Vector2(2,1), (int)TowerA.TOWER_A_DAMAGE);
-		projB = new ProjectileB(new Vector2(0,0), new Vector2(2,1), (int)TowerB.TOWER_B_DAMAGE);
-		projC = new ProjectileC(new Vector2(0,0), new Vector2(2,1), (int)TowerC.TOWER_C_DAMAGE);
-		projD = new ProjectileD(new Vector2(0,0), new Vector2(2,1), (int)TowerD.TOWER_D_DAMAGE);
+		projA = new ProjectileA(new Vector2(0,0), new Vector2(2,1), (int)TowerA.TOWER_A_DAMAGE, TowerA.TOWER_A_RANGE);
+		projB = new ProjectileB(new Vector2(0,0), new Vector2(2,1), (int)TowerB.TOWER_B_DAMAGE, TowerB.TOWER_B_RANGE);
+		projC = new ProjectileC(new Vector2(0,0), new Vector2(2,1), (int)TowerC.TOWER_C_DAMAGE, TowerC.TOWER_C_RANGE);
+		projD = new ProjectileD(new Vector2(0,0), new Vector2(2,1), (int)TowerD.TOWER_D_DAMAGE, TowerD.TOWER_D_RANGE);
 	}
 
 	@Test
