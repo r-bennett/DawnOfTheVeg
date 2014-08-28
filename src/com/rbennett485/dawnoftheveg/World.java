@@ -143,10 +143,13 @@ public class World {
 
 
 	private synchronized void updateProjectiles(float deltaTime) {
-		int len = projectiles.size();
-		for(int i=0 ; i<len ; i++) {
-			projectiles.get(i).update(deltaTime);
+		removals.clear();
+		for(Projectile p : projectiles) {
+			p.update(deltaTime);
+			if(p.stateTime > p.rangeTime)
+				removals.add(p);
 		}
+		projectiles.removeAll(removals);
 	}
 
 	private void checkNewWave() {
