@@ -35,6 +35,7 @@ public class World {
 	public List<Enemy> enemies;
 	public List<Tower> towers;
 	public List<Projectile> projectiles;
+	public List<Splat> splats;
 
 	public final WorldListener listener;
 	public final Random rand;
@@ -53,6 +54,7 @@ public class World {
 	public World(WorldListener listener, Level level) {
 		this.enemies = new ArrayList<>();
 		this.towers = new ArrayList<>();
+		this.splats = new ArrayList<>();
 		this.projectiles = new ArrayList<>();
 		this.state = WORLD_STATE_INITIAL_BUILD;
 		timeElapsed = 0;
@@ -110,6 +112,7 @@ public class World {
 		updateTowers(deltaTime);
 		updateProjectiles(deltaTime);
 		checkCollisions();
+		updateSplats(deltaTime);
 
 		if(lives<=0) {
 			state = WORLD_STATE_GAME_OVER;
@@ -124,6 +127,16 @@ public class World {
 			break;
 		}
 
+	}
+
+	private void updateSplats(float deltaTime) {
+		removals.clear();
+		for(Splat s : splats) {
+			s.update(deltaTime);
+			if(s.stateTime > Splat.TIME_TO_LIVE)
+				removals.add(s);				
+		}
+		splats.removeAll(removals);		
 	}
 
 	private synchronized void checkCollisions() {
@@ -164,6 +177,7 @@ public class World {
 		for(Enemy e : enemies) {
 			if(e.hp<=0) {
 				removals.add(e);
+				splats.add(new Splat(e));
 			}
 		}
 		enemies.removeAll(removals);
