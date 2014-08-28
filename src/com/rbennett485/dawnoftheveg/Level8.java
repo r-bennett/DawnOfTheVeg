@@ -15,7 +15,7 @@ public class Level8 extends Level {
 	public List<Vector2> wayPointGenerator() {
 		List<Vector2> result = new ArrayList<>();
 		result.add(new Vector2(0,10.43f));
-		result.add(new Vector2(8.10f,10.43f));
+		result.add(new Vector2(15.6f,10.43f));
 		result.add(new Vector2(17.85f,6.43f));
 		result.add(new Vector2(12.68f,6.43f));
 		result.add(new Vector2(11.85f,7.8f));
