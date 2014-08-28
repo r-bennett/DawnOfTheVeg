@@ -6,7 +6,7 @@ import com.badlogic.androidgames.framework.gl.TextureRegion;
 public class Splat extends GameObject {
 	
 	public float stateTime;
-	public static final float TIME_TO_LIVE = 1;
+	public static final float TIME_TO_LIVE = 3;
 	public TextureRegion region;
 	
 	public Splat(Enemy e) {
