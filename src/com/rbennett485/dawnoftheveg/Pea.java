@@ -6,8 +6,8 @@ import com.badlogic.androidgames.framework.math.Vector2;
 
 public class Pea extends Enemy {
 
-	public static final float PEA_WIDTH = 0.25f;
-	public static final float PEA_HEIGHT = 0.25f;
+	public static final float PEA_WIDTH = 0.33f;
+	public static final float PEA_HEIGHT = 0.33f;
 	public static final float PEA_VELOCITY = 2f;
 	public static final int PEA_HP = 20;
 	public final List<Vector2> wayPoints;
