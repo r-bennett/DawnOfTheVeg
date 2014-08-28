@@ -28,7 +28,8 @@ public class Level1 extends Level {
 	@Override
 	public List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
-		result.add(new Wave(0, new Orange(wayPoints), 10));
+		result.add(new Wave(0, new Orange(wayPoints), 3));
+		result.add(new Wave(5, new Pea(wayPoints), 5));
 		result.add(new Wave(10, new Chilli(wayPoints), 8));
 		result.add(new Wave(20, new Grape(wayPoints), 3));
 		return result;
