@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * @author Bennett_Richard
+ *
+ */
 public class Chilli extends Enemy {
 	public static final float CHILLI_WIDTH = 0.7f;
 	public static final float CHILLI_HEIGHT = 1f;
@@ -12,11 +16,18 @@ public class Chilli extends Enemy {
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param wayPoints	An ordered list of the points the enemy will move between, 
+	 * given in World coordinates. The enemy will be initialised at the first of these points 
+	 */
 	public  Chilli(List<Vector2> wayPoints) {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
 	}
 
-	public  Chilli(float x, float y, List<Vector2> wayPoints) {
+
+	private Chilli(float x, float y, List<Vector2> wayPoints) {
 		super(x, y, CHILLI_WIDTH, CHILLI_HEIGHT);
 		this.wayPoints = wayPoints;
 		initialHp = CHILLI_HP;
