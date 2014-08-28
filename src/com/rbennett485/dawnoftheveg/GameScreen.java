@@ -1,6 +1,7 @@
 package com.rbennett485.dawnoftheveg;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
 
@@ -31,6 +32,7 @@ public class GameScreen extends GLScreen {
 	Rectangle quitBounds;
 	Vector2 touchPoint;
 	FPSCounter fpsCounter;
+	Random rand;
 
 	public GameScreen(Game game, Level level) {
 		super(game);
@@ -43,6 +45,7 @@ public class GameScreen extends GLScreen {
 		touchPoint = new Vector2();
 		fpsCounter = new FPSCounter();
 		paused = false;
+		rand = new Random();
 		worldListener = new WorldListener() {
 
 			@Override
@@ -52,9 +55,11 @@ public class GameScreen extends GLScreen {
 
 			@Override
 			public void splat() {
-				// TODO Auto-generated method stub
+				if(rand.nextInt(2)<1) {
+					Assets.playSound(Assets.splat1);
+				} else
+					Assets.playSound(Assets.splat2);
 			}
-
 		};
 		world = new World(worldListener, level);
 		renderer = new WorldRenderer(glGraphics, batcher, world);
