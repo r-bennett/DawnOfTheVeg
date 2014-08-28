@@ -293,19 +293,22 @@ public class GameScreen extends GLScreen {
 	}
 
 	private void presentGameOver() {
-		batcher.drawSprite(400, 240, 240, 120, Assets.gameOver);
+		batcher.drawSprite(400, 240, 291, 72, Assets.gameOver);
 
 	}
 
 	private void presentComplete() {
-		batcher.drawSprite(400, 240, 240, 120, Assets.complete);
+		batcher.drawSprite(400, 240, 291, 73, Assets.complete);
 	}
 
 	public void presentRunning() {
 		batcher.drawSprite(780, 460, 40, 40, Assets.pause);
 		if(world.patchMenuCentre != null) {
 			Vector2 guiCoordsPatchCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
-			batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 80, 80, Assets.towerMenu);
+			if(world.towerAt(world.patchMenuCentre)) 
+				batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 120, 120, Assets.upgradeMenu);
+			else
+				batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 120, 120, Assets.towerMenu);
 		}
 	}
 
