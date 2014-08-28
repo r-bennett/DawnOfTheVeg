@@ -49,6 +49,7 @@ public class WorldRenderer {
 
 		batcher.beginBatch(Assets.sprites);
 		renderTowers();
+		renderSplats();
 		renderProjectiles();
 
 		if(!world.enemies.isEmpty()) {
@@ -61,6 +62,13 @@ public class WorldRenderer {
 		batcher.endBatch();
 
 		gl.glDisable(GL10.GL_BLEND);
+	}
+
+	private void renderSplats() {
+		for(Splat s : world.splats) {
+			batcher.drawSprite(s.position.x, s.position.y, s.bounds.width, s.bounds.height, s.region);
+		}
+		
 	}
 
 	private void renderTowers() {
