@@ -5,7 +5,7 @@ import java.util.List;
 import com.badlogic.androidgames.framework.math.Vector2;
 
 public class Grape extends Enemy {
-	public static final float GRAPE_WIDTH = 0.5f;
+	public static final float GRAPE_WIDTH = 0.325f;
 	public static final float GRAPE_HEIGHT = 0.5f;
 	public static final float GRAPE_VELOCITY = 2f;
 	public static final int GRAPE_HP = 5;

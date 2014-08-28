@@ -5,7 +5,7 @@ import java.util.List;
 import com.badlogic.androidgames.framework.math.Vector2;
 
 public class Chilli extends Enemy {
-	public static final float CHILLI_WIDTH = 1f;
+	public static final float CHILLI_WIDTH = 0.7f;
 	public static final float CHILLI_HEIGHT = 1f;
 	public static final float CHILLI_VELOCITY = 2f;
 	public static final int CHILLI_HP = 10;
