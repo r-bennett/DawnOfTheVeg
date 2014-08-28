@@ -11,18 +11,24 @@ import com.badlogic.androidgames.framework.impl.GLGame;
 public class DawnOfTheVeg extends GLGame {
 	boolean firstTimeCreate = true;
 
+	/**
+	 * Sets the start screen to a new {@link TitleScreen}
+	 */
 	@Override
 	public Screen getStartScreen() {
 		return new TitleScreen(this);
 	}
 	
+	/**
+	 * Loads {@link Settings}, {@link Progress} and {@link Assets} if this 
+	 * is a first time load. Otherwise, calls {@link Assets#reload()}
+	 */
 	@Override 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config){
 		super.onSurfaceCreated(gl, config);
 		if(firstTimeCreate) {
 			Settings.load(getFileIO());
 			Progress.load(getFileIO());
-			Log.d("progress", Progress.level[0] + ", " + Progress.level[1]);
 			Assets.load(this);
 			firstTimeCreate = false;
 		} else {
@@ -30,6 +36,10 @@ public class DawnOfTheVeg extends GLGame {
 		}
 	}
 	
+	/**
+	 * Pauses music if sound is enabled, and calls 
+	 * {@link Progress#save(com.badlogic.androidgames.framework.FileIO) Progress.save()}
+	 */
 	@Override
 	public void onPause() {
 		super.onPause();
