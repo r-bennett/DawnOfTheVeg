@@ -29,7 +29,7 @@ public class TowerA extends Tower {
 
 	@Override
 	public Projectile newProj(Vector2 projVel) {
-		return new ProjectileA(this.position, projVel, (int)damage);
+		return new ProjectileA(this.position, projVel, (int)damage, range);
 	}
 
 }

@@ -28,7 +28,7 @@ public class TowerC extends Tower {
 
 	@Override
 	public Projectile newProj(Vector2 projVel) {
-		return new ProjectileC(this.position, projVel, (int)damage);
+		return new ProjectileC(this.position, projVel, (int)damage, range);
 	}
 
 }
