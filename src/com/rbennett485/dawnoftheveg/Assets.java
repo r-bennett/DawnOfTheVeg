@@ -98,10 +98,10 @@ public class Assets {
 	public static Sound splat2;
 
 	/**
-	 * Creates all the Texture and TextureRegion, Sound 
-	 * and Music objects
+	 * Creates all the {@link Texture} and {@link TextureRegion}, {@link Sound} 
+	 * and {@link Music} objects
 	 * 
-	 * @param game 	The Game instance to which the assets belong
+	 * @param game 	The {@link Game} instance to which the assets belong
 	 */
 	public static void load(GLGame game) {
 
@@ -218,7 +218,7 @@ public class Assets {
 	}
 
 	/**
-	 * Reloads all Textures and plays music (if
+	 * Reloads all textures and plays music (if
 	 * sound enabled). Used when OpenGL context is lost
 	 */
 	public static void reload() {
@@ -242,10 +242,10 @@ public class Assets {
 	}
 
 	/**
-	 * Plays the sound if sound is enabled in Settings,
+	 * Plays the sound if sound is enabled in {@link Settings},
 	 * otherwise does nothing
 	 * 
-	 * @param sound	The Sound object to play
+	 * @param sound	The {@link Sound} object to play
 	 */
 	public static void playSound(Sound sound) {
 		if(Settings.soundEnabled)
