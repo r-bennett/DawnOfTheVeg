@@ -21,4 +21,8 @@ public class Splat extends GameObject {
 		else
 			region = Assets.peaSplat;
 	}
+	
+	public void update(float deltaTime) {
+		stateTime += deltaTime;
+	}
 }
