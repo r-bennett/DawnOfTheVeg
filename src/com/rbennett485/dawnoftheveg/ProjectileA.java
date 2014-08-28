@@ -7,10 +7,11 @@ public class ProjectileA extends Projectile {
 	public static final float PROJECTILE_A_WIDTH = 0.2f;
 	public static final float PROJECTILE_A_HEIGHT = 0.2f;
 	
-	public ProjectileA(Vector2 position, Vector2 velocity, int damage) {
+	public ProjectileA(Vector2 position, Vector2 velocity, int damage, float range) {
 		this(position.x, position.y, PROJECTILE_A_WIDTH, PROJECTILE_A_HEIGHT);
 		this.velocity = velocity;
 		this.damagePoints = damage;
+		this.rangeTime = range / velocity.len();
 	}
 	
 	private ProjectileA(float x, float y, float width, float height) {
