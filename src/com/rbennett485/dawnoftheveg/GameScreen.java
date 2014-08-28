@@ -34,6 +34,12 @@ public class GameScreen extends GLScreen {
 	FPSCounter fpsCounter;
 	Random rand;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param game The {@link Game} the object belongs to
+	 * @param level The {@link Level} which the GameScreen is to model
+	 */
 	public GameScreen(Game game, Level level) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
@@ -59,6 +65,10 @@ public class GameScreen extends GLScreen {
 		renderer = new WorldRenderer(glGraphics, batcher, world);
 	}
 
+	/**
+	 * Handles touch events, checking whether UI items have been touched
+	 * and responding appropriately
+	 */
 	@Override
 	public void update(float deltaTime) {
 		if(paused) {
@@ -223,7 +233,7 @@ public class GameScreen extends GLScreen {
 
 	}
 
-	public void updatePaused() {
+	private void updatePaused() {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
@@ -246,6 +256,11 @@ public class GameScreen extends GLScreen {
 		}
 	}
 
+	/**
+	 * Renders the UI elements depending on the state of world
+	 * 
+	 * @param deltaTime Elapsed time in seconds since this method was last called
+	 */
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();        
@@ -300,7 +315,7 @@ public class GameScreen extends GLScreen {
 		batcher.drawSprite(400, 240, 291, 73, Assets.complete);
 	}
 
-	public void presentRunning() {
+	private void presentRunning() {
 		batcher.drawSprite(780, 460, 40, 40, Assets.pause);
 		if(world.patchMenuCentre != null) {
 			Vector2 guiCoordsPatchCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
@@ -311,7 +326,7 @@ public class GameScreen extends GLScreen {
 		}
 	}
 
-	public void presentPaused() {
+	private void presentPaused() {
 		batcher.drawSprite(400, 240, 313, 304, Assets.pauseMenu);
 	}
 
