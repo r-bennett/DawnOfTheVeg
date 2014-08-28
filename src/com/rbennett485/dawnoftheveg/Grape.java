@@ -16,7 +16,7 @@ public class Grape extends Enemy {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
 	}
 
-	public Grape(float x, float y, List<Vector2> wayPoints) {
+	private Grape(float x, float y, List<Vector2> wayPoints) {
 		super(x, y, GRAPE_WIDTH, GRAPE_HEIGHT);
 		this.wayPoints = wayPoints;
 		initialHp = GRAPE_HP;

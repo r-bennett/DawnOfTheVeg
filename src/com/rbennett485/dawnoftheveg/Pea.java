@@ -17,7 +17,7 @@ public class Pea extends Enemy {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
 	}
 
-	public Pea(float x, float y, List<Vector2> wayPoints) {
+	private Pea(float x, float y, List<Vector2> wayPoints) {
 		super(x, y, PEA_WIDTH, PEA_HEIGHT);
 		this.wayPoints = wayPoints;
 		initialHp = PEA_HP;

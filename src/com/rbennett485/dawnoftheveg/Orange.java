@@ -16,7 +16,7 @@ public class Orange extends Enemy {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
 	}
 
-	public Orange(float x, float y, List<Vector2> wayPoints) {
+	private Orange(float x, float y, List<Vector2> wayPoints) {
 		super(x, y, ORANGE_WIDTH, ORANGE_HEIGHT);
 		this.wayPoints = wayPoints;
 		initialHp = ORANGE_HP;
