@@ -47,6 +47,10 @@ public class Assets {
 	public static TextureRegion pause;
 	public static TextureRegion upgradeMenu;
 	public static TextureRegion redCross;
+	public static TextureRegion orangeSplat;
+	public static TextureRegion peaSplat;
+	public static TextureRegion grapeSplat;
+	public static TextureRegion chilliSplat;
 
 	public static Font font;
 
@@ -126,6 +130,10 @@ public class Assets {
 		towerMenu = new TextureRegion(sprites, 293, 559, 120, 120);
 		upgradeMenu = new TextureRegion(sprites, 413, 559, 120, 120);
 		redCross = new TextureRegion(sprites, 788, 91, 36, 32);
+		orangeSplat = new TextureRegion(sprites, 486, 258, 40, 40);
+		peaSplat = new TextureRegion(sprites, 567, 258, 40, 40);
+		grapeSplat = new TextureRegion(sprites, 607, 258, 40, 40);
+		chilliSplat = new TextureRegion(sprites, 527, 258, 40, 40);
 
 
 		font = new Font(sprites, 1, 307, 16, 16, 32);
