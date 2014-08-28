@@ -4,7 +4,7 @@ import com.badlogic.androidgames.framework.math.Vector2;
 
 public class TowerD extends Tower {
 	public static final float RELOAD_TIME = 0.5f;
-	public static final float TOWER_D_WIDTH = 1f;
+	public static final float TOWER_D_WIDTH = 0.95f;
 	public static final float TOWER_D_HEIGHT = 1f;
 	public static final int TOWER_D_COST = 200;
 	public static final float TOWER_D_RANGE = 3f;
