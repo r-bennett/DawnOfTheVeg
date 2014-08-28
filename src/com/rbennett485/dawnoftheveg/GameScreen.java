@@ -47,12 +47,6 @@ public class GameScreen extends GLScreen {
 		paused = false;
 		rand = new Random();
 		worldListener = new WorldListener() {
-
-			@Override
-			public void shot() {
-				// TODO Auto-generated method stub
-			}
-
 			@Override
 			public void splat() {
 				if(rand.nextInt(2)<1) {

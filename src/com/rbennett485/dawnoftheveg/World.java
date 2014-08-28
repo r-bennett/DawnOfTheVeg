@@ -11,7 +11,6 @@ import com.badlogic.androidgames.framework.math.Vector2;
 public class World {
 
 	public interface WorldListener {
-		public void shot();
 		public void splat();
 	}
 
@@ -178,6 +177,7 @@ public class World {
 			if(e.hp<=0) {
 				removals.add(e);
 				splats.add(new Splat(e));
+				listener.splat();
 			}
 		}
 		enemies.removeAll(removals);
