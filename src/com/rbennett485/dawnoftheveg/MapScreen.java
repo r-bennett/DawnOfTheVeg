@@ -24,11 +24,11 @@ import com.rbennett485.dawnoftheveg.data.Settings;
  *
  */
 public class MapScreen extends GLScreen {
-	Camera2D guiCam;
-	SpriteBatcher batcher;
-	Rectangle backBounds;
-	Rectangle[] levelBounds;
-	Vector2 touchPoint;
+	private Camera2D guiCam;
+	private SpriteBatcher batcher;
+	private Rectangle backBounds;
+	private Rectangle[] levelBounds;
+	private Vector2 touchPoint;
 
 	/**
 	 * Constructor
