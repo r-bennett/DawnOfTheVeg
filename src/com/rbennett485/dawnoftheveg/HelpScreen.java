@@ -21,12 +21,12 @@ import com.badlogic.androidgames.framework.math.Vector2;
  *
  */
 public class HelpScreen extends GLScreen {
-	Camera2D guiCam;
-	SpriteBatcher batcher;
-	Rectangle nextBounds;
-	Rectangle previousBounds; //for previous help screen
-	Rectangle backBounds; //for returning to title screen
-	Vector2 touchPoint;
+	private Camera2D guiCam;
+	private SpriteBatcher batcher;
+	private Rectangle nextBounds;
+	private Rectangle previousBounds; //for previous help screen
+	private Rectangle backBounds; //for returning to title screen
+	private Vector2 touchPoint;
 	private int currentRegion;
 	
 	/** Constructor
