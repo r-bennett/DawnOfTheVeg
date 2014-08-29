@@ -29,14 +29,14 @@ import com.rbennett485.dawnoftheveg.model.World;
  *
  */
 public class WorldRenderer {
-	static final float FRUSTUM_WIDTH = 20;
-	static final float FRUSTUM_HEIGHT = 12;
-	static final float HEALTH_BAR_GAP = 0.1f;
-	static final float HEALTH_BAR_HEIGHT = 0.05f;
-	GLGraphics glGraphics;
-	World world;
-	Camera2D cam;
-	SpriteBatcher batcher;    
+	private static final float FRUSTUM_WIDTH = 20;
+	private static final float FRUSTUM_HEIGHT = 12;
+	private static final float HEALTH_BAR_GAP = 0.1f;
+	private static final float HEALTH_BAR_HEIGHT = 0.05f;
+	private GLGraphics glGraphics;
+	private World world;
+	private Camera2D cam;
+	private SpriteBatcher batcher;    
 
 	/**
 	 * Constructor 

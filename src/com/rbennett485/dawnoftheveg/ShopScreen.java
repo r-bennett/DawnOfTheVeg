@@ -25,14 +25,14 @@ import com.rbennett485.dawnoftheveg.variables.Shop;
  */
 public class ShopScreen extends GLScreen {
 
-	Camera2D guiCam;
-	SpriteBatcher batcher;
-	Rectangle backBounds;
-	Vector2 touchPoint;
-	int currentItem;
-	Rectangle nextBounds;
-	Rectangle previousBounds;
-	Rectangle buyBounds;
+	private Camera2D guiCam;
+	private SpriteBatcher batcher;
+	private Rectangle backBounds;
+	private Vector2 touchPoint;
+	private int currentItem;
+	private Rectangle nextBounds;
+	private Rectangle previousBounds;
+	private Rectangle buyBounds;
 
 	/** 
 	 * Constructor

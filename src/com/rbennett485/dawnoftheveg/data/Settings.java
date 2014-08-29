@@ -17,7 +17,7 @@ import com.badlogic.androidgames.framework.FileIO;
  */
 public class Settings {
 	public static boolean soundEnabled = true;
-	public final static String file = ".dawnoftheveg";
+	private final static String file = ".dawnoftheveg";
 
 	/**
 	 * Loads settings values from file. If this fails (including if  no settings file exists)

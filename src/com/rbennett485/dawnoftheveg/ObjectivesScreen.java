@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.Log;
-
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
@@ -24,10 +22,10 @@ import com.rbennett485.dawnoftheveg.variables.Objectives;
  *
  */
 public class ObjectivesScreen extends GLScreen {
-	Camera2D guiCam;
-	SpriteBatcher batcher;
-	Rectangle backBounds;
-	Vector2 touchPoint;
+	private Camera2D guiCam;
+	private SpriteBatcher batcher;
+	private Rectangle backBounds;
+	private Vector2 touchPoint;
 
 	/**
 	 * Constructor

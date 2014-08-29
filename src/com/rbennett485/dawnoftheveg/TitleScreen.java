@@ -21,14 +21,14 @@ import com.rbennett485.dawnoftheveg.data.Settings;
  *
  */
 public class TitleScreen extends GLScreen {
-	Camera2D guiCam;
-	SpriteBatcher batcher;
-	Rectangle soundBounds;
-	Rectangle helpBounds;
-	Rectangle playBounds;
-	Rectangle shopBounds;
-	Rectangle objectivesBounds;
-	Vector2 touchPoint;
+	private Camera2D guiCam;
+	private SpriteBatcher batcher;
+	private Rectangle soundBounds;
+	private Rectangle helpBounds;
+	private Rectangle playBounds;
+	private Rectangle shopBounds;
+	private Rectangle objectivesBounds;
+	private Vector2 touchPoint;
 
 	/**
 	 * Constructor

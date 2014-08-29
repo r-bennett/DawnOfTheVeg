@@ -14,8 +14,8 @@ public class Orange extends Enemy {
 	public static final float ORANGE_HEIGHT = 1.1f;
 	public static final float ORANGE_VELOCITY = 2f;
 	public static final int ORANGE_HP = 20;
-	public final List<Vector2> wayPoints;
-	public int nextWayPoint;
+	private final List<Vector2> wayPoints;
+	private int nextWayPoint;
 
 	/**
 	 * Constructor

@@ -29,7 +29,7 @@ public class Progress {
 	public static int currentObjectiveSet;
 	public static int funds;
 	public static boolean tower[];
-	public final static String file = ".dawnoftheveg";
+	private final static String file = ".dawnoftheveg";
 
 	static {
 		level = new boolean[NUMBER_OF_LEVELS];

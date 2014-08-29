@@ -15,8 +15,8 @@ public class Pea extends Enemy {
 	public static final float PEA_HEIGHT = 0.33f;
 	public static final float PEA_VELOCITY = 2f;
 	public static final int PEA_HP = 20;
-	public final List<Vector2> wayPoints;
-	public int nextWayPoint;
+	private final List<Vector2> wayPoints;
+	private int nextWayPoint;
 
 	/**
 	 * Constructor

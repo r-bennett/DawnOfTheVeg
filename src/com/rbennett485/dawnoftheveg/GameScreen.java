@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
+import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.FPSCounter;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
@@ -17,7 +18,6 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 import com.rbennett485.dawnoftheveg.data.Progress;
-import com.rbennett485.dawnoftheveg.data.Settings;
 import com.rbennett485.dawnoftheveg.model.Level;
 import com.rbennett485.dawnoftheveg.model.Tower;
 import com.rbennett485.dawnoftheveg.model.TowerA;

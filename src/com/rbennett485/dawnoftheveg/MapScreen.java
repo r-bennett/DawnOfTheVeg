@@ -15,7 +15,6 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 import com.rbennett485.dawnoftheveg.data.Progress;
-import com.rbennett485.dawnoftheveg.data.Settings;
 
 /**
  * The screen for selecting a level

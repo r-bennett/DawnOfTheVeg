@@ -11,7 +11,7 @@ import com.rbennett485.dawnoftheveg.data.Progress;
  *
  */
 public class ShopItem {
-	public int itemId;
+	private int itemId;
 	public TextureRegion region;
 	public int cost;
 	public int width;

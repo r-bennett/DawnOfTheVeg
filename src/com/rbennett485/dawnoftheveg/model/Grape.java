@@ -14,8 +14,8 @@ public class Grape extends Enemy {
 	public static final float GRAPE_HEIGHT = 0.6f;
 	public static final float GRAPE_VELOCITY = 2f;
 	public static final int GRAPE_HP = 5;
-	public final List<Vector2> wayPoints;
-	public int nextWayPoint;
+	private final List<Vector2> wayPoints;
+	private int nextWayPoint;
 	
 	/**
 	 * Constructor

@@ -35,9 +35,8 @@ public class World {
 	// waves appear. Allows player to build initial towers
 	// note - no pause state needed since GameScreen handles this, and does not update World when paused
 
-	public final Runnable waveCreator;
+	private final Runnable waveCreator;
 
-	public final int INITIAL_MONEY;
 	public final List<Vector2> wayPoints;
 	public final List<Wave> waves;
 	public final List<Vector2> towerPatches;
@@ -47,8 +46,8 @@ public class World {
 	public List<Projectile> projectiles;
 	public List<Splat> splats;
 
-	public final WorldListener listener;
-	public final Random rand;
+	private final WorldListener listener;
+	private final Random rand;
 
 	public int money;
 	public int state;
@@ -100,8 +99,7 @@ public class World {
 		};
 
 		this.listener = listener;
-		this.INITIAL_MONEY = level.INITIAL_MONEY;
-		this.money = INITIAL_MONEY;
+		this.money = level.INITIAL_MONEY;
 		this.wayPoints = level.wayPoints;
 		this.waves = level.waves;
 		this.towerPatches = level.towerPatches;
