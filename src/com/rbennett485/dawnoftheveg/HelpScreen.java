@@ -100,7 +100,7 @@ public class HelpScreen extends GLScreen {
 		gl.glEnable(GL10.GL_TEXTURE_2D);
 		
 		batcher.beginBatch(Assets.helpImage);
-		batcher.drawSprite(400, 180, 560, 320, Assets.helpRegion[currentRegion]);
+		batcher.drawSprite(400, 240, 380, 380, Assets.helpRegion[currentRegion]);
 		batcher.endBatch();
 		
 		gl.glEnable(GL10.GL_BLEND);
