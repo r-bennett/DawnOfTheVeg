@@ -86,11 +86,11 @@ public class Assets {
 
 	public static Texture helpImage;
 	public static TextureRegion[] helpRegion;
-	public static int NUMBER_OF_HELP_REGIONS = 2;
+	public static final int NUMBER_OF_HELP_REGIONS = 6;
 
 	public static Texture[] story;
 	public static TextureRegion[] storyRegion;
-	public static int NUMBER_OF_STORY_REGIONS = 12;
+	public static final int NUMBER_OF_STORY_REGIONS = 12;
 
 	public static Music music;
 
@@ -178,8 +178,12 @@ public class Assets {
 
 		helpImage = new Texture(game, "help.png");
 		helpRegion =  new TextureRegion[NUMBER_OF_HELP_REGIONS];
-		helpRegion[0] =  new TextureRegion(helpImage, 0, 0, 560, 320);
-		helpRegion[1] = new TextureRegion(helpImage, 560, 0, 560, 320);
+		helpRegion[0] =  new TextureRegion(helpImage, 0, 0, 380, 380);
+		helpRegion[1] = new TextureRegion(helpImage, 380, 0, 380, 380);
+		helpRegion[2] = new TextureRegion(helpImage, 760, 0, 380, 380);
+		helpRegion[3] = new TextureRegion(helpImage, 1140, 0, 380, 380);
+		helpRegion[4] = new TextureRegion(helpImage, 1520, 0, 380, 380);
+		helpRegion[5] = new TextureRegion(helpImage, 0, 380, 380, 380);
 
 		story = new Texture[NUMBER_OF_STORY_REGIONS];
 		storyRegion = new TextureRegion[NUMBER_OF_STORY_REGIONS];
