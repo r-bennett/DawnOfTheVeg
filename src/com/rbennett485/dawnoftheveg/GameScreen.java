@@ -370,7 +370,7 @@ public class GameScreen extends GLScreen {
 
 	@Override
 	public void pause() {
-		Settings.save(game.getFileIO());
+		paused = true;
 	}
 
 	@Override
