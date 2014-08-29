@@ -17,6 +17,12 @@ public class Orange extends Enemy {
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param wayPoints	An ordered list of the points the enemy will move between, 
+	 * given in World coordinates. The enemy will be initialised at the first of these points 
+	 */
 	public Orange(List<Vector2> wayPoints) {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
 	}
@@ -30,6 +36,10 @@ public class Orange extends Enemy {
 		this.region = Assets.orange;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Enemy#update(float)
+	 */
+	@Override
 	public void update(float deltaTime) {
 		if(nextWayPoint<wayPoints.size()) {
 			if(position.dist(wayPoints.get(nextWayPoint))<0.1) {
@@ -45,6 +55,9 @@ public class Orange extends Enemy {
 		bounds.lowerLeft.set(position).sub(ORANGE_WIDTH / 2, ORANGE_HEIGHT / 2);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Enemy#clone()
+	 */
 	@Override
 	public Orange clone() {
 		return new Orange(this.position.x, this.position.y, this.wayPoints);

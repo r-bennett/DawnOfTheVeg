@@ -37,11 +37,8 @@ public class Chilli extends Enemy {
 		this.region = Assets.chilli;
 	}
 
-	/**
-	 * Updates the enemy's position and bounds, and advances the enemy
-	 * to the next waypoint if it is within 0.1 units of its current waypoint
-	 * 
-	 * @param deltaTime	The time in seconds since the method was last called
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Enemy#update(float)
 	 */
 	@Override
 	public void update(float deltaTime) {

@@ -18,6 +18,12 @@ public class Pea extends Enemy {
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param wayPoints	An ordered list of the points the enemy will move between, 
+	 * given in World coordinates. The enemy will be initialised at the first of these points 
+	 */
 	public Pea(List<Vector2> wayPoints) {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
 	}
@@ -31,6 +37,10 @@ public class Pea extends Enemy {
 		this.region = Assets.pea;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Enemy#update(float)
+	 */
+	@Override
 	public void update(float deltaTime) {
 		if(nextWayPoint<wayPoints.size()) {
 			if(position.dist(wayPoints.get(nextWayPoint))<0.1) {
@@ -46,6 +56,9 @@ public class Pea extends Enemy {
 		bounds.lowerLeft.set(position).sub(PEA_WIDTH / 2, PEA_HEIGHT / 2);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Enemy#clone()
+	 */
 	@Override
 	public Pea clone() {
 		return new Pea(this.position.x, this.position.y, this.wayPoints);

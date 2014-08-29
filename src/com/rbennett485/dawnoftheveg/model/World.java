@@ -19,6 +19,9 @@ import com.rbennett485.dawnoftheveg.data.Progress;
 public class World {
 
 	public interface WorldListener {
+		/**
+		 * Plays a random splat sound (for when an enemy dies)
+		 */
 		public void splat();
 	}
 
@@ -58,6 +61,12 @@ public class World {
 
 	private List<GameObject> removals; // used for storing all objects to be removed during an iteration of a collection
 
+	/**
+	 * Constructor 
+	 * 
+	 * @param listener The listener responsible for playing the sounds
+	 * @param level The object containing the level information
+	 */
 	public World(WorldListener listener, Level level) {
 		this.enemies = new ArrayList<>();
 		this.towers = new ArrayList<>();
@@ -99,6 +108,11 @@ public class World {
 		patchMenuCentre = null;
 	}
 
+	/**
+	 * Updates all aspects of the model
+	 * 
+	 * @param deltaTime The time elapsed in seconds since the last update
+	 */
 	public void update(float deltaTime) {
 		if(state!=WORLD_STATE_INITIAL_BUILD)
 			timeElapsed+=deltaTime;
@@ -232,6 +246,12 @@ public class World {
 		}
 	} 
 	
+	/**
+	 * For determining if a tower is present at a given position (must match exactly)
+	 * 
+	 * @param pos The position to test
+	 * @return true if there is a tower there, false otherwise
+	 */
 	public boolean towerAt(Vector2 pos) {
 		for(Tower t : towers) {
 			if(t.position.x==pos.x 
@@ -241,6 +261,12 @@ public class World {
 		return false;
 	}
 	
+	/**
+	 * Retrieves the tower at a given position
+	 * 
+	 * @param pos The position to get the tower from
+	 * @return The towerat that position, or null if no such tower
+	 */
 	public Tower getTowerAt(Vector2 pos) {
 		for(Tower t : towers) {
 			if(t.position.x==pos.x 

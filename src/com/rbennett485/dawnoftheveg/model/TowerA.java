@@ -25,12 +25,17 @@ public class TowerA extends Tower {
 		damage = TOWER_A_DAMAGE;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Tower#getCost()
+	 */
 	@Override
-	public
-	int getCost() {
+	public int getCost() {
 		return TOWER_A_COST;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Tower#newProj(com.badlogic.androidgames.framework.math.Vector2)
+	 */
 	@Override
 	public Projectile newProj(Vector2 projVel) {
 		return new ProjectileA(this.position, projVel, (int)damage, range);

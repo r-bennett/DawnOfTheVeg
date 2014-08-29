@@ -17,6 +17,12 @@ public class Grape extends Enemy {
 	public final List<Vector2> wayPoints;
 	public int nextWayPoint;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param wayPoints	An ordered list of the points the enemy will move between, 
+	 * given in World coordinates. The enemy will be initialised at the first of these points 
+	 */
 	public Grape(List<Vector2> wayPoints) {
 		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
 	}
@@ -30,6 +36,10 @@ public class Grape extends Enemy {
 		this.region = Assets.grape;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Enemy#update(float)
+	 */
+	@Override
 	public void update(float deltaTime) {
 		if(nextWayPoint<wayPoints.size()) {
 			if(position.dist(wayPoints.get(nextWayPoint))<0.1) {
@@ -45,6 +55,9 @@ public class Grape extends Enemy {
 		bounds.lowerLeft.set(position).sub(GRAPE_WIDTH / 2, GRAPE_HEIGHT / 2);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.rbennett485.dawnoftheveg.model.Enemy#clone()
+	 */
 	@Override
 	public Grape clone() {
 		return new Grape(this.position.x, this.position.y, this.wayPoints);

@@ -17,6 +17,11 @@ public class Splat extends GameObject {
 	public static final float TIME_TO_LIVE = 3;
 	public TextureRegion region;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param e The enemy from which the splat copies its colour, position and size
+	 */
 	public Splat(Enemy e) {
 		super(e.position.x, e.position.y, e.bounds.width, e.bounds.height);
 		
@@ -30,6 +35,11 @@ public class Splat extends GameObject {
 			region = Assets.peaSplat;
 	}
 	
+	/**
+	 * Updates the splat's state time
+	 * 
+	 * @param deltaTime Seconds elapsed since last updated
+	 */
 	public void update(float deltaTime) {
 		stateTime += deltaTime;
 	}
