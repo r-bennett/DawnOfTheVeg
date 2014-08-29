@@ -23,6 +23,13 @@ public abstract class Level {
 	public final TextureRegion backgroundRegion;
 	public int number;
 	
+	/**
+	 * Constructor - initialises members and calls all generator methods
+	 * 
+	 * @param INITIAL_MONEY - the sum of money at the start of the level
+	 * @param background - the texture to which the level background belongs
+	 * @param backgroundRegion - the texture region for the level background
+	 */
 	public Level(int INITIAL_MONEY, Texture background, TextureRegion backgroundRegion) {
 		this.background = background;
 		this.backgroundRegion= backgroundRegion;
@@ -32,7 +39,7 @@ public abstract class Level {
 		this.towerPatches = towerPatchGenerator();
 	}
 
-	public abstract List<Vector2> wayPointGenerator();
-	public abstract List<Wave> waveGenerator();
-	public abstract List<Vector2> towerPatchGenerator();
+	protected abstract List<Vector2> wayPointGenerator();
+	protected abstract List<Wave> waveGenerator();
+	protected abstract List<Vector2> towerPatchGenerator();
 }

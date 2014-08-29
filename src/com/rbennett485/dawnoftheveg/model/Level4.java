@@ -17,7 +17,7 @@ public class Level4 extends Level {
 	}
 
 	@Override
-	public List<Vector2> wayPointGenerator() {
+	protected List<Vector2> wayPointGenerator() {
 		List<Vector2> result = new ArrayList<>();
 		result.add(new Vector2(0,6.23f));
 		result.add(new Vector2(20,6.23f));
@@ -25,7 +25,7 @@ public class Level4 extends Level {
 	}
 
 	@Override
-	public List<Wave> waveGenerator() {
+	protected List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
 		result.add(new Wave(0, new Grape(wayPoints), 10));
 		result.add(new Wave(10, new Chilli(wayPoints), 8));
@@ -34,7 +34,7 @@ public class Level4 extends Level {
 	}
 	
 	@Override
-	public List<Vector2> towerPatchGenerator() {
+	protected List<Vector2> towerPatchGenerator() {
 		List<Vector2> result = new ArrayList<>();
 		result.add(new Vector2(1.75f,8.63f));
 		result.add(new Vector2(5.13f,8.63f));
