@@ -8,6 +8,12 @@ import android.util.Log;
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
 
+/**
+ * The main activity for the app
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class DawnOfTheVeg extends GLGame {
 	boolean firstTimeCreate = true;
 
