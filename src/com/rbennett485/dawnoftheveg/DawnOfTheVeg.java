@@ -17,7 +17,7 @@ import com.rbennett485.dawnoftheveg.data.Settings;
  *
  */
 public class DawnOfTheVeg extends GLGame {
-	boolean firstTimeCreate = true;
+	private boolean firstTimeCreate = true;
 
 	/**
 	 * Sets the start screen to a new {@link TitleScreen}
