@@ -3,8 +3,6 @@ package com.rbennett485.dawnoftheveg;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.Log;
-
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
 import com.rbennett485.dawnoftheveg.data.Progress;
