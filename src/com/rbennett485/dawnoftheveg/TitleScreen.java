@@ -30,6 +30,11 @@ public class TitleScreen extends GLScreen {
 	Rectangle objectivesBounds;
 	Vector2 touchPoint;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param game The game to which the screen belongs
+	 */
 	public TitleScreen(Game game) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
@@ -42,6 +47,12 @@ public class TitleScreen extends GLScreen {
 		touchPoint = new Vector2();
 	}
 
+	/**
+	 * Checks for user interaction with UI, and manages screen transition
+	 * or changes settings appropriately
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -87,6 +98,11 @@ public class TitleScreen extends GLScreen {
 		}
 	}
 
+	/**
+	 * Renders the screen
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();

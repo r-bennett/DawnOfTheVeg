@@ -38,6 +38,13 @@ public class WorldRenderer {
 	Camera2D cam;
 	SpriteBatcher batcher;    
 
+	/**
+	 * Constructor 
+	 * 
+	 * @param glGraphics The {@link GLGraphics} instance to use
+	 * @param batcher The {@link SpriteBatcher} that will be used to render each texture region
+	 * @param world The model that will be rendered
+	 */
 	public WorldRenderer(GLGraphics glGraphics, SpriteBatcher batcher, World world) {
 		this.glGraphics = glGraphics;
 		this.world = world;
@@ -45,6 +52,9 @@ public class WorldRenderer {
 		this.batcher = batcher;        
 	}
 
+	/**
+	 * Renders the model stored in world member
+	 */
 	public void render() {
 		cam.setViewportAndMatrices();
 		renderBackground();

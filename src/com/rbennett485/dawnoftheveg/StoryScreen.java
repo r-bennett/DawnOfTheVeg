@@ -32,6 +32,12 @@ public class StoryScreen extends GLScreen {
 	SpriteBatcher batcher;
 	Vector2 touchPoint;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param game The game to which the screen belongs
+	 * @param frame The number of the first frame to display 
+	 */
 	public StoryScreen(Game game, int frame) {
 		super(game);
 		this.frame = frame;
@@ -40,6 +46,10 @@ public class StoryScreen extends GLScreen {
 		guiCam = new Camera2D(glGraphics, 800, 480);
 	}
 
+	/**
+	 * If the user touches the screen it either advances to the next frame,
+	 * or transitions to the relevant {@link GameScreen}
+	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -86,6 +96,9 @@ public class StoryScreen extends GLScreen {
 		}
 	}
 
+	/**
+	 * Renders the screen
+	 */
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();        

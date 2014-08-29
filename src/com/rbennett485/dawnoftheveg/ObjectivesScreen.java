@@ -29,6 +29,11 @@ public class ObjectivesScreen extends GLScreen {
 	Rectangle backBounds;
 	Vector2 touchPoint;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param game The game instance to which the screen belongs
+	 */
 	public ObjectivesScreen(Game game) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
@@ -37,6 +42,11 @@ public class ObjectivesScreen extends GLScreen {
 		touchPoint = new Vector2();
 	}
 
+	/**
+	 * Checks for UI interaction, and manages screen transition accordingly
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -57,6 +67,11 @@ public class ObjectivesScreen extends GLScreen {
 		}
 	}
 
+	/**
+	 * Renders the screen
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();        

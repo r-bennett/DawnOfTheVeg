@@ -30,6 +30,11 @@ public class MapScreen extends GLScreen {
 	Rectangle[] levelBounds;
 	Vector2 touchPoint;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param game The game instance to which the screen belongs
+	 */
 	public MapScreen(Game game) {
 		super(game);
 
@@ -49,6 +54,11 @@ public class MapScreen extends GLScreen {
 		touchPoint = new Vector2();
 	}
 
+	/**
+	 * Checks for UI interaction, and manages screen transitions accordingly
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -108,7 +118,12 @@ public class MapScreen extends GLScreen {
 			}
 		}
 	}
-
+	
+	/**
+	 * renders the screen
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();        

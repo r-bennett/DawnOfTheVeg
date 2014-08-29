@@ -34,6 +34,11 @@ public class ShopScreen extends GLScreen {
 	Rectangle previousBounds;
 	Rectangle buyBounds;
 
+	/** 
+	 * Constructor
+	 * 
+	 * @param game The game to which the screen belongs
+	 */
 	public ShopScreen(Game game) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
@@ -46,6 +51,12 @@ public class ShopScreen extends GLScreen {
 		currentItem = 0;
 	}
 
+	/**
+	 * Monitors for UI interaction, and updates the screen or executes the 
+	 * purchase accordingly
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
@@ -82,6 +93,11 @@ public class ShopScreen extends GLScreen {
 		}
 	}
 
+	/**
+	 * Renders the screen
+	 * 
+	 * @param deltaTime unused
+	 */
 	@Override
 	public void present(float deltaTime) {
 		GL10 gl = glGraphics.getGL();        

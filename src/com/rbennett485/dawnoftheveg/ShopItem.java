@@ -17,6 +17,15 @@ public class ShopItem {
 	public int width;
 	public int height;
 	
+	/**
+	 * Constructor
+	 * 
+	 * @param id The position in the shop
+	 * @param region The {@link TextureRegion} to display on screen
+	 * @param cost The cost to buy
+	 * @param width	The width of the displayed image (pixels)
+	 * @param height The height of the displayed images (pixels)
+	 */
 	public ShopItem(int id, TextureRegion region, int cost, int width, int height) {
 		this.itemId = id;
 		this.region = region;
@@ -25,6 +34,12 @@ public class ShopItem {
 		this.height = height;
 	}
 	
+	/**
+	 * Called to buy the item. If sufficient funds are available, cost is deducted
+	 * and item added to {@link Progress#shop} record
+	 * 
+	 * @return indicates success or failure of transaction
+	 */
 	public boolean purchase() {
 		if(Progress.funds >= cost) {
 			Progress.shop[itemId] = true;
