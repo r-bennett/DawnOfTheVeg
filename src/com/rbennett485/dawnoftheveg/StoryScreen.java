@@ -9,7 +9,6 @@ import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;
 import com.badlogic.androidgames.framework.impl.GLScreen;
-import com.badlogic.androidgames.framework.math.Vector2;
 import com.rbennett485.dawnoftheveg.model.Level1;
 import com.rbennett485.dawnoftheveg.model.Level2;
 import com.rbennett485.dawnoftheveg.model.Level3;
@@ -28,9 +27,8 @@ import com.rbennett485.dawnoftheveg.model.Level8;
  */
 public class StoryScreen extends GLScreen {
 	private int frame;
-	Camera2D guiCam;
-	SpriteBatcher batcher;
-	Vector2 touchPoint;
+	private Camera2D guiCam;
+	private SpriteBatcher batcher;
 
 	/**
 	 * Constructor
@@ -42,7 +40,6 @@ public class StoryScreen extends GLScreen {
 		super(game);
 		this.frame = frame;
 		batcher = new SpriteBatcher(glGraphics, 20);
-		touchPoint = new Vector2();
 		guiCam = new Camera2D(glGraphics, 800, 480);
 	}
 
