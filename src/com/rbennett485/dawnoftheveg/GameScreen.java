@@ -36,19 +36,19 @@ import com.rbennett485.dawnoftheveg.variables.Upgrades;
  */
 public class GameScreen extends GLScreen {
 
-	boolean paused;
-	Camera2D guiCam;
-	SpriteBatcher batcher;
-	World world;
-	WorldListener worldListener;
-	WorldRenderer renderer;
-	Rectangle pauseBounds;
-	Rectangle continueBounds;
-	Rectangle callNextWaveBounds;
-	Rectangle quitBounds;
-	Vector2 touchPoint;
-	FPSCounter fpsCounter;
-	Random rand;
+	private boolean paused;
+	private Camera2D guiCam;
+	private SpriteBatcher batcher;
+	private World world;
+	private WorldListener worldListener;
+	private WorldRenderer renderer;
+	private Rectangle pauseBounds;
+	private Rectangle continueBounds;
+	private Rectangle callNextWaveBounds;
+	private Rectangle quitBounds;
+	private Vector2 touchPoint;
+	private FPSCounter fpsCounter;
+	private Random rand;
 
 	/**
 	 * Constructor
