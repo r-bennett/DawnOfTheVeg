@@ -18,6 +18,12 @@ import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 import com.rbennett485.dawnoftheveg.World.WorldListener;
 
+/**
+ * The {@link Screen} instance for playing the game
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class GameScreen extends GLScreen {
 
 	boolean paused;

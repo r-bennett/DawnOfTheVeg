@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * @author Bennett_Richard
+ *
+ */
 public class Level7 extends Level {
 	public Level7() {
 		super(1000, Assets.level7background, Assets.level7backgroundRegion);

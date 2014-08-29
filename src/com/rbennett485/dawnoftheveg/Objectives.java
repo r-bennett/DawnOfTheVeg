@@ -1,5 +1,11 @@
 package com.rbennett485.dawnoftheveg;
 
+/**
+ * Stores objectives and their titles as strings
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class Objectives {
 	
 	public static final String[][][] objectives;

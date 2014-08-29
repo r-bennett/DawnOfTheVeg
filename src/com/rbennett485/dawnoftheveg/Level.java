@@ -6,6 +6,14 @@ import com.badlogic.androidgames.framework.gl.Texture;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * Stores the data which defines a level - the waypoints
+ * for the enemies, the positions of the tower patches, and 
+ * the waves of enemies
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public abstract class Level {
 	public final int INITIAL_MONEY;
 	public final List<Vector2> wayPoints;

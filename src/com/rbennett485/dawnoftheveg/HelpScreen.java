@@ -13,6 +13,13 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * The screen instance for help. Manages the presentation
+ * of the various help images
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class HelpScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;

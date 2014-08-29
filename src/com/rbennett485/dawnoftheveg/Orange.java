@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * @author Bennett_Richard
+ *
+ */
 public class Orange extends Enemy {
 	public static final float ORANGE_WIDTH = 1f;
 	public static final float ORANGE_HEIGHT = 1.1f;

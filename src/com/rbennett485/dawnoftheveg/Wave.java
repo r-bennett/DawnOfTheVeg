@@ -1,6 +1,12 @@
 package com.rbennett485.dawnoftheveg;
 
 
+/**
+ * Stores the data for a wave of enemies
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class Wave {
 	public int time;
 	public Enemy seed;

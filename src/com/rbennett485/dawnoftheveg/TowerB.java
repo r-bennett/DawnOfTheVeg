@@ -2,6 +2,10 @@ package com.rbennett485.dawnoftheveg;
 
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * @author Bennett_Richard
+ *
+ */
 public class TowerB extends Tower {
 	public static final float RELOAD_TIME = 0.5f;
 	public static final float TOWER_B_WIDTH = 1f;

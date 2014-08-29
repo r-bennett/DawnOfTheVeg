@@ -2,6 +2,13 @@ package com.rbennett485.dawnoftheveg;
 
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 
+/**
+ * Represents each item in the shop, both in terms of  its sale
+ * and its presentation on screen
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class ShopItem {
 	public int itemId;
 	public TextureRegion region;

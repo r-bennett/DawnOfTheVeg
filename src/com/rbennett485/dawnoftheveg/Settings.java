@@ -10,6 +10,11 @@ import android.util.Log;
 
 import com.badlogic.androidgames.framework.FileIO;
 
+/**
+ * Stores, saves and loads non-sensitive settings data
+ * @author Bennett_Richard
+ *
+ */
 public class Settings {
 	public static boolean soundEnabled = true;
 	public final static String file = ".dawnoftheveg";

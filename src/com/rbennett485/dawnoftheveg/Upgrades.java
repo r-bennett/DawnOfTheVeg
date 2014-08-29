@@ -1,5 +1,12 @@
 package com.rbennett485.dawnoftheveg;
 
+/**
+ * Stores the tower upgrade variables - cost and effect of each
+ * upgrade
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class Upgrades {
 	
 	public static final int RANGE_COST = 40;

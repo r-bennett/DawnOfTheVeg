@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * @author Bennett_Richard
+ *
+ */
 public class Pea extends Enemy {
 
 	public static final float PEA_WIDTH = 0.33f;

@@ -8,6 +8,13 @@ import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * The omniscient model class, responsible for maintaining and updating
+ * all model objects
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class World {
 
 	public interface WorldListener {

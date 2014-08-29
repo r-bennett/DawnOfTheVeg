@@ -13,6 +13,13 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * Displays the shop, and manages the display and navigation
+ * of items for sale
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class ShopScreen extends GLScreen {
 
 	Camera2D guiCam;

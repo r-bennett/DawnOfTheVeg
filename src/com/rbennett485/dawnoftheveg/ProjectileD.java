@@ -2,6 +2,10 @@ package com.rbennett485.dawnoftheveg;
 
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * @author Bennett_Richard
+ *
+ */
 public class ProjectileD extends Projectile {
 	public static final float PROJECTILE_D_SPEED = 5f;
 	public static final float PROJECTILE_D_WIDTH = 0.2f;

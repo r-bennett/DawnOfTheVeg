@@ -10,6 +10,13 @@ import android.util.Log;
 
 import com.badlogic.androidgames.framework.FileIO;
 
+/**
+ * Stores, securely saves and  loads all measures of player
+ * progress in game
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class Progress {
 	public final static int NUMBER_OF_LEVELS = 8;
 	public final static int NUMBER_OF_OBJECTIVE_SETS = 4;

@@ -1,5 +1,10 @@
 package com.rbennett485.dawnoftheveg;
 
+/**
+ * Stores information about what is contained in shop
+ * @author Bennett_Richard
+ *
+ */
 public class Shop {
 
 	public static final ShopItem[] items;

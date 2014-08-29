@@ -13,6 +13,12 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * The initial screen which is assigned to {@link DawnOfTheVeg} on launch
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class TitleScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;

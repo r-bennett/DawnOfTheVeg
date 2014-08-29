@@ -6,6 +6,12 @@ import java.util.List;
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * Represents towers in the game's model
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public abstract class Tower extends GameObject {
 	public float idleTime;
 	public float reloadTime;

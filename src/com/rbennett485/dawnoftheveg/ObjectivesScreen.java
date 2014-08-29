@@ -15,6 +15,12 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * Displays objectives and indicates if complete
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class ObjectivesScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;

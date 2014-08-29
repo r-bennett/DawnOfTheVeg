@@ -2,6 +2,12 @@ package com.rbennett485.dawnoftheveg;
 
 import com.badlogic.androidgames.framework.DynamicGameObject;
 
+/**
+ * Represents projectiles in the game's model
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class Projectile extends DynamicGameObject {
 
 	public int damagePoints;

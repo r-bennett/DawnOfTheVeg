@@ -3,6 +3,13 @@ package com.rbennett485.dawnoftheveg;
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 
+/**
+ * Represents splats in the game's model (used  when an 
+ * enemy has died)
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class Splat extends GameObject {
 	
 	public float stateTime;

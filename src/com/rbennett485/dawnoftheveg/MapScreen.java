@@ -15,6 +15,12 @@ import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * The screen for selecting a level
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class MapScreen extends GLScreen {
 	Camera2D guiCam;
 	SpriteBatcher batcher;

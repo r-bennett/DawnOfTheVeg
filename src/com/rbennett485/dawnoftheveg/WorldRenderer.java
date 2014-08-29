@@ -11,6 +11,12 @@ import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGraphics;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * Responsible for rendering a given model on screen
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class WorldRenderer {
 	static final float FRUSTUM_WIDTH = 20;
 	static final float FRUSTUM_HEIGHT = 12;

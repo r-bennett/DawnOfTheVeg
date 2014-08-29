@@ -11,6 +11,13 @@ import com.badlogic.androidgames.framework.gl.SpriteBatcher;
 import com.badlogic.androidgames.framework.impl.GLScreen;
 import com.badlogic.androidgames.framework.math.Vector2;
 
+/**
+ * Displays and manages transitions between storyboards, displayed
+ * before each level
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public class StoryScreen extends GLScreen {
 	private int frame;
 	Camera2D guiCam;
