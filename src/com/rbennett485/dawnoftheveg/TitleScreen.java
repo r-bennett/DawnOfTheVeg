@@ -135,7 +135,6 @@ public class TitleScreen extends GLScreen {
 
 	@Override
 	public void pause() {
-		Settings.save(game.getFileIO());
 	}
 
 	@Override

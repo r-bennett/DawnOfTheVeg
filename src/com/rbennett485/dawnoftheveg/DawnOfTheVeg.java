@@ -54,5 +54,6 @@ public class DawnOfTheVeg extends GLGame {
 		if(Settings.soundEnabled)
 			Assets.music.pause();
 		Progress.save(getFileIO());
+		Settings.save(getFileIO());
 	}
 }
