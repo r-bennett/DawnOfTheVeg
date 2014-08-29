@@ -335,10 +335,32 @@ public class GameScreen extends GLScreen {
 		batcher.drawSprite(780, 460, 40, 40, Assets.pause);
 		if(world.patchMenuCentre != null) {
 			Vector2 guiCoordsPatchCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
-			if(world.towerAt(world.patchMenuCentre)) 
+			if(world.towerAt(world.patchMenuCentre)) {
 				batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 120, 120, Assets.upgradeMenu);
-			else
+				if(world.money < Upgrades.RANGE_COST) 	
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
+
+				if(world.money < Upgrades.DAMAGE_COST) 					
+					batcher.drawSprite(guiCoordsPatchCentre.x + 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
+
+
+				if(world.money < Upgrades.RELOAD_COST) 	
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y - 30, 36, 32, Assets.redCross);
+			} else {
 				batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 120, 120, Assets.towerMenu);
+				if(world.money < TowerA.TOWER_A_COST || !Progress.tower[0]) 	
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
+				
+				if(world.money < TowerB.TOWER_B_COST || !Progress.tower[1]) 					
+					batcher.drawSprite(guiCoordsPatchCentre.x + 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
+
+			
+				if(world.money < TowerC.TOWER_C_COST || !Progress.tower[2]) 	
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y - 30, 36, 32, Assets.redCross);
+				
+				if(world.money < TowerD.TOWER_D_COST || !Progress.tower[3]) 	
+					batcher.drawSprite(guiCoordsPatchCentre.x + 30, guiCoordsPatchCentre.y - 30, 36, 32, Assets.redCross);
+			}
 		}
 	}
 
