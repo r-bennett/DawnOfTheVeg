@@ -3,6 +3,11 @@ package com.rbennett485.dawnoftheveg;
 import com.badlogic.androidgames.framework.DynamicGameObject;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 
+/** Represents enemies in game's model
+ * 
+ * @author Bennett_Richard
+ *
+ */
 public abstract class Enemy extends DynamicGameObject {
 	
 	public TextureRegion region;
