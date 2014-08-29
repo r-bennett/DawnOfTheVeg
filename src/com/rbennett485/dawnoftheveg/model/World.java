@@ -1,4 +1,4 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.Random;
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Vector2;
+import com.rbennett485.dawnoftheveg.data.Progress;
 
 /**
  * The omniscient model class, responsible for maintaining and updating

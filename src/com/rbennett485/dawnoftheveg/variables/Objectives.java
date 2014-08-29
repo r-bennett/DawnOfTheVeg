@@ -1,4 +1,4 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.variables;
 
 /**
  * Stores objectives and their titles as strings

@@ -14,6 +14,8 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
+import com.rbennett485.dawnoftheveg.data.Progress;
+import com.rbennett485.dawnoftheveg.variables.Objectives;
 
 /**
  * Displays objectives and indicates if complete

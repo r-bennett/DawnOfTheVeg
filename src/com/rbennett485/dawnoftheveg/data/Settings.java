@@ -1,4 +1,4 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.data;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

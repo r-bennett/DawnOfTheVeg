@@ -1,8 +1,9 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.model;
 
 import java.util.List;
 
 import com.badlogic.androidgames.framework.math.Vector2;
+import com.rbennett485.dawnoftheveg.Assets;
 
 /**
  * @author Bennett_Richard

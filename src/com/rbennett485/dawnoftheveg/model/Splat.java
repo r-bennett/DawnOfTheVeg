@@ -1,7 +1,8 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.model;
 
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
+import com.rbennett485.dawnoftheveg.Assets;
 
 /**
  * Represents splats in the game's model (used  when an 

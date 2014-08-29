@@ -1,4 +1,4 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.data;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import android.util.Log;
 
 import com.badlogic.androidgames.framework.FileIO;
+import com.rbennett485.dawnoftheveg.variables.Shop;
 
 /**
  * Stores, securely saves and  loads all measures of player

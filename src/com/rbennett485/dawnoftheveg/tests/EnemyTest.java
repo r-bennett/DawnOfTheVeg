@@ -9,13 +9,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.badlogic.androidgames.framework.math.Vector2;
-import com.rbennett485.dawnoftheveg.Chilli;
-import com.rbennett485.dawnoftheveg.Enemy;
-import com.rbennett485.dawnoftheveg.Grape;
-import com.rbennett485.dawnoftheveg.Orange;
-import com.rbennett485.dawnoftheveg.Projectile;
-import com.rbennett485.dawnoftheveg.ProjectileA;
-import com.rbennett485.dawnoftheveg.TowerA;
+import com.rbennett485.dawnoftheveg.model.Chilli;
+import com.rbennett485.dawnoftheveg.model.Enemy;
+import com.rbennett485.dawnoftheveg.model.Grape;
+import com.rbennett485.dawnoftheveg.model.Orange;
+import com.rbennett485.dawnoftheveg.model.Projectile;
+import com.rbennett485.dawnoftheveg.model.ProjectileA;
+import com.rbennett485.dawnoftheveg.model.TowerA;
 
 public class EnemyTest {
 	private Enemy orange;

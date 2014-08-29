@@ -1,6 +1,7 @@
 package com.rbennett485.dawnoftheveg;
 
 import com.badlogic.androidgames.framework.gl.TextureRegion;
+import com.rbennett485.dawnoftheveg.data.Progress;
 
 /**
  * Represents each item in the shop, both in terms of  its sale

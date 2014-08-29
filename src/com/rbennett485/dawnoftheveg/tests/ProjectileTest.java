@@ -6,15 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.badlogic.androidgames.framework.math.Vector2;
-import com.rbennett485.dawnoftheveg.Projectile;
-import com.rbennett485.dawnoftheveg.ProjectileA;
-import com.rbennett485.dawnoftheveg.ProjectileB;
-import com.rbennett485.dawnoftheveg.ProjectileC;
-import com.rbennett485.dawnoftheveg.ProjectileD;
-import com.rbennett485.dawnoftheveg.TowerA;
-import com.rbennett485.dawnoftheveg.TowerB;
-import com.rbennett485.dawnoftheveg.TowerC;
-import com.rbennett485.dawnoftheveg.TowerD;
+import com.rbennett485.dawnoftheveg.model.Projectile;
+import com.rbennett485.dawnoftheveg.model.ProjectileA;
+import com.rbennett485.dawnoftheveg.model.ProjectileB;
+import com.rbennett485.dawnoftheveg.model.ProjectileC;
+import com.rbennett485.dawnoftheveg.model.ProjectileD;
+import com.rbennett485.dawnoftheveg.model.TowerA;
+import com.rbennett485.dawnoftheveg.model.TowerB;
+import com.rbennett485.dawnoftheveg.model.TowerC;
+import com.rbennett485.dawnoftheveg.model.TowerD;
 
 public class ProjectileTest {
 	

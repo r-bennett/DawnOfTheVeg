@@ -12,6 +12,7 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
+import com.rbennett485.dawnoftheveg.data.Settings;
 
 /**
  * The initial screen which is assigned to {@link DawnOfTheVeg} on launch

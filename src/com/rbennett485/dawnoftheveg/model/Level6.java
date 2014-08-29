@@ -1,30 +1,28 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
-
 import com.badlogic.androidgames.framework.math.Vector2;
+import com.rbennett485.dawnoftheveg.Assets;
 
 /**
  * @author Bennett_Richard
  *
  */
-public class Level2 extends Level {
-	public Level2() {
-		super(1000, Assets.level2background, Assets.level2backgroundRegion);
-		number = 2;
-		Log.d("background", "making level 2");
+public class Level6 extends Level {
+	public Level6() {
+		super(1000, Assets.level6background, Assets.level6backgroundRegion);
+		number = 6;
 	}
 
 	@Override
 	public List<Vector2> wayPointGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(5.7f,0));
-		result.add(new Vector2(2.63f,4.2f));
-		result.add(new Vector2(17.2f,4.28f));
-		result.add(new Vector2(20,0.95f));
+		result.add(new Vector2(0,9.02f));
+		result.add(new Vector2(7.08f,8.90f));
+		result.add(new Vector2(11.73f,3.38f));
+		result.add(new Vector2(20,3.08f));
 		return result;
 	}
 
@@ -40,12 +38,13 @@ public class Level2 extends Level {
 	@Override
 	public List<Vector2> towerPatchGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(1.93f,5.73f));
-		result.add(new Vector2(5.8f,2.77f));
-		result.add(new Vector2(10.73f,2.75f));
-		result.add(new Vector2(16.35f,5.73f));
-		
+		result.add(new Vector2(6.55f,10.43f));
+		result.add(new Vector2(5.58f,7.58f));
+		result.add(new Vector2(12.95f,4.70f));
+		result.add(new Vector2(11.95f,1.98f));
+		result.add(new Vector2(18.10f,4.60f));
 		return result;
 	}
 	
+
 }

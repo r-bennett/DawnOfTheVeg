@@ -1,4 +1,4 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.variables;
 
 /**
  * Stores the tower upgrade variables - cost and effect of each

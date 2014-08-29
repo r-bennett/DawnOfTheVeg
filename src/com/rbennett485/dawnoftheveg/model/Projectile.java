@@ -1,4 +1,4 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.model;
 
 import com.badlogic.androidgames.framework.DynamicGameObject;
 

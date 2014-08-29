@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.Vector2;
-import com.rbennett485.dawnoftheveg.Upgrades;
+import com.rbennett485.dawnoftheveg.variables.Upgrades;
 
 /**
  * Represents towers in the game's model

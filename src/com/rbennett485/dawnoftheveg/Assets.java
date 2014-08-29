@@ -6,6 +6,7 @@ import com.badlogic.androidgames.framework.gl.Font;
 import com.badlogic.androidgames.framework.gl.Texture;
 import com.badlogic.androidgames.framework.gl.TextureRegion;
 import com.badlogic.androidgames.framework.impl.GLGame;
+import com.rbennett485.dawnoftheveg.data.Settings;
 
 /**
  * Stores and loads all assets

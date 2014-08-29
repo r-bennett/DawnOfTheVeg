@@ -1,4 +1,7 @@
-package com.rbennett485.dawnoftheveg;
+package com.rbennett485.dawnoftheveg.variables;
+
+import com.rbennett485.dawnoftheveg.Assets;
+import com.rbennett485.dawnoftheveg.ShopItem;
 
 /**
  * Stores information about what is contained in shop

@@ -7,6 +7,8 @@ import android.util.Log;
 
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
+import com.rbennett485.dawnoftheveg.data.Progress;
+import com.rbennett485.dawnoftheveg.data.Settings;
 
 /**
  * The main activity for the app
