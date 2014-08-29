@@ -43,6 +43,11 @@ public class Progress {
 		tower[1] = true;
 	}
 
+	/**
+	 * Loads the progress data from file. If this fails (including if no progress file
+	 * exists) then default values are used
+	 * @param files The {@link FileIO} instance to use
+	 */
 	public static void load(FileIO files) {
 		Log.d("progress", "load");
 		BufferedReader in = null;
@@ -81,6 +86,12 @@ public class Progress {
 		Log.d("progress", level[0]+"");
 	}
 
+	/**
+	 * Saves the current values of all progress fields to internal storage.
+	 * Takes no action if this fails for any reason
+	 * 
+	 * @param files The {@link FileIO} instance to use
+	 */
 	public static void save(FileIO files) {
 		BufferedWriter out = null;
 		try {

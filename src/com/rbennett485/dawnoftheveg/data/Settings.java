@@ -19,6 +19,12 @@ public class Settings {
 	public static boolean soundEnabled = true;
 	public final static String file = ".dawnoftheveg";
 
+	/**
+	 * Loads settings values from file. If this fails (including if  no settings file exists)
+	 * then default values are used
+	 * 
+	 * @param files The {@link FileIO} instance to use
+	 */
 	public static void load(FileIO files) {
 		BufferedReader in = null;
 		try {
@@ -38,6 +44,12 @@ public class Settings {
 		}
 	}
 	
+	/**
+	 * Saves the settings to external storage. Takes no action if this
+	 * fails for any reason
+	 * 
+	 * @param files The {@link FileIO} instance to use
+	 */
 	public static void save(FileIO files) {
 		BufferedWriter out = null;
 		try {
