@@ -29,6 +29,7 @@ public class Progress {
 	public static int currentObjectiveSet;
 	public static int funds;
 	public static boolean tower[];
+	public static int kills;
 	private final static String file = ".dawnoftheveg";
 
 	static {
@@ -41,6 +42,7 @@ public class Progress {
 		tower = new boolean[NUMBER_OF_TOWERS];
 		tower[0] = true;
 		tower[1] = true;
+		kills = 0;
 	}
 
 	/**
@@ -69,6 +71,7 @@ public class Progress {
 			for(int i=0 ; i<NUMBER_OF_TOWERS ; i++) {
 				tower[i] = Boolean.parseBoolean(in.readLine());
 			}
+			kills = Integer.parseInt(in.readLine());
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
@@ -118,6 +121,8 @@ public class Progress {
 				out.write(Boolean.toString(tower[i]));
 				out.write("\n");
 			}
+			out.write(Integer.toString(kills));
+			out.write("\n");
 		} catch (IOException ex) {
 			Log.d("exception", "level progress save failed - IOException");
 		} finally {
