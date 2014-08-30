@@ -8,8 +8,8 @@ import com.badlogic.androidgames.framework.math.Vector2;
  */
 public class ProjectileA extends Projectile {
 	public static final float PROJECTILE_A_SPEED = 5f;
-	public static final float PROJECTILE_A_WIDTH = 0.2f;
-	public static final float PROJECTILE_A_HEIGHT = 0.2f;
+	public static final float PROJECTILE_A_WIDTH = 0.275f;
+	public static final float PROJECTILE_A_HEIGHT = 0.125f;
 	
 	/**
 	 * Constructor
