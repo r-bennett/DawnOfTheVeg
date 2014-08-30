@@ -15,8 +15,8 @@ public class Shop {
 	
 	static {
 		items = new ShopItem[NUMBER_OF_ITEMS];
-		items[0] = new ShopItem(0,Assets.towerD,25, 100, 100);
-		items[1] = new ShopItem(1,Assets.towerC,75, 100, 100);
+		items[0] = new ShopItem(0,Assets.towerC,25, 100, 100);
+		items[1] = new ShopItem(1,Assets.towerD,75, 100, 100);
 	}
 
 }

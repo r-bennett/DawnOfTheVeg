@@ -44,6 +44,11 @@ public class ShopItem {
 		if(Progress.funds >= cost) {
 			Progress.shop[itemId] = true;
 			Progress.funds -= cost;
+			if(itemId == 0)
+				Progress.tower[2] = true;
+			if(itemId == 1)
+				Progress.tower[3] = true;
+			
 			return true;
 		} else {
 			return false;
