@@ -223,7 +223,7 @@ public class GameScreen extends GLScreen {
 							world.money-= towerC.getCost();
 							Objectives.builtTower();
 						} else if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y-40, 40, 40), touchPoint)
+								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y-60, 60, 60), touchPoint)
 								&& world.money >= TowerD.TOWER_D_COST
 								&& Progress.tower[3]){
 							//build D
