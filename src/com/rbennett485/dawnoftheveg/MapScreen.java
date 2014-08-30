@@ -40,7 +40,7 @@ public class MapScreen extends GLScreen {
 		Log.d("progress", Progress.level[0] + ", " + Progress.level[1]);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
-		backBounds = new Rectangle(760, 440, 40, 40);
+		backBounds = new Rectangle(720, 400, 80, 80);
 		levelBounds = new Rectangle[Progress.NUMBER_OF_LEVELS];
 		levelBounds[0] = new Rectangle(326, 398, 40, 40);
 		levelBounds[1] = new Rectangle(344, 362, 40, 40);
@@ -138,7 +138,7 @@ public class MapScreen extends GLScreen {
 		batcher.endBatch();
 
 		batcher.beginBatch(Assets.sprites);
-		batcher.drawSprite(780, 460, 40, 40, Assets.back);
+		batcher.drawSprite(760, 440, 80, 80, Assets.back);
 		presentLevelIcons();
 		batcher.endBatch();
 
