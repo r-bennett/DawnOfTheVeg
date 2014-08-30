@@ -12,7 +12,7 @@ public class TowerB extends Tower {
 	public static final float TOWER_B_HEIGHT = 0.75f;
 	public static final int TOWER_B_COST = 120;
 	public static final float TOWER_B_RANGE = 3f;
-	public static final float TOWER_B_DAMAGE = 7f;
+	public static final float TOWER_B_DAMAGE = 3f;
 	
 	public TowerB(float x, float y) {
 		this(x, y, TOWER_B_WIDTH, TOWER_B_HEIGHT);
