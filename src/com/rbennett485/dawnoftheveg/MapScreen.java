@@ -37,7 +37,6 @@ public class MapScreen extends GLScreen {
 	public MapScreen(Game game) {
 		super(game);
 
-		Log.d("progress", Progress.level[0] + ", " + Progress.level[1]);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		backBounds = new Rectangle(720, 400, 80, 80);
@@ -151,11 +150,9 @@ public class MapScreen extends GLScreen {
 			if(Progress.level[i]) {
 				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
 						bounds.lowerLeft.y + bounds.height/2f, 40, 40, Assets.hazard);
-				Log.d("levels", "drawing hazard at " + bounds.lowerLeft.x + bounds.width/2f + ", " + bounds.lowerLeft.y + bounds.height/2f);
 			} else {
 				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
 						bounds.lowerLeft.y + bounds.height/2f, 36, 32, Assets.cross);
-				Log.d("levels", "drawing cross");
 			}
 		}
 	}

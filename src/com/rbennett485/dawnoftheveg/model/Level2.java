@@ -17,7 +17,6 @@ public class Level2 extends Level {
 		super(450, Assets.level2background, Assets.level2backgroundRegion);
 		number = 2;
 		lives = 5;
-		Log.d("background", "making level 2");
 	}
 
 	@Override

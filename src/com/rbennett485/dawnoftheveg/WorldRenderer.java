@@ -103,9 +103,7 @@ public class WorldRenderer {
 		outerloop:
 		for(int i=0 ; i<len ; i++) {
 			Vector2 patch = world.towerPatches.get(i);
-			Log.d("patch", "patch: " + patch.x + ", " + patch.y);
 			for(Tower t : world.towers) {
-				Log.d("patch", "tower: " + t.position.x + ", " + t.position.y);
 				if(patch.x == t.position.x && patch.y == t.position.y)
 					continue outerloop; // don't render patch - there is a tower there
 			}
