@@ -12,7 +12,7 @@ import com.rbennett485.dawnoftheveg.Assets;
 public class Orange extends Enemy {
 	public static final float ORANGE_WIDTH = 1f;
 	public static final float ORANGE_HEIGHT = 1.1f;
-	public static final float ORANGE_VELOCITY = 2f;
+	public static final float ORANGE_VELOCITY = 1.4f;
 	public static final int ORANGE_HP = 20;
 	private final List<Vector2> wayPoints;
 	private int nextWayPoint;
