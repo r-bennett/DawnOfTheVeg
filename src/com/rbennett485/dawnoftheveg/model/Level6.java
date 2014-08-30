@@ -12,8 +12,9 @@ import com.rbennett485.dawnoftheveg.Assets;
  */
 public class Level6 extends Level {
 	public Level6() {
-		super(1000, Assets.level6background, Assets.level6backgroundRegion);
+		super(200, Assets.level6background, Assets.level6backgroundRegion);
 		number = 6;
+		lives = 3;
 	}
 
 	@Override
@@ -29,9 +30,19 @@ public class Level6 extends Level {
 	@Override
 	protected List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
-		result.add(new Wave(0, new Grape(wayPoints), 10));
-		result.add(new Wave(10, new Chilli(wayPoints), 8));
-		result.add(new Wave(20, new Orange(wayPoints), 3));
+		result.add(new Wave(0, new Orange(wayPoints), 1));
+		result.add(new Wave(5, new Orange(wayPoints), 1));
+		result.add(new Wave(9, new Orange(wayPoints), 1));
+		result.add(new Wave(13, new Orange(wayPoints), 1));
+		result.add(new Wave(16, new Orange(wayPoints), 1));
+		result.add(new Wave(19, new Orange(wayPoints), 1));
+		result.add(new Wave(25, new Pea(wayPoints), 3));
+		result.add(new Wave(29, new Pea(wayPoints), 5));
+		result.add(new Wave(29, new Orange(wayPoints), 1));
+		result.add(new Wave(40, new Chilli(wayPoints), 1));
+		result.add(new Wave(42, new Pea(wayPoints), 4));
+		result.add(new Wave(50, new Orange(wayPoints), 2));
+		result.add(new Wave(55, new Chilli(wayPoints), 7));		
 		return result;
 	}
 	
@@ -43,6 +54,8 @@ public class Level6 extends Level {
 		result.add(new Vector2(12.95f,4.70f));
 		result.add(new Vector2(11.95f,1.98f));
 		result.add(new Vector2(18.10f,4.60f));
+		result.add(new Vector2(11.08f,7));
+		result.add(new Vector2(18.7f,1.8f));
 		return result;
 	}
 	

@@ -12,8 +12,9 @@ import com.rbennett485.dawnoftheveg.Assets;
  */
 public class Level4 extends Level {
 	public Level4() {
-		super(1000, Assets.level4background, Assets.level4backgroundRegion);
+		super(700, Assets.level4background, Assets.level4backgroundRegion);
 		number = 4;
+		lives = 10;
 	}
 
 	@Override
@@ -27,26 +28,32 @@ public class Level4 extends Level {
 	@Override
 	protected List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
-		result.add(new Wave(0, new Grape(wayPoints), 10));
-		result.add(new Wave(10, new Chilli(wayPoints), 8));
-		result.add(new Wave(20, new Orange(wayPoints), 3));
+		result.add(new Wave(0, new Grape(wayPoints), 3));
+		result.add(new Wave(7, new Orange(wayPoints), 2));
+		result.add(new Wave(18, new Grape(wayPoints), 3));
+		result.add(new Wave(20, new Orange(wayPoints), 5));
+		result.add(new Wave(40, new Pea(wayPoints), 5));
+		result.add(new Wave(46, new Orange(wayPoints), 4));
+		result.add(new Wave(52, new Orange(wayPoints), 4));
+		result.add(new Wave(65, new Chilli(wayPoints), 20));
+		
 		return result;
 	}
 	
 	@Override
 	protected List<Vector2> towerPatchGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(1.75f,8.63f));
-		result.add(new Vector2(5.13f,8.63f));
-		result.add(new Vector2(8.75f,8.63f));
-		result.add(new Vector2(12.43f,8.63f));
-		result.add(new Vector2(15.88f,8.63f));
-		result.add(new Vector2(19.45f,8.63f));
-		result.add(new Vector2(4.13f,5.33f));
-		result.add(new Vector2(7.75f,5.33f));
-		result.add(new Vector2(11.43f,5.33f));
-		result.add(new Vector2(14.88f,5.33f));
-		result.add(new Vector2(18.63f,5.33f));
+		result.add(new Vector2(1.25f,8.33f));
+		result.add(new Vector2(4.63f,8.33f));
+		result.add(new Vector2(8.25f,8.33f));
+		result.add(new Vector2(11.93f,8.33f));
+		result.add(new Vector2(15.38f,8.33f));
+		result.add(new Vector2(18.95f,8.33f));
+		result.add(new Vector2(3.63f,5));
+		result.add(new Vector2(7.25f,5));
+		result.add(new Vector2(10.93f,5));
+		result.add(new Vector2(14.38f,5));
+		result.add(new Vector2(18.13f,5));
 		return result;
 	}
 	

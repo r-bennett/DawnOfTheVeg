@@ -12,8 +12,9 @@ import com.rbennett485.dawnoftheveg.Assets;
  */
 public class Level3 extends Level {
 	public Level3() {
-		super(1000, Assets.level3background, Assets.level3backgroundRegion);
+		super(600, Assets.level3background, Assets.level3backgroundRegion);
 		number = 3;
+		lives = 5;
 	}
 
 	@Override
@@ -31,9 +32,12 @@ public class Level3 extends Level {
 	@Override
 	protected List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
-		result.add(new Wave(0, new Grape(wayPoints), 10));
-		result.add(new Wave(10, new Chilli(wayPoints), 8));
-		result.add(new Wave(20, new Orange(wayPoints), 3));
+		result.add(new Wave(0, new Orange(wayPoints), 10));
+		result.add(new Wave(20, new Chilli(wayPoints), 7));
+		result.add(new Wave(30, new Orange(wayPoints), 3));
+		result.add(new Wave(50, new Pea(wayPoints), 3));
+		result.add(new Wave(57, new Pea(wayPoints), 10));
+		
 		return result;
 	}
 	
@@ -45,6 +49,8 @@ public class Level3 extends Level {
 		result.add(new Vector2(8.75f,5.03f));
 		result.add(new Vector2(14.85f,2.05f));
 		result.add(new Vector2(15.25f,6.5f));
+		result.add(new Vector2(11.75f,5.03f));
+		result.add(new Vector2(2.4f,4.28f));
 		return result;
 	}
 	

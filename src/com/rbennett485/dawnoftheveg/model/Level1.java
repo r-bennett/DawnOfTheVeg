@@ -14,9 +14,9 @@ import com.rbennett485.dawnoftheveg.Assets;
  */
 public class Level1 extends Level {
 	public Level1() {
-		super(220, Assets.level1background, Assets.level1backgroundRegion);
+		super(300, Assets.level1background, Assets.level1backgroundRegion);
 		number = 1;
-		lives = 3;
+		lives = 5;
 	}
 
 	@Override
@@ -35,6 +35,8 @@ public class Level1 extends Level {
 		result.add(new Wave(0, new Orange(wayPoints), 2));
 		result.add(new Wave(15, new Orange(wayPoints), 2));
 		result.add(new Wave(20, new Orange(wayPoints), 3));
+		result.add(new Wave(30, new Pea(wayPoints), 5));
+		result.add(new Wave(38, new Orange(wayPoints), 3));
 		return result;
 	}
 	
@@ -44,6 +46,8 @@ public class Level1 extends Level {
 		result.add(new Vector2(5.75f,7.45f));
 		result.add(new Vector2(12.35f,1.93f));
 		result.add(new Vector2(16.78f,4.68f));
+		result.add(new Vector2(12.98f,4.63f));
+		result.add(new Vector2(8.93f,9.35f));
 		
 		return result;
 	}
