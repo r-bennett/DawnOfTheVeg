@@ -12,6 +12,7 @@ import com.badlogic.androidgames.framework.impl.GLScreen;
 import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Rectangle;
 import com.badlogic.androidgames.framework.math.Vector2;
+import com.rbennett485.dawnoftheveg.variables.Objectives;
 
 /**
  * The screen instance for help. Manages the presentation
@@ -43,6 +44,7 @@ public class HelpScreen extends GLScreen {
 		touchPoint = new Vector2();
 		batcher = new SpriteBatcher(glGraphics, 100);
 		currentRegion = 0;
+		Objectives.helpPageVisited(0);
 	}
 	
 	/**
@@ -65,14 +67,15 @@ public class HelpScreen extends GLScreen {
 					Assets.playSound(Assets.clickSound);
 					currentRegion = (((currentRegion + 1) % Assets.NUMBER_OF_HELP_REGIONS) + 
 							Assets.NUMBER_OF_HELP_REGIONS) % Assets.NUMBER_OF_HELP_REGIONS;
+					Objectives.helpPageVisited(currentRegion);
 					return;
 				}
 				
-				// edit this to include more help screens
 				if(OverlapTester.pointInRectangle(previousBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					currentRegion = (((currentRegion - 1) % Assets.NUMBER_OF_HELP_REGIONS) + 
-							Assets.NUMBER_OF_HELP_REGIONS) % Assets.NUMBER_OF_HELP_REGIONS;;
+							Assets.NUMBER_OF_HELP_REGIONS) % Assets.NUMBER_OF_HELP_REGIONS;
+					Objectives.helpPageVisited(currentRegion);
 					return;
 				}
 				
