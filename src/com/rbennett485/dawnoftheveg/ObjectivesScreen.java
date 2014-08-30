@@ -60,9 +60,9 @@ public class ObjectivesScreen extends GLScreen {
 				Progress.objectivesFinished = true;
 			return;
 		}
-		if(c.get(Calendar.YEAR)!=Progress.dateLastObjectives[0] ||
+		if(c.get(Calendar.DATE)!=Progress.dateLastObjectives[0] ||
 				c.get(Calendar.MONTH)!=Progress.dateLastObjectives[1] ||
-				c.get(Calendar.DATE)!=Progress.dateLastObjectives[2] )	{
+				c.get(Calendar.YEAR)!=Progress.dateLastObjectives[2] )	{
 			Progress.currentObjectiveSet++;
 			Progress.objectivesDateWritten = false;
 		}
