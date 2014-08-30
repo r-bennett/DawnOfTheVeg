@@ -13,7 +13,7 @@ public class Chilli extends Enemy {
 	public static final float CHILLI_WIDTH = 0.7f;
 	public static final float CHILLI_HEIGHT = 1f;
 	public static final float CHILLI_VELOCITY = 1f;
-	public static final int CHILLI_HP = 10;
+	public static final int CHILLI_HP = 30;
 	private final List<Vector2> wayPoints;
 	private int nextWayPoint;
 

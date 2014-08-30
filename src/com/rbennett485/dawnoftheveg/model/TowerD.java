@@ -11,7 +11,7 @@ public class TowerD extends Tower {
 	public static final float TOWER_D_WIDTH = 0.95f;
 	public static final float TOWER_D_HEIGHT = 1f;
 	public static final int TOWER_D_COST = 200;
-	public static final float TOWER_D_RANGE = 3f;
+	public static final float TOWER_D_RANGE = 2.5f;
 	public static final float TOWER_D_DAMAGE = 5;
 	
 	public TowerD(float x, float y) {

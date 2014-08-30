@@ -7,11 +7,11 @@ import com.badlogic.androidgames.framework.math.Vector2;
  *
  */
 public class TowerC extends Tower {
-	public static final float RELOAD_TIME = 0.5f;
+	public static final float RELOAD_TIME = 0.8f;
 	public static final float TOWER_C_WIDTH = 0.675f;
 	public static final float TOWER_C_HEIGHT = 1f;
 	public static final int TOWER_C_COST = 140;
-	public static final float TOWER_C_RANGE = 3f;
+	public static final float TOWER_C_RANGE = 3.5f;
 	public static final float TOWER_C_DAMAGE = 4;
 
 	public TowerC(float x, float y) {

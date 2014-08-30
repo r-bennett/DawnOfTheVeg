@@ -11,10 +11,10 @@ import com.rbennett485.dawnoftheveg.Assets;
  */
 public class Pea extends Enemy {
 
-	public static final float PEA_WIDTH = 0.33f;
-	public static final float PEA_HEIGHT = 0.33f;
+	public static final float PEA_WIDTH = 0.45f;
+	public static final float PEA_HEIGHT = 0.45f;
 	public static final float PEA_VELOCITY = 2f;
-	public static final int PEA_HP = 20;
+	public static final int PEA_HP = 5;
 	private final List<Vector2> wayPoints;
 	private int nextWayPoint;
 

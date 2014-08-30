@@ -7,7 +7,7 @@ import com.badlogic.androidgames.framework.math.Vector2;
  *
  */
 public class ProjectileD extends Projectile {
-	public static final float PROJECTILE_D_SPEED = 15f;
+	public static final float PROJECTILE_D_SPEED = 12f;
 	public static final float PROJECTILE_D_WIDTH = 0.25f;
 	public static final float PROJECTILE_D_HEIGHT = 0.05f;
 	

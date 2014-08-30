@@ -32,9 +32,10 @@ public class Level2 extends Level {
 	@Override
 	protected List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
-		result.add(new Wave(0, new Grape(wayPoints), 10));
+		result.add(new Wave(0, new Pea(wayPoints), 10));
 		result.add(new Wave(10, new Chilli(wayPoints), 8));
 		result.add(new Wave(20, new Orange(wayPoints), 3));
+		result.add(new Wave(25, new Pea(wayPoints), 3));
 		return result;
 	}
 	
@@ -44,6 +45,7 @@ public class Level2 extends Level {
 		result.add(new Vector2(1.93f,5.73f));
 		result.add(new Vector2(5.8f,2.77f));
 		result.add(new Vector2(10.73f,2.75f));
+		result.add(new Vector2(16.7f,2.75f));
 		result.add(new Vector2(16.35f,5.73f));
 		
 		return result;
