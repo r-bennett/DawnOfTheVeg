@@ -26,6 +26,7 @@ import com.rbennett485.dawnoftheveg.model.TowerC;
 import com.rbennett485.dawnoftheveg.model.TowerD;
 import com.rbennett485.dawnoftheveg.model.World;
 import com.rbennett485.dawnoftheveg.model.World.WorldListener;
+import com.rbennett485.dawnoftheveg.variables.Objectives;
 import com.rbennett485.dawnoftheveg.variables.Upgrades;
 
 /**
@@ -103,6 +104,7 @@ public class GameScreen extends GLScreen {
 			break;
 
 			case(World.WORLD_STATE_COMPLETE):
+				Objectives.level1Complete();
 				updateComplete();
 			break;
 

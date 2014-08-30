@@ -1,5 +1,7 @@
 package com.rbennett485.dawnoftheveg.variables;
 
+import com.rbennett485.dawnoftheveg.data.Progress;
+
 /**
  * Stores objectives and their titles as strings
  * 
@@ -29,6 +31,14 @@ public class Objectives {
 		objectives[1][2][0] = "Help!";
 		objectives[1][2][1] = "Visit the help page";
 	}
+
+	public static void level1Complete() {
+		Progress.objective[0][0]  = true;		
+	}
+	
+	
+	
+	
 	
 	
 
