@@ -22,6 +22,7 @@ public abstract class Level {
 	public final Texture background;
 	public final TextureRegion backgroundRegion;
 	public int number;
+	public int lives;	
 	
 	/**
 	 * Constructor - initialises members and calls all generator methods

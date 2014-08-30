@@ -14,10 +14,9 @@ import com.rbennett485.dawnoftheveg.Assets;
  */
 public class Level1 extends Level {
 	public Level1() {
-		super(1000, Assets.level1background, Assets.level1backgroundRegion);
+		super(220, Assets.level1background, Assets.level1backgroundRegion);
 		number = 1;
-		Log.d("background", "making level 1");
-
+		lives = 3;
 	}
 
 	@Override

@@ -28,7 +28,6 @@ public class World {
 
 	public static final float WORLD_WIDTH = 20;
 	public static final float WORLD_HEIGHT = 12;
-	public static final int INITIAL_LIVES = 20;
 	public static final int WORLD_STATE_RUNNING = 0;	// waves are coming, the game is in play
 	public static final int WORLD_STATE_COMPLETE = 1;	// no more enemies and no more waves
 	public static final int WORLD_STATE_GAME_OVER = 2;	// no more lives
@@ -75,7 +74,7 @@ public class World {
 		this.state = WORLD_STATE_INITIAL_BUILD;
 		timeElapsed = 0;
 		nextWave = 0;
-		lives = INITIAL_LIVES;
+		lives = level.lives;
 		rand = new Random();
 		updating = false;
 		removals = new ArrayList<>();
