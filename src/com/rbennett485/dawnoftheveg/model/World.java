@@ -8,6 +8,7 @@ import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.math.OverlapTester;
 import com.badlogic.androidgames.framework.math.Vector2;
 import com.rbennett485.dawnoftheveg.data.Progress;
+import com.rbennett485.dawnoftheveg.variables.Objectives;
 
 /**
  * The omniscient model class, responsible for maintaining and updating
@@ -197,6 +198,7 @@ public class World {
 			if(e.hp<=0) {
 				removals.add(e);
 				splats.add(new Splat(e));
+				Objectives.enemyKilled();
 				listener.splat();
 			}
 		}
