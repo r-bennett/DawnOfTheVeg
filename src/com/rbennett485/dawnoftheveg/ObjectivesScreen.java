@@ -1,10 +1,9 @@
 package com.rbennett485.dawnoftheveg;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
-
-import android.util.Log;
 
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
@@ -40,6 +39,33 @@ public class ObjectivesScreen extends GLScreen {
 		batcher = new SpriteBatcher(glGraphics, 1000);
 		backBounds = new Rectangle(720, 400, 80, 80);
 		touchPoint = new Vector2();
+		checkObjectivesSet();
+	}
+
+	private void checkObjectivesSet() {
+		if(Progress.objectivesFinished)
+			return;
+		for(boolean b : Progress.objective[Progress.currentObjectiveSet]) {
+			if(!b)
+				return;
+		}
+		Calendar c = Calendar.getInstance();
+		if(!Progress.objectivesDateWritten) {
+			Progress.funds += 50;
+			Progress.dateLastObjectives[0] = c.get(Calendar.DATE);
+			Progress.dateLastObjectives[1] = c.get(Calendar.MONTH);
+			Progress.dateLastObjectives[2] = c.get(Calendar.YEAR);
+			Progress.objectivesDateWritten = true;
+			if(Progress.currentObjectiveSet == Objectives.NUMBER_OF_OBJECTIVE_SETS)
+				Progress.objectivesFinished = true;
+			return;
+		}
+		if(c.get(Calendar.YEAR)!=Progress.dateLastObjectives[0] ||
+				c.get(Calendar.MONTH)!=Progress.dateLastObjectives[1] ||
+				c.get(Calendar.DATE)!=Progress.dateLastObjectives[2] )	{
+			Progress.currentObjectiveSet++;
+			Progress.objectivesDateWritten = false;
+		}
 	}
 
 	/**
