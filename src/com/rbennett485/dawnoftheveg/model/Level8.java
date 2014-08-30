@@ -12,8 +12,9 @@ import com.rbennett485.dawnoftheveg.Assets;
  */
 public class Level8 extends Level {
 	public Level8() {
-		super(1000, Assets.level8background, Assets.level8backgroundRegion);
+		super(500, Assets.level8background, Assets.level8backgroundRegion);
 		number = 8;
+		lives = 20;
 	}
 
 	@Override
@@ -35,9 +36,22 @@ public class Level8 extends Level {
 	@Override
 	protected List<Wave> waveGenerator() {
 		List<Wave> result = new ArrayList<>();
-		result.add(new Wave(0, new Grape(wayPoints), 10));
-		result.add(new Wave(10, new Chilli(wayPoints), 8));
-		result.add(new Wave(20, new Orange(wayPoints), 3));
+		result.add(new Wave(0, new Grape(wayPoints), 5));
+		result.add(new Wave(10, new Orange(wayPoints), 4));
+		result.add(new Wave(20, new Orange(wayPoints), 7));
+		result.add(new Wave(24, new Orange(wayPoints), 3));
+		result.add(new Wave(26, new Chilli(wayPoints), 8));
+		result.add(new Wave(30, new Orange(wayPoints), 8));
+		result.add(new Wave(35, new Grape(wayPoints), 8));
+		result.add(new Wave(40, new Pea(wayPoints), 15));
+		result.add(new Wave(50, new Orange(wayPoints), 7));
+		result.add(new Wave(59, new Orange(wayPoints), 3));
+		result.add(new Wave(61, new Chilli(wayPoints), 9));
+		result.add(new Wave(65, new Pea(wayPoints), 14));
+		result.add(new Wave(85, new Chilli(wayPoints), 20));
+		result.add(new Wave(90, new Orange(wayPoints), 10));
+		result.add(new Wave(95, new Grape(wayPoints), 10));
+		result.add(new Wave(100, new Pea(wayPoints), 20));
 		return result;
 	}
 	
