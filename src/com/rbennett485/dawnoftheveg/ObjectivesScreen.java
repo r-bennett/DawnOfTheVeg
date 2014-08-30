@@ -27,7 +27,7 @@ public class ObjectivesScreen extends GLScreen {
 	private SpriteBatcher batcher;
 	private Rectangle backBounds;
 	private Vector2 touchPoint;
-
+	
 	/**
 	 * Constructor
 	 * 
@@ -123,6 +123,11 @@ public class ObjectivesScreen extends GLScreen {
 			Assets.font.drawText(batcher, (i+1) +". " + Objectives.objectives[Progress.currentObjectiveSet][i][0], 100, 360-140*i);
 			Assets.font.drawText(batcher, Objectives.objectives[Progress.currentObjectiveSet][i][1], 100, 320-140*i);
 		}
+		
+		if(Progress.objectivesFinished)
+			batcher.drawSprite(400, 240, 319, 339, Assets.allObjectivesComplete);
+		else if(Progress.objectivesDateWritten)
+			batcher.drawSprite(400, 240, 319, 339, Assets.objectivesComplete);
 		
 		batcher.endBatch();
 
