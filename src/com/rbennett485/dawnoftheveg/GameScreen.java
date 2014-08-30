@@ -5,8 +5,6 @@ import java.util.Random;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.Log;
-
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.Screen;

@@ -1,6 +1,5 @@
 package com.badlogic.androidgames.framework.gl;
 
-import android.util.Log;
 
 public class FPSCounter {
     long startTime = System.nanoTime();

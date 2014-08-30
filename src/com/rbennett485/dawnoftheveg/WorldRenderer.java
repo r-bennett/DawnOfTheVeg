@@ -2,8 +2,6 @@ package com.rbennett485.dawnoftheveg;
 
 import javax.microedition.khronos.opengles.GL10;
 
-import android.util.Log;
-
 import com.badlogic.androidgames.framework.GameObject;
 import com.badlogic.androidgames.framework.gl.Camera2D;
 import com.badlogic.androidgames.framework.gl.SpriteBatcher;

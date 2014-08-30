@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import android.util.Log;
-
 import com.badlogic.androidgames.framework.FileIO;
 
 /**
