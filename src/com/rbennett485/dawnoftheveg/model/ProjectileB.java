@@ -7,7 +7,7 @@ import com.badlogic.androidgames.framework.math.Vector2;
  *
  */
 public class ProjectileB extends Projectile {
-	public static final float PROJECTILE_B_SPEED = 5f;
+	public static final float PROJECTILE_B_SPEED = 10f;
 	public static final float PROJECTILE_B_WIDTH = 0.05f;
 	public static final float PROJECTILE_B_HEIGHT = 0.05f;
 	
@@ -23,6 +23,7 @@ public class ProjectileB extends Projectile {
 		this(position.x, position.y, PROJECTILE_B_WIDTH, PROJECTILE_B_HEIGHT);
 		this.velocity = velocity;
 		this.damagePoints = damage;
+		this.velocity.nor().mul(speed);
 		this.rangeTime = range / velocity.len();
 	}
 	

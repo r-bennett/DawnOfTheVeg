@@ -23,6 +23,7 @@ public class ProjectileA extends Projectile {
 		this(position.x, position.y, PROJECTILE_A_WIDTH, PROJECTILE_A_HEIGHT);
 		this.velocity = velocity;
 		this.damagePoints = damage;
+		this.velocity.nor().mul(speed);
 		this.rangeTime = range / velocity.len();
 	}
 	
