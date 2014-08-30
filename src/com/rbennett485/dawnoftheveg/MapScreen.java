@@ -18,7 +18,7 @@ import com.rbennett485.dawnoftheveg.data.Progress;
  * The screen for selecting a level
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public class MapScreen extends GLScreen {
 	private Camera2D guiCam;
@@ -30,7 +30,8 @@ public class MapScreen extends GLScreen {
 	/**
 	 * Constructor
 	 * 
-	 * @param game The game instance to which the screen belongs
+	 * @param game
+	 *            The game instance to which the screen belongs
 	 */
 	public MapScreen(Game game) {
 		super(game);
@@ -53,60 +54,69 @@ public class MapScreen extends GLScreen {
 	/**
 	 * Checks for UI interaction, and manages screen transitions accordingly
 	 * 
-	 * @param deltaTime unused
+	 * @param deltaTime
+	 *            unused
 	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
 
-			if(event.type == TouchEvent.TOUCH_UP) {
-				if(OverlapTester.pointInRectangle(backBounds, touchPoint)) {
+			if (event.type == TouchEvent.TOUCH_UP) {
+				if (OverlapTester.pointInRectangle(backBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new TitleScreen(game));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[0], touchPoint) && Progress.level[0]) {
+				if (OverlapTester.pointInRectangle(levelBounds[0], touchPoint)
+						&& Progress.level[0]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 0));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[1], touchPoint) && Progress.level[1]) {
+				if (OverlapTester.pointInRectangle(levelBounds[1], touchPoint)
+						&& Progress.level[1]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 3));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[2], touchPoint) && Progress.level[2]) {
+				if (OverlapTester.pointInRectangle(levelBounds[2], touchPoint)
+						&& Progress.level[2]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 4));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[3], touchPoint) && Progress.level[3]) {
+				if (OverlapTester.pointInRectangle(levelBounds[3], touchPoint)
+						&& Progress.level[3]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 5));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[4], touchPoint) && Progress.level[4]) {
+				if (OverlapTester.pointInRectangle(levelBounds[4], touchPoint)
+						&& Progress.level[4]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 6));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[5], touchPoint) && Progress.level[5]) {
+				if (OverlapTester.pointInRectangle(levelBounds[5], touchPoint)
+						&& Progress.level[5]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 7));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[6], touchPoint) && Progress.level[6]) {
+				if (OverlapTester.pointInRectangle(levelBounds[6], touchPoint)
+						&& Progress.level[6]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 8));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(levelBounds[7], touchPoint) && Progress.level[7]) {
+				if (OverlapTester.pointInRectangle(levelBounds[7], touchPoint)
+						&& Progress.level[7]) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new StoryScreen(game, 9));
 					return;
@@ -114,15 +124,16 @@ public class MapScreen extends GLScreen {
 			}
 		}
 	}
-	
+
 	/**
 	 * renders the screen
 	 * 
-	 * @param deltaTime unused
+	 * @param deltaTime
+	 *            unused
 	 */
 	@Override
 	public void present(float deltaTime) {
-		GL10 gl = glGraphics.getGL();        
+		GL10 gl = glGraphics.getGL();
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		guiCam.setViewportAndMatrices();
 
@@ -143,14 +154,16 @@ public class MapScreen extends GLScreen {
 	}
 
 	private void presentLevelIcons() {
-		for(int i=0 ; i<Progress.NUMBER_OF_LEVELS ; i++) {
+		for (int i = 0; i < Progress.NUMBER_OF_LEVELS; i++) {
 			Rectangle bounds = levelBounds[i];
-			if(Progress.level[i]) {
-				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
-						bounds.lowerLeft.y + bounds.height/2f, 40, 40, Assets.hazard);
+			if (Progress.level[i]) {
+				batcher.drawSprite(bounds.lowerLeft.x + bounds.width / 2f,
+						bounds.lowerLeft.y + bounds.height / 2f, 40, 40,
+						Assets.hazard);
 			} else {
-				batcher.drawSprite(bounds.lowerLeft.x + bounds.width/2f, 
-						bounds.lowerLeft.y + bounds.height/2f, 36, 32, Assets.cross);
+				batcher.drawSprite(bounds.lowerLeft.x + bounds.width / 2f,
+						bounds.lowerLeft.y + bounds.height / 2f, 36, 32,
+						Assets.cross);
 			}
 		}
 	}
@@ -163,7 +176,7 @@ public class MapScreen extends GLScreen {
 	public void resume() {
 	}
 
-	@Override 
+	@Override
 	public void dispose() {
 	}
 

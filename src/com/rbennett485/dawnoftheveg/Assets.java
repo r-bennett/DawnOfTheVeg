@@ -12,7 +12,7 @@ import com.rbennett485.dawnoftheveg.data.Settings;
  * Stores and loads all assets
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public class Assets {
 	public static Texture sprites;
@@ -101,10 +101,11 @@ public class Assets {
 	public static Sound splat2;
 
 	/**
-	 * Creates all the {@link Texture} and {@link TextureRegion}, {@link Sound} 
+	 * Creates all the {@link Texture} and {@link TextureRegion}, {@link Sound}
 	 * and {@link Music} objects
 	 * 
-	 * @param game 	The {@link Game} instance to which the assets belong
+	 * @param game
+	 *            The {@link Game} instance to which the assets belong
 	 */
 	public static void load(GLGame game) {
 
@@ -156,32 +157,40 @@ public class Assets {
 
 		font = new Font(sprites, 1, 307, 16, 16, 32);
 
-		map =  new Texture(game, "map.png");
+		map = new Texture(game, "map.png");
 		mapRegion = new TextureRegion(map, 0, 0, 800, 480);
 
 		level1background = new Texture(game, "level_1_background.png");
-		level1backgroundRegion = new TextureRegion(level1background, 0, 0, 800, 480);
+		level1backgroundRegion = new TextureRegion(level1background, 0, 0, 800,
+				480);
 		level2background = new Texture(game, "level_2_background.png");
-		level2backgroundRegion = new TextureRegion(level2background, 0, 0, 800, 480);
+		level2backgroundRegion = new TextureRegion(level2background, 0, 0, 800,
+				480);
 		level3background = new Texture(game, "level_3_background.png");
-		level3backgroundRegion = new TextureRegion(level3background, 0, 0, 800, 480);
+		level3backgroundRegion = new TextureRegion(level3background, 0, 0, 800,
+				480);
 		level4background = new Texture(game, "level_4_background.png");
-		level4backgroundRegion = new TextureRegion(level4background, 0, 0, 800, 480);
+		level4backgroundRegion = new TextureRegion(level4background, 0, 0, 800,
+				480);
 		level5background = new Texture(game, "level_5_background.png");
-		level5backgroundRegion = new TextureRegion(level5background, 0, 0, 800, 480);
+		level5backgroundRegion = new TextureRegion(level5background, 0, 0, 800,
+				480);
 		level6background = new Texture(game, "level_6_background.png");
-		level6backgroundRegion = new TextureRegion(level6background, 0, 0, 800, 480);
+		level6backgroundRegion = new TextureRegion(level6background, 0, 0, 800,
+				480);
 		level7background = new Texture(game, "level_7_background.png");
-		level7backgroundRegion = new TextureRegion(level7background, 0, 0, 800, 480);
+		level7backgroundRegion = new TextureRegion(level7background, 0, 0, 800,
+				480);
 		level8background = new Texture(game, "level_8_background.png");
-		level8backgroundRegion = new TextureRegion(level8background, 0, 0, 800, 480);
+		level8backgroundRegion = new TextureRegion(level8background, 0, 0, 800,
+				480);
 
-		background = new Texture(game,"background.png");
+		background = new Texture(game, "background.png");
 		backgroundRegion = new TextureRegion(background, 0, 0, 4, 4);
 
 		helpImage = new Texture(game, "help.png");
-		helpRegion =  new TextureRegion[NUMBER_OF_HELP_REGIONS];
-		helpRegion[0] =  new TextureRegion(helpImage, 0, 0, 380, 380);
+		helpRegion = new TextureRegion[NUMBER_OF_HELP_REGIONS];
+		helpRegion[0] = new TextureRegion(helpImage, 0, 0, 380, 380);
 		helpRegion[1] = new TextureRegion(helpImage, 380, 0, 380, 380);
 		helpRegion[2] = new TextureRegion(helpImage, 760, 0, 380, 380);
 		helpRegion[3] = new TextureRegion(helpImage, 1140, 0, 380, 380);
@@ -218,7 +227,7 @@ public class Assets {
 		music = game.getAudio().newMusic("music.ogg");
 		music.setLooping(true);
 		music.setVolume(0.5f);
-		if(Settings.soundEnabled)
+		if (Settings.soundEnabled)
 			music.play();
 		clickSound = game.getAudio().newSound("click.ogg");
 		splat1 = game.getAudio().newSound("splat1.ogg");
@@ -226,8 +235,8 @@ public class Assets {
 	}
 
 	/**
-	 * Reloads all textures and plays music (if
-	 * sound enabled). Used when OpenGL context is lost
+	 * Reloads all textures and plays music (if sound enabled). Used when OpenGL
+	 * context is lost
 	 */
 	public static void reload() {
 		sprites.reload();
@@ -242,21 +251,22 @@ public class Assets {
 		level7background.reload();
 		level8background.reload();
 		helpImage.reload();
-		for(Texture t : story) 
+		for (Texture t : story)
 			t.reload();
-		
-		if(Settings.soundEnabled)
+
+		if (Settings.soundEnabled)
 			music.play();
 	}
 
 	/**
-	 * Plays the sound if sound is enabled in {@link Settings},
-	 * otherwise does nothing
+	 * Plays the sound if sound is enabled in {@link Settings}, otherwise does
+	 * nothing
 	 * 
-	 * @param sound	The {@link Sound} object to play
+	 * @param sound
+	 *            The {@link Sound} object to play
 	 */
 	public static void playSound(Sound sound) {
-		if(Settings.soundEnabled)
+		if (Settings.soundEnabled)
 			sound.play(1);
 	}
 }

@@ -31,7 +31,7 @@ import com.rbennett485.dawnoftheveg.variables.Upgrades;
  * The {@link Screen} instance for playing the game
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public class GameScreen extends GLScreen {
 
@@ -52,17 +52,19 @@ public class GameScreen extends GLScreen {
 	/**
 	 * Constructor
 	 * 
-	 * @param game The {@link Game} the object belongs to
-	 * @param level The {@link Level} which the GameScreen is to model
+	 * @param game
+	 *            The {@link Game} the object belongs to
+	 * @param level
+	 *            The {@link Level} which the GameScreen is to model
 	 */
 	public GameScreen(Game game, Level level) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 1000);
 		pauseBounds = new Rectangle(760, 440, 40, 40);
-		continueBounds = new Rectangle(400-313/2f, 240, 313, 304/2);
+		continueBounds = new Rectangle(400 - 313 / 2f, 240, 313, 304 / 2);
 		callNextWaveBounds = new Rectangle(0, 440, 40, 40);
-		quitBounds = new Rectangle(400-313/2f, 240-304/2, 313, 304/2);
+		quitBounds = new Rectangle(400 - 313 / 2f, 240 - 304 / 2, 313, 304 / 2);
 		touchPoint = new Vector2();
 		fpsCounter = new FPSCounter();
 		paused = false;
@@ -70,7 +72,7 @@ public class GameScreen extends GLScreen {
 		worldListener = new WorldListener() {
 			@Override
 			public void splat() {
-				if(rand.nextInt(2)<1) {
+				if (rand.nextInt(2) < 1) {
 					Assets.playSound(Assets.splat1);
 				} else
 					Assets.playSound(Assets.splat2);
@@ -81,30 +83,30 @@ public class GameScreen extends GLScreen {
 	}
 
 	/**
-	 * Handles touch events, checking whether UI items have been touched
-	 * and responding appropriately
+	 * Handles touch events, checking whether UI items have been touched and
+	 * responding appropriately
 	 */
 	@Override
 	public void update(float deltaTime) {
-		if(paused) {
+		if (paused) {
 			updatePaused();
 			return;
 		} else {
-			switch(world.state) {
+			switch (world.state) {
 
-			case(World.WORLD_STATE_RUNNING):
-			case(World.WORLD_STATE_INITIAL_BUILD):
+			case (World.WORLD_STATE_RUNNING):
+			case (World.WORLD_STATE_INITIAL_BUILD):
 				updateRunningOrInitialBuild(deltaTime);
-			break; 
+				break;
 
-			case(World.WORLD_STATE_GAME_OVER):
+			case (World.WORLD_STATE_GAME_OVER):
 				updateGameOver();
-			break;
+				break;
 
-			case(World.WORLD_STATE_COMPLETE):
+			case (World.WORLD_STATE_COMPLETE):
 				Objectives.level1Complete();
 				updateComplete();
-			break;
+				break;
 
 			}
 		}
@@ -114,11 +116,11 @@ public class GameScreen extends GLScreen {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
-			if(event.type == TouchEvent.TOUCH_UP) {
+			if (event.type == TouchEvent.TOUCH_UP) {
 				game.setScreen(new MapScreen(game));
 			}
 		}
@@ -128,11 +130,11 @@ public class GameScreen extends GLScreen {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
-			if(event.type == TouchEvent.TOUCH_UP) {
+			if (event.type == TouchEvent.TOUCH_UP) {
 				game.setScreen(new MapScreen(game));
 			}
 		}
@@ -140,7 +142,7 @@ public class GameScreen extends GLScreen {
 
 	private void updateInitialBuild(float deltaTime) {
 		// check callWave
-		if(OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint)) {
+		if (OverlapTester.pointInRectangle(callNextWaveBounds, touchPoint)) {
 			Assets.playSound(Assets.clickSound);
 			world.state = World.WORLD_STATE_RUNNING;
 			return;
@@ -152,80 +154,107 @@ public class GameScreen extends GLScreen {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
-			if(event.type == TouchEvent.TOUCH_UP) {
+			if (event.type == TouchEvent.TOUCH_UP) {
 
 				// check pause
-				if(OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(pauseBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					paused = true;
 					return;
 				}
 
-
 				// check tower patches
-				if(world.patchMenuCentre != null){
-					Vector2 guiCoordsPatchMenuCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
-					if(world.towerAt(world.patchMenuCentre)){
+				if (world.patchMenuCentre != null) {
+					Vector2 guiCoordsPatchMenuCentre = new Vector2(
+							800 * world.patchMenuCentre.x / 20f,
+							480 * world.patchMenuCentre.y / 12f);
+					if (world.towerAt(world.patchMenuCentre)) {
 						Tower t = world.getTowerAt(world.patchMenuCentre);
 						// proceed with upgrade menu for tower t
-						if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+						if (OverlapTester
+								.pointInRectangle(new Rectangle(
+										guiCoordsPatchMenuCentre.x - 60,
+										guiCoordsPatchMenuCentre.y, 60, 60),
+										touchPoint)
 								&& world.money >= Upgrades.RANGE_COST) {
-							//upgrade range
+							// upgrade range
 							t.upgradeRange();
 							world.money -= Upgrades.RANGE_COST;
-						} else if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+						} else if (OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x,
+										guiCoordsPatchMenuCentre.y, 60, 60),
+								touchPoint)
 								&& world.money >= Upgrades.DAMAGE_COST) {
-							//upgrade damage
+							// upgrade damage
 							t.upgradeDamage();
 							world.money -= Upgrades.DAMAGE_COST;
-						} else if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y-60, 60, 60), touchPoint)
-								&& world.money >= Upgrades.RELOAD_COST){
-							//upgrade reload time
+						} else if (OverlapTester
+								.pointInRectangle(
+										new Rectangle(
+												guiCoordsPatchMenuCentre.x - 60,
+												guiCoordsPatchMenuCentre.y - 60,
+												60, 60), touchPoint)
+								&& world.money >= Upgrades.RELOAD_COST) {
+							// upgrade reload time
 							t.upgradeReload();
 							world.money -= Upgrades.RELOAD_COST;
 						}
 					} else {
-						//proceed with tower menu
-						if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+						// proceed with tower menu
+						if (OverlapTester
+								.pointInRectangle(new Rectangle(
+										guiCoordsPatchMenuCentre.x - 60,
+										guiCoordsPatchMenuCentre.y, 60, 60),
+										touchPoint)
 								&& world.money >= TowerA.TOWER_A_COST
 								&& Progress.tower[0]) {
-							//build A
-							Tower towerA = new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y);
+							// build A
+							Tower towerA = new TowerA(world.patchMenuCentre.x,
+									world.patchMenuCentre.y);
 							world.towers.add(towerA);
 							world.money -= towerA.getCost();
 							Objectives.builtTower();
-						} else if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
+						} else if (OverlapTester.pointInRectangle(
+								new Rectangle(guiCoordsPatchMenuCentre.x,
+										guiCoordsPatchMenuCentre.y, 60, 60),
+								touchPoint)
 								&& world.money >= TowerB.TOWER_B_COST
 								&& Progress.tower[1]) {
-							//build B
-							Tower towerB = new TowerB(world.patchMenuCentre.x, world.patchMenuCentre.y);
+							// build B
+							Tower towerB = new TowerB(world.patchMenuCentre.x,
+									world.patchMenuCentre.y);
 							world.towers.add(towerB);
 							world.money -= towerB.getCost();
 							Objectives.builtTower();
-						} else if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y-60, 60, 60), touchPoint)
+						} else if (OverlapTester
+								.pointInRectangle(
+										new Rectangle(
+												guiCoordsPatchMenuCentre.x - 60,
+												guiCoordsPatchMenuCentre.y - 60,
+												60, 60), touchPoint)
 								&& world.money >= TowerC.TOWER_C_COST
-								&& Progress.tower[2]){
-							//build C
-							Tower towerC = new TowerC(world.patchMenuCentre.x, world.patchMenuCentre.y);
+								&& Progress.tower[2]) {
+							// build C
+							Tower towerC = new TowerC(world.patchMenuCentre.x,
+									world.patchMenuCentre.y);
 							world.towers.add(towerC);
-							world.money-= towerC.getCost();
+							world.money -= towerC.getCost();
 							Objectives.builtTower();
-						} else if(OverlapTester.pointInRectangle(
-								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y-60, 60, 60), touchPoint)
+						} else if (OverlapTester
+								.pointInRectangle(
+										new Rectangle(
+												guiCoordsPatchMenuCentre.x,
+												guiCoordsPatchMenuCentre.y - 60,
+												60, 60), touchPoint)
 								&& world.money >= TowerD.TOWER_D_COST
-								&& Progress.tower[3]){
-							//build D
-							Tower towerD = new TowerD(world.patchMenuCentre.x, world.patchMenuCentre.y);
+								&& Progress.tower[3]) {
+							// build D
+							Tower towerD = new TowerD(world.patchMenuCentre.x,
+									world.patchMenuCentre.y);
 							world.towers.add(towerD);
 							world.money -= towerD.getCost();
 							Objectives.builtTower();
@@ -234,9 +263,13 @@ public class GameScreen extends GLScreen {
 
 					world.patchMenuCentre = null;
 				} else {
-					for(Vector2 patchCentre : world.towerPatches) {
-						Vector2 guiCoordsPatchCentre = new Vector2(800*patchCentre.x/20f, 480*patchCentre.y/12f);
-						if(OverlapTester.pointInRectangle(new Rectangle(guiCoordsPatchCentre.x - 20, guiCoordsPatchCentre.y - 20, 40, 40), 
+					for (Vector2 patchCentre : world.towerPatches) {
+						Vector2 guiCoordsPatchCentre = new Vector2(
+								800 * patchCentre.x / 20f,
+								480 * patchCentre.y / 12f);
+						if (OverlapTester.pointInRectangle(new Rectangle(
+								guiCoordsPatchCentre.x - 20,
+								guiCoordsPatchCentre.y - 20, 40, 40),
 								touchPoint)) {
 							world.patchMenuCentre = patchCentre;
 							return;
@@ -244,7 +277,7 @@ public class GameScreen extends GLScreen {
 					}
 				}
 
-				if(world.state == World.WORLD_STATE_INITIAL_BUILD)
+				if (world.state == World.WORLD_STATE_INITIAL_BUILD)
 					updateInitialBuild(deltaTime);
 			}
 		}
@@ -256,17 +289,17 @@ public class GameScreen extends GLScreen {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
-			if(event.type == TouchEvent.TOUCH_UP) {
-				if(OverlapTester.pointInRectangle(continueBounds, touchPoint)) {
+			if (event.type == TouchEvent.TOUCH_UP) {
+				if (OverlapTester.pointInRectangle(continueBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					paused = false;
 					return;
 				}
-				if(OverlapTester.pointInRectangle(quitBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(quitBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new MapScreen(game));
 					return;
@@ -278,11 +311,12 @@ public class GameScreen extends GLScreen {
 	/**
 	 * Renders the UI elements depending on the state of world
 	 * 
-	 * @param deltaTime Elapsed time in seconds since this method was last called
+	 * @param deltaTime
+	 *            Elapsed time in seconds since this method was last called
 	 */
 	@Override
 	public void present(float deltaTime) {
-		GL10 gl = glGraphics.getGL();        
+		GL10 gl = glGraphics.getGL();
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		gl.glEnable(GL10.GL_TEXTURE_2D);
 
@@ -291,27 +325,26 @@ public class GameScreen extends GLScreen {
 		guiCam.setViewportAndMatrices();
 		gl.glEnable(GL10.GL_BLEND);
 		gl.glBlendFunc(GL10.GL_SRC_ALPHA, GL10.GL_ONE_MINUS_SRC_ALPHA);
-		batcher.beginBatch(Assets.sprites);   
-		if(paused) {
+		batcher.beginBatch(Assets.sprites);
+		if (paused) {
 			presentPaused();
 		} else {
-			switch(world.state) {
-			case(World.WORLD_STATE_INITIAL_BUILD):
+			switch (world.state) {
+			case (World.WORLD_STATE_INITIAL_BUILD):
 				presentInitialBuild();
-			break;
+				break;
 
-			case(World.WORLD_STATE_RUNNING):
+			case (World.WORLD_STATE_RUNNING):
 				presentRunning();
-			break;
+				break;
 
-			case(World.WORLD_STATE_COMPLETE):
+			case (World.WORLD_STATE_COMPLETE):
 				presentComplete();
-			break;
+				break;
 
-
-			case(World.WORLD_STATE_GAME_OVER):
+			case (World.WORLD_STATE_GAME_OVER):
 				presentGameOver();
-			break;
+				break;
 			}
 		}
 
@@ -336,33 +369,49 @@ public class GameScreen extends GLScreen {
 
 	private void presentRunning() {
 		batcher.drawSprite(780, 460, 40, 40, Assets.pause);
-		if(world.patchMenuCentre != null) {
-			Vector2 guiCoordsPatchCentre = new Vector2(800*world.patchMenuCentre.x/20f, 480*world.patchMenuCentre.y/12f);
-			if(world.towerAt(world.patchMenuCentre)) {
-				batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 120, 120, Assets.upgradeMenu);
-				if(world.money < Upgrades.RANGE_COST) 	
-					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
+		if (world.patchMenuCentre != null) {
+			Vector2 guiCoordsPatchCentre = new Vector2(
+					800 * world.patchMenuCentre.x / 20f,
+					480 * world.patchMenuCentre.y / 12f);
+			if (world.towerAt(world.patchMenuCentre)) {
+				batcher.drawSprite(guiCoordsPatchCentre.x,
+						guiCoordsPatchCentre.y, 120, 120, Assets.upgradeMenu);
+				if (world.money < Upgrades.RANGE_COST)
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30,
+							guiCoordsPatchCentre.y + 30, 36, 32,
+							Assets.redCross);
 
-				if(world.money < Upgrades.DAMAGE_COST) 					
-					batcher.drawSprite(guiCoordsPatchCentre.x + 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
+				if (world.money < Upgrades.DAMAGE_COST)
+					batcher.drawSprite(guiCoordsPatchCentre.x + 30,
+							guiCoordsPatchCentre.y + 30, 36, 32,
+							Assets.redCross);
 
-
-				if(world.money < Upgrades.RELOAD_COST) 	
-					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y - 30, 36, 32, Assets.redCross);
+				if (world.money < Upgrades.RELOAD_COST)
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30,
+							guiCoordsPatchCentre.y - 30, 36, 32,
+							Assets.redCross);
 			} else {
-				batcher.drawSprite(guiCoordsPatchCentre.x, guiCoordsPatchCentre.y, 120, 120, Assets.towerMenu);
-				if(world.money < TowerA.TOWER_A_COST || !Progress.tower[0]) 	
-					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
-				
-				if(world.money < TowerB.TOWER_B_COST || !Progress.tower[1]) 					
-					batcher.drawSprite(guiCoordsPatchCentre.x + 30, guiCoordsPatchCentre.y + 30, 36, 32, Assets.redCross);
+				batcher.drawSprite(guiCoordsPatchCentre.x,
+						guiCoordsPatchCentre.y, 120, 120, Assets.towerMenu);
+				if (world.money < TowerA.TOWER_A_COST || !Progress.tower[0])
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30,
+							guiCoordsPatchCentre.y + 30, 36, 32,
+							Assets.redCross);
 
-			
-				if(world.money < TowerC.TOWER_C_COST || !Progress.tower[2]) 	
-					batcher.drawSprite(guiCoordsPatchCentre.x - 30, guiCoordsPatchCentre.y - 30, 36, 32, Assets.redCross);
-				
-				if(world.money < TowerD.TOWER_D_COST || !Progress.tower[3]) 	
-					batcher.drawSprite(guiCoordsPatchCentre.x + 30, guiCoordsPatchCentre.y - 30, 36, 32, Assets.redCross);
+				if (world.money < TowerB.TOWER_B_COST || !Progress.tower[1])
+					batcher.drawSprite(guiCoordsPatchCentre.x + 30,
+							guiCoordsPatchCentre.y + 30, 36, 32,
+							Assets.redCross);
+
+				if (world.money < TowerC.TOWER_C_COST || !Progress.tower[2])
+					batcher.drawSprite(guiCoordsPatchCentre.x - 30,
+							guiCoordsPatchCentre.y - 30, 36, 32,
+							Assets.redCross);
+
+				if (world.money < TowerD.TOWER_D_COST || !Progress.tower[3])
+					batcher.drawSprite(guiCoordsPatchCentre.x + 30,
+							guiCoordsPatchCentre.y - 30, 36, 32,
+							Assets.redCross);
 			}
 		}
 	}
@@ -380,7 +429,7 @@ public class GameScreen extends GLScreen {
 	public void resume() {
 	}
 
-	@Override 
+	@Override
 	public void dispose() {
 	}
 

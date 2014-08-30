@@ -4,7 +4,7 @@ import com.badlogic.androidgames.framework.math.Vector2;
 
 /**
  * @author Bennett_Richard
- *
+ * 
  */
 public class TowerC extends Tower {
 	public static final float RELOAD_TIME = 0.8f;
@@ -25,21 +25,26 @@ public class TowerC extends Tower {
 		damage = TOWER_C_DAMAGE;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.rbennett485.dawnoftheveg.model.Tower#getCost()
 	 */
 	@Override
-	public
-	int getCost() {
+	public int getCost() {
 		return TOWER_C_COST;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.rbennett485.dawnoftheveg.model.Tower#newProj(com.badlogic.androidgames.framework.math.Vector2)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.rbennett485.dawnoftheveg.model.Tower#newProj(com.badlogic.androidgames
+	 * .framework.math.Vector2)
 	 */
 	@Override
 	public Projectile newProj(Vector2 projVel) {
-		return new ProjectileC(this.position, projVel, (int)damage, range);
+		return new ProjectileC(this.position, projVel, (int) damage, range);
 	}
 
 }

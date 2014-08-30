@@ -18,7 +18,7 @@ import com.rbennett485.dawnoftheveg.data.Settings;
  * The initial screen which is assigned to {@link DawnOfTheVeg} on launch
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public class TitleScreen extends GLScreen {
 	private Camera2D guiCam;
@@ -33,14 +33,15 @@ public class TitleScreen extends GLScreen {
 	/**
 	 * Constructor
 	 * 
-	 * @param game The game to which the screen belongs
+	 * @param game
+	 *            The game to which the screen belongs
 	 */
 	public TitleScreen(Game game) {
 		super(game);
 		guiCam = new Camera2D(glGraphics, 800, 480);
 		batcher = new SpriteBatcher(glGraphics, 100);
 		soundBounds = new Rectangle(0, 400, 90, 80);
-		helpBounds = new Rectangle(765,400,35,80);
+		helpBounds = new Rectangle(765, 400, 35, 80);
 		playBounds = new Rectangle(255, 160, 290, 80);
 		shopBounds = new Rectangle(255, 80, 290, 80);
 		objectivesBounds = new Rectangle(255, 0, 290, 80);
@@ -48,10 +49,11 @@ public class TitleScreen extends GLScreen {
 	}
 
 	/**
-	 * Checks for user interaction with UI, and manages screen transition
-	 * or changes settings appropriately
+	 * Checks for user interaction with UI, and manages screen transition or
+	 * changes settings appropriately
 	 * 
-	 * @param deltaTime unused
+	 * @param deltaTime
+	 *            unused
 	 */
 	@Override
 	public void update(float deltaTime) {
@@ -59,37 +61,38 @@ public class TitleScreen extends GLScreen {
 		game.getInput().getKeyEvents();
 
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
-			if(event.type == TouchEvent.TOUCH_UP) {
+			if (event.type == TouchEvent.TOUCH_UP) {
 				touchPoint.set(event.x, event.y);
 				guiCam.touchToWorld(touchPoint);
 
-				if(OverlapTester.pointInRectangle(soundBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(soundBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					Settings.soundEnabled = !Settings.soundEnabled;
-					if(Settings.soundEnabled)
+					if (Settings.soundEnabled)
 						Assets.music.play();
 					else
 						Assets.music.pause();
 					return;
 				}
-				if(OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(helpBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new HelpScreen(game));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(playBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(playBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new MapScreen(game));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(shopBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(shopBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new ShopScreen(game));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(objectivesBounds, touchPoint)) {
+				if (OverlapTester
+						.pointInRectangle(objectivesBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new ObjectivesScreen(game));
 					return;
@@ -101,7 +104,8 @@ public class TitleScreen extends GLScreen {
 	/**
 	 * Renders the screen
 	 * 
-	 * @param deltaTime unused
+	 * @param deltaTime
+	 *            unused
 	 */
 	@Override
 	public void present(float deltaTime) {
@@ -123,14 +127,14 @@ public class TitleScreen extends GLScreen {
 		batcher.drawSprite(400, 360, 375, 224, Assets.title);
 		batcher.drawSprite(400, 120, 290, 240, Assets.menu);
 		batcher.drawSprite(782.5f, 440, 35, 80, Assets.help);
-		if(Settings.soundEnabled)
+		if (Settings.soundEnabled)
 			batcher.drawSprite(45, 440, 90, 80, Assets.soundOn);
 		else
 			batcher.drawSprite(25, 440, 50, 80, Assets.soundOff);
 
 		batcher.endBatch();
 
-		gl.glDisable(GL10.GL_BLEND);		
+		gl.glDisable(GL10.GL_BLEND);
 	}
 
 	@Override
@@ -141,7 +145,7 @@ public class TitleScreen extends GLScreen {
 	public void resume() {
 	}
 
-	@Override 
+	@Override
 	public void dispose() {
 	}
 }

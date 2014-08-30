@@ -17,11 +17,10 @@ import com.rbennett485.dawnoftheveg.data.Settings;
 import com.rbennett485.dawnoftheveg.variables.Shop;
 
 /**
- * Displays the shop, and manages the display and navigation
- * of items for sale
+ * Displays the shop, and manages the display and navigation of items for sale
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public class ShopScreen extends GLScreen {
 
@@ -34,10 +33,11 @@ public class ShopScreen extends GLScreen {
 	private Rectangle previousBounds;
 	private Rectangle buyBounds;
 
-	/** 
+	/**
 	 * Constructor
 	 * 
-	 * @param game The game to which the screen belongs
+	 * @param game
+	 *            The game to which the screen belongs
 	 */
 	public ShopScreen(Game game) {
 		super(game);
@@ -52,41 +52,43 @@ public class ShopScreen extends GLScreen {
 	}
 
 	/**
-	 * Monitors for UI interaction, and updates the screen or executes the 
+	 * Monitors for UI interaction, and updates the screen or executes the
 	 * purchase accordingly
 	 * 
-	 * @param deltaTime unused
+	 * @param deltaTime
+	 *            unused
 	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
 			touchPoint.set(event.x, event.y);
 			guiCam.touchToWorld(touchPoint);
 
-			if(event.type == TouchEvent.TOUCH_UP) {
-				if(OverlapTester.pointInRectangle(backBounds, touchPoint)) {
+			if (event.type == TouchEvent.TOUCH_UP) {
+				if (OverlapTester.pointInRectangle(backBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					game.setScreen(new TitleScreen(game));
 					return;
 				}
-				if(OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(nextBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					currentItem = ((currentItem + 1) % Shop.NUMBER_OF_ITEMS + Shop.NUMBER_OF_ITEMS)
 							% Shop.NUMBER_OF_ITEMS;
 					return;
 				}
-				if(OverlapTester.pointInRectangle(previousBounds, touchPoint)) {
+				if (OverlapTester.pointInRectangle(previousBounds, touchPoint)) {
 					Assets.playSound(Assets.clickSound);
 					currentItem = ((currentItem - 1) % Shop.NUMBER_OF_ITEMS + Shop.NUMBER_OF_ITEMS)
 							% Shop.NUMBER_OF_ITEMS;
 					return;
 				}
-				if(!Progress.shop[currentItem] 
-						&& OverlapTester.pointInRectangle(buyBounds, touchPoint)){
+				if (!Progress.shop[currentItem]
+						&& OverlapTester
+								.pointInRectangle(buyBounds, touchPoint)) {
 					Shop.items[currentItem].purchase();
 				}
 			}
@@ -96,11 +98,12 @@ public class ShopScreen extends GLScreen {
 	/**
 	 * Renders the screen
 	 * 
-	 * @param deltaTime unused
+	 * @param deltaTime
+	 *            unused
 	 */
 	@Override
 	public void present(float deltaTime) {
-		GL10 gl = glGraphics.getGL();        
+		GL10 gl = glGraphics.getGL();
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		guiCam.setViewportAndMatrices();
 
@@ -122,16 +125,17 @@ public class ShopScreen extends GLScreen {
 		batcher.drawSprite(60, 240, -40, 40, Assets.rightArrow);
 		batcher.drawSprite(400, 420, 171, 71, Assets.shop);
 		batcher.drawSprite(760, 440, 80, 80, Assets.back);
-		if(Progress.shop[currentItem]) 
+		if (Progress.shop[currentItem])
 			batcher.drawSprite(400, 100, 150, 50, Assets.bought);
-		else 
+		else
 			batcher.drawSprite(400, 100, 150, 50, Assets.buy);
 	}
 
 	private void presentText() {
 		Assets.font.drawText(batcher, "Gems: " + Progress.funds, 40, 440);
-		if(!Progress.shop[currentItem]) 
-			Assets.font.drawText(batcher, "Cost: " + Shop.items[currentItem].cost, 360, 40);
+		if (!Progress.shop[currentItem])
+			Assets.font.drawText(batcher, "Cost: "
+					+ Shop.items[currentItem].cost, 360, 40);
 	}
 
 	private void presentItem() {
@@ -148,7 +152,7 @@ public class ShopScreen extends GLScreen {
 	public void resume() {
 	}
 
-	@Override 
+	@Override
 	public void dispose() {
 	}
 }

@@ -7,7 +7,7 @@ import com.rbennett485.dawnoftheveg.Assets;
 
 /**
  * @author Bennett_Richard
- *
+ * 
  */
 public class Pea extends Enemy {
 
@@ -21,11 +21,13 @@ public class Pea extends Enemy {
 	/**
 	 * Constructor
 	 * 
-	 * @param wayPoints	An ordered list of the points the enemy will move between, 
-	 * given in World coordinates. The enemy will be initialised at the first of these points 
+	 * @param wayPoints
+	 *            An ordered list of the points the enemy will move between,
+	 *            given in World coordinates. The enemy will be initialised at
+	 *            the first of these points
 	 */
 	public Pea(List<Vector2> wayPoints) {
-		this(wayPoints.get(0).x,wayPoints.get(0).y, wayPoints);
+		this(wayPoints.get(0).x, wayPoints.get(0).y, wayPoints);
 	}
 
 	private Pea(float x, float y, List<Vector2> wayPoints) {
@@ -33,30 +35,36 @@ public class Pea extends Enemy {
 		this.wayPoints = wayPoints;
 		initialHp = PEA_HP;
 		hp = initialHp;
-		nextWayPoint = 0; // create the enemy at waypoint 0, have it head to waypoint 1
+		nextWayPoint = 0; // create the enemy at waypoint 0, have it head to
+							// waypoint 1
 		this.region = Assets.pea;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.rbennett485.dawnoftheveg.model.Enemy#update(float)
 	 */
 	@Override
 	public void update(float deltaTime) {
-		if(nextWayPoint<wayPoints.size()) {
-			if(position.dist(wayPoints.get(nextWayPoint))<0.1) {
+		if (nextWayPoint < wayPoints.size()) {
+			if (position.dist(wayPoints.get(nextWayPoint)) < 0.1) {
 				nextWayPoint++;
-				if(nextWayPoint<wayPoints.size()) {
-					velocity.set(wayPoints.get(nextWayPoint).cpy().sub(this.position).nor().mul(PEA_VELOCITY));
+				if (nextWayPoint < wayPoints.size()) {
+					velocity.set(wayPoints.get(nextWayPoint).cpy()
+							.sub(this.position).nor().mul(PEA_VELOCITY));
 				}
 			}
 
-		} 
+		}
 
 		position.add(velocity.x * deltaTime, velocity.y * deltaTime);
 		bounds.lowerLeft.set(position).sub(PEA_WIDTH / 2, PEA_HEIGHT / 2);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.rbennett485.dawnoftheveg.model.Enemy#clone()
 	 */
 	@Override

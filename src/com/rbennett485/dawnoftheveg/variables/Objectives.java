@@ -6,7 +6,7 @@ import com.rbennett485.dawnoftheveg.data.Progress;
  * Stores objectives and their titles as strings
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public class Objectives {
 
@@ -32,32 +32,32 @@ public class Objectives {
 	}
 
 	public static void level1Complete() {
-		Progress.objective[0][0]  = true;		
+		Progress.objective[0][0] = true;
 	}
 
 	public static void enemyKilled() {
 		Progress.kills++;
-		if(Progress.kills >= 200)
+		if (Progress.kills >= 200)
 			Progress.objective[1][1] = true;
-		else if(Progress.kills >= 50)
+		else if (Progress.kills >= 50)
 			Progress.objective[0][1] = true;
 	}
 
 	public static void helpPageVisited(int page) {
-		if(Progress.objective[1][2])
+		if (Progress.objective[1][2])
 			return;
-		if(page == 0)
+		if (page == 0)
 			Progress.objective[0][2] = true;
 		Progress.helpVisited[page] = true;
-		for(boolean b : Progress.helpVisited)
-			if(!b)
+		for (boolean b : Progress.helpVisited)
+			if (!b)
 				return;
-		Progress.objective[1][2] = true;			
+		Progress.objective[1][2] = true;
 	}
-	
+
 	public static void builtTower() {
 		Progress.towersBuilt++;
-		if(Progress.towersBuilt >= 30)
+		if (Progress.towersBuilt >= 30)
 			Progress.objective[1][0] = true;
 	}
 }

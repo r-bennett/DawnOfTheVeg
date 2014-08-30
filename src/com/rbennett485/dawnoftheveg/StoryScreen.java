@@ -19,11 +19,11 @@ import com.rbennett485.dawnoftheveg.model.Level7;
 import com.rbennett485.dawnoftheveg.model.Level8;
 
 /**
- * Displays and manages transitions between storyboards, displayed
- * before each level
+ * Displays and manages transitions between storyboards, displayed before each
+ * level
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public class StoryScreen extends GLScreen {
 	private int frame;
@@ -33,8 +33,10 @@ public class StoryScreen extends GLScreen {
 	/**
 	 * Constructor
 	 * 
-	 * @param game The game to which the screen belongs
-	 * @param frame The number of the first frame to display 
+	 * @param game
+	 *            The game to which the screen belongs
+	 * @param frame
+	 *            The number of the first frame to display
 	 */
 	public StoryScreen(Game game, int frame) {
 		super(game);
@@ -44,17 +46,17 @@ public class StoryScreen extends GLScreen {
 	}
 
 	/**
-	 * If the user touches the screen it either advances to the next frame,
-	 * or transitions to the relevant {@link GameScreen}
+	 * If the user touches the screen it either advances to the next frame, or
+	 * transitions to the relevant {@link GameScreen}
 	 */
 	@Override
 	public void update(float deltaTime) {
 		List<TouchEvent> touchEvents = game.getInput().getTouchEvents();
 		game.getInput().getKeyEvents();
 		int len = touchEvents.size();
-		for(int i=0 ; i<len ; i++) {
+		for (int i = 0; i < len; i++) {
 			TouchEvent event = touchEvents.get(i);
-			if(event.type == TouchEvent.TOUCH_UP) {
+			if (event.type == TouchEvent.TOUCH_UP) {
 				nextScreen();
 				return;
 			}
@@ -62,8 +64,11 @@ public class StoryScreen extends GLScreen {
 	}
 
 	private void nextScreen() {
-		switch(frame) {
-		case 0: case 1: case 9: case 10:
+		switch (frame) {
+		case 0:
+		case 1:
+		case 9:
+		case 10:
 			frame++;
 			break;
 		case 2:
@@ -98,7 +103,7 @@ public class StoryScreen extends GLScreen {
 	 */
 	@Override
 	public void present(float deltaTime) {
-		GL10 gl = glGraphics.getGL();        
+		GL10 gl = glGraphics.getGL();
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		guiCam.setViewportAndMatrices();
 

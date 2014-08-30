@@ -26,14 +26,10 @@ import com.badlogic.androidgames.framework.Screen;
 
 public abstract class GLGame extends Activity implements Game, Renderer {
 	enum GLGameState {
-		Initialized,
-		Running,
-		Paused,
-		Finished,
-		Idle
+		Initialized, Running, Paused, Finished, Idle
 	}
 
-	GLSurfaceView glView;    
+	GLSurfaceView glView;
 	GLGraphics glGraphics;
 	Audio audio;
 	Input input;
@@ -44,7 +40,7 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 	long startTime = System.nanoTime();
 	WakeLock wakeLock;
 
-	@Override 
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -59,7 +55,8 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 		audio = new AndroidAudio(this);
 		input = new AndroidInput(this, glView, 1, 1);
 		PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "GLGame");        
+		wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK,
+				"GLGame");
 	}
 
 	public void onResume() {
@@ -69,79 +66,79 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 	}
 
 	@Override
-	public void onSurfaceCreated(GL10 gl, EGLConfig config) {        
+	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		glGraphics.setGL(gl);
 
-		synchronized(stateChanged) {
-			if(state == GLGameState.Initialized)
+		synchronized (stateChanged) {
+			if (state == GLGameState.Initialized)
 				screen = getStartScreen();
 			state = GLGameState.Running;
 			screen.resume();
 			startTime = System.nanoTime();
-		}        
+		}
 	}
 
 	@Override
-	public void onSurfaceChanged(GL10 gl, int width, int height) {        
+	public void onSurfaceChanged(GL10 gl, int width, int height) {
 	}
 
 	@Override
-	public void onDrawFrame(GL10 gl) {                
+	public void onDrawFrame(GL10 gl) {
 		GLGameState state = null;
 
-		synchronized(stateChanged) {
+		synchronized (stateChanged) {
 			state = this.state;
 		}
 
-		if(state == GLGameState.Running) {
-			float deltaTime = (System.nanoTime()-startTime) / 1000000000.0f;
+		if (state == GLGameState.Running) {
+			float deltaTime = (System.nanoTime() - startTime) / 1000000000.0f;
 			startTime = System.nanoTime();
 
 			screen.update(deltaTime);
 			screen.present(deltaTime);
 		}
 
-		if(state == GLGameState.Paused) {
-			screen.pause();            
-			synchronized(stateChanged) {
+		if (state == GLGameState.Paused) {
+			screen.pause();
+			synchronized (stateChanged) {
 				this.state = GLGameState.Idle;
 				stateChanged.notifyAll();
 			}
 		}
 
-		if(state == GLGameState.Finished) {
+		if (state == GLGameState.Finished) {
 			screen.pause();
 			screen.dispose();
-			synchronized(stateChanged) {
+			synchronized (stateChanged) {
 				this.state = GLGameState.Idle;
 				stateChanged.notifyAll();
-			}            
+			}
 		}
-	}   
+	}
 
-	@Override 
-	public void onPause() {        
-		synchronized(stateChanged) {
-			if(isFinishing())            
+	@Override
+	public void onPause() {
+		synchronized (stateChanged) {
+			if (isFinishing())
 				state = GLGameState.Finished;
 			else
 				state = GLGameState.Paused;
-			while(true) {
+			while (true) {
 				try {
 					stateChanged.wait();
 					break;
-				} catch(InterruptedException e) {         
+				} catch (InterruptedException e) {
 				}
 			}
 		}
 		wakeLock.release();
-		glView.onPause();  
+		glView.onPause();
 		super.onPause();
-	}    
+	}
 
 	public GLGraphics getGLGraphics() {
 		return glGraphics;
-	}  
+	}
 
 	@Override
 	public Input getInput() {
@@ -178,8 +175,8 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 	@Override
 	public Screen getCurrentScreen() {
 		return screen;
-	}   
-	
+	}
+
 	@SuppressLint("NewApi")
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
@@ -187,13 +184,13 @@ public abstract class GLGame extends Activity implements Game, Renderer {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			Log.d("focus", "executed");
 			if (hasFocus) {
-				glView.setSystemUiVisibility(
-						View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+				glView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 						| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 						| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 						| View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 						| View.SYSTEM_UI_FLAG_FULLSCREEN
-						| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+						| View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+			}
 		}
 	}
 }

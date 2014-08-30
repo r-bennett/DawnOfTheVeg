@@ -8,7 +8,7 @@ import com.rbennett485.dawnoftheveg.Assets;
 
 /**
  * @author Bennett_Richard
- *
+ * 
  */
 public class Level6 extends Level {
 	public Level6() {
@@ -20,10 +20,10 @@ public class Level6 extends Level {
 	@Override
 	protected List<Vector2> wayPointGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(0,9.02f));
-		result.add(new Vector2(7.08f,8.90f));
-		result.add(new Vector2(11.73f,3.38f));
-		result.add(new Vector2(20,3.08f));
+		result.add(new Vector2(0, 9.02f));
+		result.add(new Vector2(7.08f, 8.90f));
+		result.add(new Vector2(11.73f, 3.38f));
+		result.add(new Vector2(20, 3.08f));
 		return result;
 	}
 
@@ -42,22 +42,21 @@ public class Level6 extends Level {
 		result.add(new Wave(40, new Chilli(wayPoints), 1));
 		result.add(new Wave(42, new Pea(wayPoints), 4));
 		result.add(new Wave(50, new Orange(wayPoints), 2));
-		result.add(new Wave(55, new Chilli(wayPoints), 7));		
+		result.add(new Wave(55, new Chilli(wayPoints), 7));
 		return result;
 	}
-	
+
 	@Override
 	protected List<Vector2> towerPatchGenerator() {
 		List<Vector2> result = new ArrayList<>();
-		result.add(new Vector2(6.55f,10.43f));
-		result.add(new Vector2(5.58f,7.58f));
-		result.add(new Vector2(12.95f,4.70f));
-		result.add(new Vector2(11.95f,1.98f));
-		result.add(new Vector2(18.10f,4.60f));
-		result.add(new Vector2(11.08f,7));
-		result.add(new Vector2(18.7f,1.8f));
+		result.add(new Vector2(6.55f, 10.43f));
+		result.add(new Vector2(5.58f, 7.58f));
+		result.add(new Vector2(12.95f, 4.70f));
+		result.add(new Vector2(11.95f, 1.98f));
+		result.add(new Vector2(18.10f, 4.60f));
+		result.add(new Vector2(11.08f, 7));
+		result.add(new Vector2(18.7f, 1.8f));
 		return result;
 	}
-	
 
 }

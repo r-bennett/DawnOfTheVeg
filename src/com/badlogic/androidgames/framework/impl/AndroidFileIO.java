@@ -14,39 +14,39 @@ import android.os.Environment;
 import com.badlogic.androidgames.framework.FileIO;
 
 public class AndroidFileIO implements FileIO {
-    AssetManager assets;
-    String externalStoragePath;
-    String internalStoragePath;
+	AssetManager assets;
+	String externalStoragePath;
+	String internalStoragePath;
 
-    public AndroidFileIO(AssetManager assets, Context context) {
-        this.assets = assets;
-        this.externalStoragePath = Environment.getExternalStorageDirectory()
-                .getAbsolutePath() + File.separator;
-        this.internalStoragePath = context.getFilesDir()
-        		.getAbsolutePath() + File.separator;
-    }
+	public AndroidFileIO(AssetManager assets, Context context) {
+		this.assets = assets;
+		this.externalStoragePath = Environment.getExternalStorageDirectory()
+				.getAbsolutePath() + File.separator;
+		this.internalStoragePath = context.getFilesDir().getAbsolutePath()
+				+ File.separator;
+	}
 
-    @Override
-    public InputStream readAsset(String fileName) throws IOException {
-        return assets.open(fileName);
-    }
+	@Override
+	public InputStream readAsset(String fileName) throws IOException {
+		return assets.open(fileName);
+	}
 
-    @Override
-    public InputStream readExternalFile(String fileName) throws IOException {
-        return new FileInputStream(externalStoragePath + fileName);
-    }
-    
-    public InputStream readInternalFile(String fileName) throws IOException {
-        return new FileInputStream(internalStoragePath + fileName);
-    }
+	@Override
+	public InputStream readExternalFile(String fileName) throws IOException {
+		return new FileInputStream(externalStoragePath + fileName);
+	}
 
-    @Override
-    public OutputStream writeExternalFile(String fileName) throws IOException {
-        return new FileOutputStream(externalStoragePath + fileName);
-    }
-    
-    @Override
-    public OutputStream writeInternalFile(String fileName) throws IOException {
-        return new FileOutputStream(internalStoragePath + fileName);
-    }
+	public InputStream readInternalFile(String fileName) throws IOException {
+		return new FileInputStream(internalStoragePath + fileName);
+	}
+
+	@Override
+	public OutputStream writeExternalFile(String fileName) throws IOException {
+		return new FileOutputStream(externalStoragePath + fileName);
+	}
+
+	@Override
+	public OutputStream writeInternalFile(String fileName) throws IOException {
+		return new FileOutputStream(internalStoragePath + fileName);
+	}
 }

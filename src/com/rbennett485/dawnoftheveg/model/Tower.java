@@ -11,7 +11,7 @@ import com.rbennett485.dawnoftheveg.variables.Upgrades;
  * Represents towers in the game's model
  * 
  * @author Bennett_Richard
- *
+ * 
  */
 public abstract class Tower extends GameObject {
 	public float idleTime;
@@ -23,25 +23,30 @@ public abstract class Tower extends GameObject {
 	/**
 	 * Constructor
 	 * 
-	 * @param x x coord of tower's position (world coords)
-	 * @param y y coord of tower's position (world coords)
-	 * @param width width of tower
-	 * @param height height of tower
+	 * @param x
+	 *            x coord of tower's position (world coords)
+	 * @param y
+	 *            y coord of tower's position (world coords)
+	 * @param width
+	 *            width of tower
+	 * @param height
+	 *            height of tower
 	 */
 	public Tower(float x, float y, float width, float height) {
 		super(x, y, width, height);
 		projectiles = new ArrayList<>();
 	}
-	
+
 	/**
 	 * @return cost to build tower
 	 */
 	public abstract int getCost();
-	
+
 	/**
 	 * Updates the tower's idle time
 	 * 
-	 * @param deltaTime Seconds elapsed since last update
+	 * @param deltaTime
+	 *            Seconds elapsed since last update
 	 */
 	@Override
 	public void update(float deltaTime) {
@@ -49,10 +54,12 @@ public abstract class Tower extends GameObject {
 	}
 
 	/**
-	 * Creates a new projectile with the given velocity,the same initial position as the tower,
-	 * and the damage and range as determined by the tower
+	 * Creates a new projectile with the given velocity,the same initial
+	 * position as the tower, and the damage and range as determined by the
+	 * tower
 	 * 
-	 * @param projVel velocityof projectile
+	 * @param projVel
+	 *            velocityof projectile
 	 * @return the new {@link Projectile} instance
 	 */
 	public abstract Projectile newProj(Vector2 projVel);
@@ -61,7 +68,7 @@ public abstract class Tower extends GameObject {
 	 * Increases tower's range by factor determined in {@link Upgrades}
 	 */
 	public void upgradeRange() {
-		range *= Upgrades.RANGE_FACTOR;		
+		range *= Upgrades.RANGE_FACTOR;
 	}
 
 	/**
