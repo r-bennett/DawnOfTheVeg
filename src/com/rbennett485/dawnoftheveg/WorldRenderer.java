@@ -150,7 +150,7 @@ public class WorldRenderer {
 	private void renderEnemies() {
 		int len = world.enemies.size();
 		Enemy enemy;
-		for(int i = 0; i < len; i++) {
+		for(int i = len-1 ; i >=0 ; i--) {
 			enemy = world.enemies.get(i);
 			batcher.drawSprite(enemy.position.x, enemy.position.y, enemy.bounds.width, enemy.bounds.height, enemy.region); 
 		}
