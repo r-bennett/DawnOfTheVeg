@@ -154,7 +154,6 @@ public class Assets {
 		objectivesComplete = new TextureRegion(sprites, 312, 680, 319, 339);
 		allObjectivesComplete = new TextureRegion(sprites, 634, 681, 319, 339);
 
-
 		font = new Font(sprites, 1, 307, 16, 16, 32);
 
 		map =  new Texture(game, "map.png");
