@@ -58,6 +58,8 @@ public class Assets {
 	public static TextureRegion peaSplat;
 	public static TextureRegion grapeSplat;
 	public static TextureRegion chilliSplat;
+	public static TextureRegion objectivesComplete;
+	public static TextureRegion allObjectivesComplete;
 
 	public static Font font;
 
@@ -149,6 +151,8 @@ public class Assets {
 		peaSplat = new TextureRegion(sprites, 567, 258, 40, 40);
 		grapeSplat = new TextureRegion(sprites, 607, 258, 40, 40);
 		chilliSplat = new TextureRegion(sprites, 527, 258, 40, 40);
+		objectivesComplete = new TextureRegion(sprites, 312, 680, 319, 339);
+		allObjectivesComplete = new TextureRegion(sprites, 634, 681, 319, 339);
 
 
 		font = new Font(sprites, 1, 307, 16, 16, 32);
