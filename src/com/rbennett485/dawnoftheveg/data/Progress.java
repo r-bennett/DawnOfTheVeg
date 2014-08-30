@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import android.util.Log;
 
 import com.badlogic.androidgames.framework.FileIO;
+import com.rbennett485.dawnoftheveg.Assets;
 import com.rbennett485.dawnoftheveg.variables.Shop;
 
 /**
@@ -30,6 +31,7 @@ public class Progress {
 	public static int funds;
 	public static boolean tower[];
 	public static int kills;
+	public static boolean helpVisited[];
 	private final static String file = ".dawnoftheveg";
 
 	static {
@@ -43,6 +45,7 @@ public class Progress {
 		tower[0] = true;
 		tower[1] = true;
 		kills = 0;
+		helpVisited = new boolean[Assets.NUMBER_OF_HELP_REGIONS];
 	}
 
 	/**
@@ -72,6 +75,9 @@ public class Progress {
 				tower[i] = Boolean.parseBoolean(in.readLine());
 			}
 			kills = Integer.parseInt(in.readLine());
+			for(int i=0 ; i<Assets.NUMBER_OF_HELP_REGIONS ; i++) {
+				helpVisited[i] = Boolean.parseBoolean(in.readLine());
+			}
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
@@ -123,6 +129,10 @@ public class Progress {
 			}
 			out.write(Integer.toString(kills));
 			out.write("\n");
+			for(int i=0 ; i<Assets.NUMBER_OF_HELP_REGIONS ; i++) {
+				out.write(Boolean.toString(helpVisited[i]));
+				out.write("\n");
+			}
 		} catch (IOException ex) {
 			Log.d("exception", "level progress save failed - IOException");
 		} finally {
