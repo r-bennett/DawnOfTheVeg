@@ -1,5 +1,7 @@
 package com.rbennett485.dawnoftheveg.variables;
 
+import android.util.Log;
+
 import com.rbennett485.dawnoftheveg.data.Progress;
 
 /**
