@@ -34,7 +34,7 @@ public class World {
 	public static final int WORLD_STATE_INITIAL_BUILD = 3;	// the initial state - the timer is not running, no 
 	// waves appear. Allows player to build initial towers
 	// note - no pause state needed since GameScreen handles this, and does not update World when paused
-	public static final int VALUE_OF_KILL = 25;
+	public static final int VALUE_OF_KILL = 30;
 
 	private final Runnable waveCreator;
 
