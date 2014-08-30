@@ -203,6 +203,7 @@ public class GameScreen extends GLScreen {
 							Tower towerA = new TowerA(world.patchMenuCentre.x, world.patchMenuCentre.y);
 							world.towers.add(towerA);
 							world.money -= towerA.getCost();
+							Objectives.builtTower();
 						} else if(OverlapTester.pointInRectangle(
 								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y, 60, 60), touchPoint)
 								&& world.money >= TowerB.TOWER_B_COST
@@ -211,6 +212,7 @@ public class GameScreen extends GLScreen {
 							Tower towerB = new TowerB(world.patchMenuCentre.x, world.patchMenuCentre.y);
 							world.towers.add(towerB);
 							world.money -= towerB.getCost();
+							Objectives.builtTower();
 						} else if(OverlapTester.pointInRectangle(
 								new Rectangle(guiCoordsPatchMenuCentre.x-60, guiCoordsPatchMenuCentre.y-60, 60, 60), touchPoint)
 								&& world.money >= TowerC.TOWER_C_COST
@@ -219,6 +221,7 @@ public class GameScreen extends GLScreen {
 							Tower towerC = new TowerC(world.patchMenuCentre.x, world.patchMenuCentre.y);
 							world.towers.add(towerC);
 							world.money-= towerC.getCost();
+							Objectives.builtTower();
 						} else if(OverlapTester.pointInRectangle(
 								new Rectangle(guiCoordsPatchMenuCentre.x, guiCoordsPatchMenuCentre.y-40, 40, 40), touchPoint)
 								&& world.money >= TowerD.TOWER_D_COST
@@ -227,6 +230,7 @@ public class GameScreen extends GLScreen {
 							Tower towerD = new TowerD(world.patchMenuCentre.x, world.patchMenuCentre.y);
 							world.towers.add(towerD);
 							world.money -= towerD.getCost();
+							Objectives.builtTower();
 						}
 					}
 
