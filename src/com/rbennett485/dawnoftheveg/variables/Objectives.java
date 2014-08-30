@@ -36,7 +36,11 @@ public class Objectives {
 		Progress.objective[0][0]  = true;		
 	}
 	
-	
+	public static void enemyKilled() {
+		Progress.kills++;
+		if(Progress.kills >= 50)
+			Progress.objective[0][1] = true;
+	}
 	
 	
 	
