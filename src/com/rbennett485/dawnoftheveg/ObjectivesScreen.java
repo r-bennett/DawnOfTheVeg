@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.microedition.khronos.opengles.GL10;
 
+import android.util.Log;
+
 import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Input.TouchEvent;
 import com.badlogic.androidgames.framework.gl.Camera2D;
@@ -56,7 +58,7 @@ public class ObjectivesScreen extends GLScreen {
 			Progress.dateLastObjectives[1] = c.get(Calendar.MONTH);
 			Progress.dateLastObjectives[2] = c.get(Calendar.YEAR);
 			Progress.objectivesDateWritten = true;
-			if(Progress.currentObjectiveSet == Objectives.NUMBER_OF_OBJECTIVE_SETS)
+			if(Progress.currentObjectiveSet == Objectives.NUMBER_OF_OBJECTIVE_SETS -1)
 				Progress.objectivesFinished = true;
 			return;
 		}
