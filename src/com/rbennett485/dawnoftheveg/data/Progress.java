@@ -33,6 +33,7 @@ public class Progress {
 	public static int kills;
 	public static boolean helpVisited[];
 	public static int towersBuilt;
+	public static int dateLastObjectives[];
 	private final static String file = ".dawnoftheveg";
 
 	static {
@@ -48,6 +49,10 @@ public class Progress {
 		kills = 0;
 		helpVisited = new boolean[Assets.NUMBER_OF_HELP_REGIONS];
 		towersBuilt = 0;
+		dateLastObjectives = new int[3];
+		dateLastObjectives[0] = 1;
+		dateLastObjectives[1] = 1;
+		dateLastObjectives[2] = 1;		
 	}
 
 	/**
@@ -81,6 +86,9 @@ public class Progress {
 				helpVisited[i] = Boolean.parseBoolean(in.readLine());
 			}
 			towersBuilt = Integer.parseInt(in.readLine());
+			for(int i=0 ; i<3 ; i++) {
+				dateLastObjectives[i] = Integer.parseInt(in.readLine());
+			}
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 			Log.d("exception", "level progress load failed - IOException");
@@ -138,6 +146,10 @@ public class Progress {
 			}
 			out.write(Integer.toString(towersBuilt));
 			out.write("\n");
+			for(int i=0 ; i<3 ; i++) {
+				out.write(Integer.toString(dateLastObjectives[i]));
+				out.write("\n");
+			}
 		} catch (IOException ex) {
 			Log.d("exception", "level progress save failed - IOException");
 		} finally {
