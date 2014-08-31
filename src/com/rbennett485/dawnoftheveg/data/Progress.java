@@ -38,6 +38,7 @@ public class Progress {
 	static {
 		level = new boolean[NUMBER_OF_LEVELS];
 		level[0] = true;
+
 		objective = new boolean[NUMBER_OF_OBJECTIVE_SETS][NUMBER_OF_OBJECTIVES_PER_SET];
 		shop = new boolean[Shop.NUMBER_OF_ITEMS];
 		currentObjectiveSet = 0;
