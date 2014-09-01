@@ -4,11 +4,9 @@
   <!--Replace placeholder ID with your tracking ID-->
   <string name="ga_trackingId">UA-54370548-1</string>
 
-  <!--Enable automatic activity tracking-->
   <bool name="ga_autoActivityTracking">true</bool>
 
-  <!--Enable automatic exception tracking-->
   <bool name="ga_reportUncaughtExceptions">true</bool>
-  
   <string name="com.rbennett485.dawnoftheveg.DawnOfTheVeg">Main Activity</string>
+  
 </resources>
