@@ -5,6 +5,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import com.badlogic.androidgames.framework.Screen;
 import com.badlogic.androidgames.framework.impl.GLGame;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.rbennett485.dawnoftheveg.data.Progress;
 import com.rbennett485.dawnoftheveg.data.Settings;
 
@@ -54,5 +55,17 @@ public class DawnOfTheVeg extends GLGame {
 			Assets.music.pause();
 		Progress.save(getFileIO());
 		Settings.save(getFileIO());
+	}
+
+	@Override
+	public void onStart() {
+		super.onStart();
+		EasyTracker.getInstance(this).activityStart(this); // Add this method.
+	}
+
+	@Override
+	public void onStop() {
+		super.onStop();
+		EasyTracker.getInstance(this).activityStop(this); // Add this method.
 	}
 }
