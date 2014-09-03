@@ -105,6 +105,7 @@ public class GameScreen extends GLScreen {
 
 			case (World.WORLD_STATE_COMPLETE):
 				Objectives.level1Complete();
+				Progress.levelComplete[world.level.number - 1] = true;
 				updateComplete();
 				break;
 
