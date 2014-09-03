@@ -33,6 +33,7 @@ public class Progress {
 	public static int dateLastObjectives[];
 	public static boolean objectivesDateWritten;
 	public static boolean objectivesFinished;
+	public static boolean[] levelComplete;
 	private final static String file = ".dawnoftheveg";
 
 	static {
@@ -52,6 +53,7 @@ public class Progress {
 		dateLastObjectives = new int[3];
 		objectivesDateWritten = false;
 		objectivesFinished = false;
+		levelComplete = new boolean[NUMBER_OF_LEVELS];
 	}
 
 	/**
@@ -92,6 +94,9 @@ public class Progress {
 			}
 			objectivesDateWritten = Boolean.parseBoolean(in.readLine());
 			objectivesFinished = Boolean.parseBoolean(in.readLine());
+			for (int i = 0; i < NUMBER_OF_LEVELS; i++) {
+				levelComplete[i] = Boolean.parseBoolean(in.readLine());
+			}
 		} catch (IOException ex) {
 			// resort to initialisation defaults
 		} catch (NumberFormatException ex) {
@@ -155,6 +160,10 @@ public class Progress {
 			out.write("\n");
 			out.write(Boolean.toString(objectivesFinished));
 			out.write("\n");
+			for (int i = 0; i < NUMBER_OF_LEVELS; i++) {
+				out.write(Boolean.toString(levelComplete[i]));
+				out.write("\n");
+			}
 		} catch (IOException ex) {
 		} finally {
 			try {
