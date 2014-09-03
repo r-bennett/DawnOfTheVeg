@@ -1,5 +1,6 @@
 package com.rbennett485.dawnoftheveg;
 
+import com.badlogic.androidgames.framework.Game;
 import com.badlogic.androidgames.framework.Music;
 import com.badlogic.androidgames.framework.Sound;
 import com.badlogic.androidgames.framework.gl.Font;
@@ -60,6 +61,7 @@ public class Assets {
 	public static TextureRegion chilliSplat;
 	public static TextureRegion objectivesComplete;
 	public static TextureRegion allObjectivesComplete;
+	public static TextureRegion greenHazard;
 
 	public static Font font;
 
@@ -154,6 +156,7 @@ public class Assets {
 		chilliSplat = new TextureRegion(sprites, 527, 258, 40, 40);
 		objectivesComplete = new TextureRegion(sprites, 312, 680, 319, 339);
 		allObjectivesComplete = new TextureRegion(sprites, 634, 681, 319, 339);
+		greenHazard = new TextureRegion(sprites, 882, 152, 40, 40);
 
 		font = new Font(sprites, 1, 307, 16, 16, 32);
 
