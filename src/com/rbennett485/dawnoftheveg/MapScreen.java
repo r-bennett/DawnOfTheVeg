@@ -157,9 +157,15 @@ public class MapScreen extends GLScreen {
 		for (int i = 0; i < Progress.NUMBER_OF_LEVELS; i++) {
 			Rectangle bounds = levelBounds[i];
 			if (Progress.level[i]) {
-				batcher.drawSprite(bounds.lowerLeft.x + bounds.width / 2f,
-						bounds.lowerLeft.y + bounds.height / 2f, 40, 40,
-						Assets.hazard);
+				if (Progress.levelComplete[i]) {
+					batcher.drawSprite(bounds.lowerLeft.x + bounds.width / 2f,
+							bounds.lowerLeft.y + bounds.height / 2f, 40, 40,
+							Assets.greenHazard);
+				} else {
+					batcher.drawSprite(bounds.lowerLeft.x + bounds.width / 2f,
+							bounds.lowerLeft.y + bounds.height / 2f, 40, 40,
+							Assets.hazard);
+				}
 			} else {
 				batcher.drawSprite(bounds.lowerLeft.x + bounds.width / 2f,
 						bounds.lowerLeft.y + bounds.height / 2f, 36, 32,
