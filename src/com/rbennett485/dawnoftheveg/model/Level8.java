@@ -14,7 +14,7 @@ public class Level8 extends Level {
 	public Level8() {
 		super(500, Assets.level8background, Assets.level8backgroundRegion);
 		number = 8;
-		lives = 20;
+		lives = 1;
 	}
 
 	@Override

@@ -14,7 +14,7 @@ public class Level2 extends Level {
 	public Level2() {
 		super(450, Assets.level2background, Assets.level2backgroundRegion);
 		number = 2;
-		lives = 5;
+		lives = 3;
 	}
 
 	@Override
