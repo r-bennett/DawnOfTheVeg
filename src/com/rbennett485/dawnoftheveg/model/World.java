@@ -29,13 +29,13 @@ public class World {
 	public static final float WORLD_WIDTH = 20;
 	public static final float WORLD_HEIGHT = 12;
 	public static final int WORLD_STATE_RUNNING = 0; // waves are coming, the
-														// game is in play
+	// game is in play
 	public static final int WORLD_STATE_COMPLETE = 1; // no more enemies and no
-														// more waves
+	// more waves
 	public static final int WORLD_STATE_GAME_OVER = 2; // no more lives
 	public static final int WORLD_STATE_INITIAL_BUILD = 3; // the initial state
-															// - the timer is
-															// not running, no
+	// - the timer is
+	// not running, no
 	// waves appear. Allows player to build initial towers
 	// note - no pause state needed since GameScreen handles this, and does not
 	// update World when paused
@@ -65,8 +65,9 @@ public class World {
 	public Level level;
 
 	private List<GameObject> removals; // used for storing all objects to be
-										// removed during an iteration of a
-										// collection
+
+	// removed during an iteration of a
+	// collection
 
 	/**
 	 * Constructor
@@ -130,7 +131,8 @@ public class World {
 		switch (state) {
 		case (WORLD_STATE_RUNNING):
 			if (nextWave < waves.size()) {
-				checkNewWave();
+				if (!updating)
+					checkNewWave();
 			} else if (enemies.isEmpty()) {
 				state = WORLD_STATE_COMPLETE;
 				if (Progress.NUMBER_OF_LEVELS > level.number) {
