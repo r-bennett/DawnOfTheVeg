@@ -19,6 +19,9 @@ public abstract class Tower extends GameObject {
 	public float range;
 	public float damage;
 	public List<Projectile> projectiles;
+	public boolean upgradedRange;
+	public boolean upgradedPower;
+	public boolean upgradedTime;
 
 	/**
 	 * Constructor
