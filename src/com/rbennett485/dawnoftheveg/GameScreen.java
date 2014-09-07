@@ -181,7 +181,8 @@ public class GameScreen extends GLScreen {
 										guiCoordsPatchMenuCentre.x - 60,
 										guiCoordsPatchMenuCentre.y, 60, 60),
 										touchPoint)
-								&& world.money >= Upgrades.RANGE_COST) {
+								&& world.money >= Upgrades.RANGE_COST
+								&& !t.upgradedRange) {
 							// upgrade range
 							t.upgradeRange();
 							world.money -= Upgrades.RANGE_COST;
@@ -189,7 +190,8 @@ public class GameScreen extends GLScreen {
 								new Rectangle(guiCoordsPatchMenuCentre.x,
 										guiCoordsPatchMenuCentre.y, 60, 60),
 								touchPoint)
-								&& world.money >= Upgrades.DAMAGE_COST) {
+								&& world.money >= Upgrades.DAMAGE_COST
+								&& !t.upgradedDamage) {
 							// upgrade damage
 							t.upgradeDamage();
 							world.money -= Upgrades.DAMAGE_COST;
@@ -199,7 +201,8 @@ public class GameScreen extends GLScreen {
 												guiCoordsPatchMenuCentre.x - 60,
 												guiCoordsPatchMenuCentre.y - 60,
 												60, 60), touchPoint)
-								&& world.money >= Upgrades.RELOAD_COST) {
+								&& world.money >= Upgrades.RELOAD_COST
+								&& !t.upgradedReload) {
 							// upgrade reload time
 							t.upgradeReload();
 							world.money -= Upgrades.RELOAD_COST;
@@ -375,19 +378,20 @@ public class GameScreen extends GLScreen {
 					800 * world.patchMenuCentre.x / 20f,
 					480 * world.patchMenuCentre.y / 12f);
 			if (world.towerAt(world.patchMenuCentre)) {
+				Tower t = world.getTowerAt(world.patchMenuCentre);
 				batcher.drawSprite(guiCoordsPatchCentre.x,
 						guiCoordsPatchCentre.y, 120, 120, Assets.upgradeMenu);
-				if (world.money < Upgrades.RANGE_COST)
+				if (world.money < Upgrades.RANGE_COST || t.upgradedRange)
 					batcher.drawSprite(guiCoordsPatchCentre.x - 30,
 							guiCoordsPatchCentre.y + 30, 36, 32,
 							Assets.redCross);
 
-				if (world.money < Upgrades.DAMAGE_COST)
+				if (world.money < Upgrades.DAMAGE_COST || t.upgradedDamage)
 					batcher.drawSprite(guiCoordsPatchCentre.x + 30,
 							guiCoordsPatchCentre.y + 30, 36, 32,
 							Assets.redCross);
 
-				if (world.money < Upgrades.RELOAD_COST)
+				if (world.money < Upgrades.RELOAD_COST || t.upgradedReload)
 					batcher.drawSprite(guiCoordsPatchCentre.x - 30,
 							guiCoordsPatchCentre.y - 30, 36, 32,
 							Assets.redCross);
