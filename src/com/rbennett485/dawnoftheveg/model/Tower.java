@@ -20,8 +20,8 @@ public abstract class Tower extends GameObject {
 	public float damage;
 	public List<Projectile> projectiles;
 	public boolean upgradedRange;
-	public boolean upgradedPower;
-	public boolean upgradedTime;
+	public boolean upgradedDamage;
+	public boolean upgradedReload;
 
 	/**
 	 * Constructor
@@ -72,6 +72,7 @@ public abstract class Tower extends GameObject {
 	 */
 	public void upgradeRange() {
 		range *= Upgrades.RANGE_FACTOR;
+		upgradedRange = true;
 	}
 
 	/**
@@ -79,6 +80,7 @@ public abstract class Tower extends GameObject {
 	 */
 	public void upgradeDamage() {
 		damage *= Upgrades.DAMAGE_FACTOR;
+		upgradedDamage = true;
 	}
 
 	/**
@@ -86,6 +88,7 @@ public abstract class Tower extends GameObject {
 	 */
 	public void upgradeReload() {
 		reloadTime *= Upgrades.RELOAD_FACTOR;
+		upgradedReload = true;
 	}
 
 }
